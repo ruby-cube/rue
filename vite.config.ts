@@ -6,7 +6,12 @@ export default defineConfig({
     alias: {
       '@rue/utils': resolve(__dirname, 'packages/utils/index.ts'),
     }
-  }
+  },
+    define: {
+    __DEV__: true,
+    __TEST__: true,
+    __DOCU__: false,
+  },
   // build: {
   //   lib: {
   //     // Could also be a dictionary or array of multiple entry points
