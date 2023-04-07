@@ -22,9 +22,11 @@ This project is the result of my exploration into how an event system might incl
 ## Table of Contents
 
 - [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+    - [Event vs Hook vs Message]()
     - [One-time Listener vs Sustained Listener](https://www.notion.so/Overkill-Check-Jan-8-99b852805af84c12aa64779bad3b0a40)
     - [Listener Morphing](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Schedulers](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+    - [Synchronous vs Asynchronous Handling]()
 - [Memory Leak Prevention](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Cleanup Strategies](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
         - [Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
@@ -66,38 +68,16 @@ emitter     context, data, or event object
 
 ### Event vs Hook vs Message
 
-In this repo, I use “emit” and “event” as general terms that encompass three distinct types of event emissions:
+I use “emit” and “event” as general terms that encompass three distinct types of event emissions:
 
 - **emitting user events** (normally the browser emits user events, but when working with components, you might want to forward user events to a parent component as is possible within the Vue component framework)
 - **casting application/process hooks**
 - **sending messages/commands**
-<br/>
-
-### Synchronous vs Asynchronous Handling
-
-Handlers are called synchronously at the time of event emission. This allows for “before event” hooks and the possibility of handlers communicating back to the source of the event (see [`reply`](https://www.notion.so/P-cherie-acfd28a3d5e94c099603107bd32af191)). 
-
-If asynchronous handling is needed, the developer can call an async scheduler or one-time listener from within the handler. In the example below, the synchonous handler calls the `addPS` scheduler (an alias for `queueMicrotask`) for asynchronous handling. (For other async schedulers, see Thread)
-
-```tsx
-onPopulated(() => addPS(() => {
-    // do something
-}))
-```
-
-Alternatively, when using Pecherie hooks, omit the callback function and options parameter to queue a microtask after an event is emitted via a promise:
-
-```tsx
-onPopulated()
-    .then(() => { 
-        // do something
-    })
-
-/* or */
-
-await onPopulated();
-// do something
-```
+- 
+These Rue libraries handle the following type of event emission:
+- **Thread**: user events
+- **Pecherie**: application/process hooks
+- **Archer**: messages/commands
 <br/>
 
 ### One-time listener vs Sustained listener
@@ -167,6 +147,33 @@ Listeners can also morph from their default depending on the usage context. For 
 
 Schedulers are one-time listeners that cannot be converted into a sustained listeners. These are typically functions that queue a task to the main thread such as: `queueTask`, `beforeScreenPaint` (planified `requestAnimationFrame`), and `onTimeout` (planified `setTimeout`). See Thread for more on existing schedulers.
 <br/>
+<br/>
+
+### Synchronous vs Asynchronous Handling
+
+Handlers are called synchronously at the time of event emission. This allows for “before event” hooks and the possibility of handlers communicating back to the source of the event (see [`reply`](https://www.notion.so/P-cherie-acfd28a3d5e94c099603107bd32af191)). 
+
+If asynchronous handling is needed, the developer can call an async scheduler or one-time listener from within the handler. In the example below, the synchonous handler calls the `addPS` scheduler (an alias for `queueMicrotask`) for asynchronous handling.
+
+```tsx
+onPopulated(() => addPS(() => {
+    // do something
+}))
+```
+
+Alternatively, when using Pecherie hooks, omit the callback function and options parameter to queue a microtask after an event is emitted via a promise:
+
+```tsx
+onPopulated()
+    .then(() => { 
+        // do something
+    })
+
+/* or */
+
+await onPopulated();
+// do something
+```
 <br/>
 
 ## Memory Leak Prevention
