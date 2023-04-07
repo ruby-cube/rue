@@ -185,7 +185,7 @@ Planify prevents memory leaks via three main approaches:
 - by making handler cleanup more user-friendly
 - by logging warnings during development if a cleanup strategy is not in place
 - with Typescript errors during development
-
+<br/>
 
 ### Cleanup Strategies
 
