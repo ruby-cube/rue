@@ -1,0 +1,10 @@
+{
+    "name": "@rue/paravue",
+    "private": true,
+    "description": "",
+    "author": "Ruby Yi Wang",
+    "license": "MIT",
+    "dependencies": {
+        "vue": "^3.2.47"
+    }
+}

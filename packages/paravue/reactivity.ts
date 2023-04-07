@@ -12,8 +12,6 @@ export type Reactive<T> = { [P in keyof ShallowReactive<{}>]-?: true; } & T
 // export type Reactive<T> = Required<{ [Key in keyof ShallowReactive<{}>]: true } & T>;
 export interface IReactive extends Reactive<{}> { };
 
-type IsItNever = { [Key in keyof Reactive<{}>]: Reactive<{}>[Key] }
-
 // export function computedMethod<T, O>(cb: (thisObj: O) => T) { //TODO:  check if its being run within an effect scope. (eg. getCurrentInstance or scope), if not, need to create its own effectScope
 //     let cRef: ComputedRef;
 //     return function (this: O) {
@@ -50,7 +48,7 @@ export type RefImpl = Ref | ComputedRef | ExtensibleRef;
 export type SustainedListenerReturn<CB extends Callback, OPT> = OPT extends { once: true } | { unlessCanceled: ScheduleCancel } ? PendingOp<ReturnType<CB>> : OPT extends { sustain: true } | { until: ScheduleStop } | undefined ? ActiveListener : ActiveListener;
 
 export function r$<T extends RefImpl>(ref: T): T extends { value: infer V } ? V : T {
-    if (isRef(ref) || isExtensibleRef(ref)) return ref.value;
+    if (isRef(ref) || isExtensibleRef(ref)) return (<Ref>ref).value;
     return ref as T extends { value: infer V } ? V : T;
 }
 

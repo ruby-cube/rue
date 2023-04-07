@@ -86,9 +86,7 @@ export function runCallbacks(hook: string, callbacks: Callbacks | undefined, dat
 
     for (const cb of callbacks) {
         if ("isRemover" in cb) cb();
-        else {
-            cb(arg, __DEV__ ? { hook } : null);
-        }
+        else cb(arg, __DEV__ ? { hook } : null);
     }
 
     if (__DEV__) performanceCheck.end();
