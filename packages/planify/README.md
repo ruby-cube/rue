@@ -256,7 +256,7 @@ Planify provides four main cleanup strategies:
     
     **Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the Pêcherie API.
     
-    **Important:** The cancellation scheduler must return a `PendingCancelOp` to ensure the cancel function is cleaned up once the handler is run:
+    **Important:** The cancellation scheduler (`onDocClosed` in the example below) must return a `PendingCancelOp` to ensure the cancel function is cleaned up once the handler is run. Typescript will safeguard against malformed cancellation schedulers by erroring:
     
     ```jsx
     // GOOD:
@@ -272,7 +272,7 @@ Planify provides four main cleanup strategies:
     // BAD:
     onPopulated(() => {
         // do work...
-    }, { unlessCanceled: (cancel) => { onDocClosed(cancel) } }) // returns void
+    }, { unlessCanceled: (cancel) => { onDocClosed(cancel) } }) // returns void, Typescript will throw error
     
     // GOOD, but unnecessarily verbose
     onPopulated(() => {
