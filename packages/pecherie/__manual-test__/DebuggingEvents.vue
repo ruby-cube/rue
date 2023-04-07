@@ -1,5 +1,5 @@
 <script lang='ts'>
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, ref } from "vue";
 import { onDidSomething } from './de-contract';
 import { doSomething } from './de-service';
 import { createHook } from "../Hook"

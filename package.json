@@ -5,7 +5,23 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ni:pecherie": "pnpm -F @rue/pecherie install",
+    "ni:actionry": "pnpm -F @rue/actionry install",
+    "ni:archer": "pnpm -F @rue/archer install",
+    "ni:etre": "pnpm -F @rue/etre install",
+    "ni:modos": "pnpm -F @rue/modos install",
+    "ni:nautic": "pnpm -F @rue/nautic install",
+    "ni:paravue": "pnpm -F @rue/paravue install",
+    "ni:planify": "pnpm -F @rue/planify install",
+    "ni:ruelle": "pnpm -F @rue/ruelle install",
+    "ni:thread": "pnpm -F @rue/thread install",
+    "ni:turtledom": "pnpm -F @rue/turtledom install",
+    "ni:utils": "pnpm -F @rue/utils install",
+    "ni:dev": "pnpm -F @rue/dev install",
+    "ni:voile": "pnpm -F @rue/voile install",
+    "ni:ciel": "pnpm -F @rue/ciel install",
+    "ni:ephemr": "pnpm -F @rue/ephemr install"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
