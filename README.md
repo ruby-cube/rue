@@ -152,7 +152,7 @@ const [castMounted, onMounted] = createHook({
 <br/>
 
 ## Contribution
-I'm currently not looking for code contributions. However, I'm completely new to open source and would appreciate guidance from experienced open sourcerors particularly with regards to publishing to NPM, semantic versioning, configuring package.json, build tools, scripts, and other dev ops stuff.
+I'm currently not looking for code contributions. However, I'm completely new to open source and would appreciate guidance from experienced open sourcerors particularly with regards to publishing to NPM, semantic versioning, managing monorepos, configuring package.json, build tools, scripts, and other dev ops stuff.
 
 I'm also relatively new to software engineering itself (~2 years) and have been learning and building in isolation, so, to be quite honest, I don't know if what I've built and written is extremely naive. I'm not even clear on whether Planify and Être are considered libraries or frameworks. Thoughts and gentle feedback from more experienced devs would be appreciated.
 
