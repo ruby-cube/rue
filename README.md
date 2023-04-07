@@ -68,7 +68,7 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 **🔔 Modos**
 <br/>
 *(coming soon-ish)* An in-memory data model store that leverages Vue’s reactivity system. Particularly useful for tree structures. Includes several optional modules:
-- **Revive**: normalize and denormalize data *need to implement normalization..
+- **Revive**: normalize and denormalize data
 - **Vine**: two-way tree structure
 - **Persistence**: batches changes for calls to the database
 - **History**: batches changes for undo/redo
@@ -115,7 +115,7 @@ Some conventions you may notice in the source code and the examples:
 - A dollar sign prefix `$` is used to indicate some sort of specialness. I use it in my codebases and examples to indicate the following:
     - a macro variable that will be (or potentially will be) eliminated or transformed at build time
     - a variable that serves as a stand-in until the actual value is available to plug in
-    - in the Etre framework, an abstract role, which behaves distinctly from a class
+    - in the Être framework, an abstract role, which behaves distinctly from a class
 <br/>
 
 ## The `$type` variable
@@ -149,6 +149,15 @@ const [castMounted, onMounted] = createHook({
     hook: "mounted",
 });
 ```
+<br/>
+
+## Contribution
+I'm currently not looking for code contributions. However, I'm completely new to open source and would appreciate guidance from experienced open sourcerors particularly with regards to publishing to NPM, semantic versioning, configuring package.json, build tools, scripts, and other dev ops stuff.
+
+I'm also relatively new to software engineering itself (~2 years) and have been learning and building in isolation, so, to be quite honest, I don't know if what I've built and written is extremely naive. I'm not even clear on whether Planify and Être are considered libraries or frameworks. Thoughts and gentle feedback from more experienced devs would be appreciated.
+
+Send a note to ruby.yiong@gmail.com. I would especially love to connect with someone in the Seattle area, though help from anywhere in the world is appreciated too.
+
 <br/>
 
 ## Inspiration
