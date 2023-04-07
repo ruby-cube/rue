@@ -522,3 +522,5 @@ Event-driven code is notoriously difficult to debug. Additional support for easi
         // Intellisense can now show the rest of the options
     });
     ```
+
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
