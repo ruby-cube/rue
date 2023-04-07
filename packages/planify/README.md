@@ -1,3 +1,4 @@
+[@rue](https://github.com/ruby-cube/rue)
 # Planify 🪶
 
 <aside>
@@ -9,7 +10,7 @@
 
 ## Overview & Motivation
 
-When building complex applications, event-driven programming enables loose-coupling, proper delegation of responsibilities, and extensibility, improving application maintainability.
+Event-driven programming enables loose-coupling, proper delegation of responsibilities, and extensibility, improving maintainability of complex applications.
 
 However, memory leaks and stale callbacks are an inevitable concern when it comes to event subscription, and while many event systems do provide methods of cleanup, the ones I’ve encountered have felt somewhat cumbersome and unintuitive to me. 
 
