@@ -21,7 +21,6 @@ This project is the result of my exploration into how an event system might incl
 
 ## Table of Contents
 
-- [Use Case](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [One-time Listener vs Sustained Listener](https://www.notion.so/Overkill-Check-Jan-8-99b852805af84c12aa64779bad3b0a40)
     - [Listener Morphing](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
@@ -37,12 +36,6 @@ This project is the result of my exploration into how an event system might incl
 - [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - Planned Features
 - Known Issues
-<br/>
-
-## Use Case
-
-In most cases, simple function declaration and invocation is sufficient to achieve a task. Beware of overusing these functions as there is a performance cost (in a similar way promises are more costly than simple callbacks). Using emitters and listeners only becomes useful when you need to communicate across different modules or scopes. It allows you to delegate responsibilities to the appropriate scope, improving the readability and maintainability of a complex codebase.
-<br/>
 <br/>
 
 ## Concepts
