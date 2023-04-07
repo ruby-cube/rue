@@ -53,7 +53,7 @@ In browser API, the word “listener” refers to the callback function passed i
 // Event: "mousedown"
 
 onMouseDown(document, () => {}, { until: onDestroyed })
-	|           |          |             |   
+    |           |          |             |   
 targeted    target     handler       options
 listener
 ```
@@ -62,7 +62,7 @@ listener
 // Hook: "table-populated"
 
 onTablePopulated((context) => { context.dataset })
-	|                        |
+    |                        |
 listener                 handler
 
 castTablePopulated({ dataset });
@@ -91,7 +91,7 @@ If asynchronous handling is needed, the developer can call whichever asynchronou
 
 ```tsx
 onTablePopulated(() => addPS(() => {
-		// do something
+        // do something
 }))
 ```
 
@@ -99,9 +99,9 @@ Alternatively, when using Pecherie hooks, omit the callback function and options
 
 ```tsx
 onTablePopulated()
-		.then(() => { 
-				// do something
-		})
+        .then(() => { 
+                // do something
+        })
 
 /* or */
 
@@ -136,7 +136,7 @@ const pendingOp = onTextInserted(() => {
 }
 
 onActionCanceled(() => {
-	 pendingOp.cancel();
+     pendingOp.cancel();
 }
 
 const result = await pendingOp;
@@ -217,9 +217,9 @@ Planify provides four basic types of strategies for cleanup.
     // App.vue
     
     export default defineComponent({
-    	setup(){
-    		 onTablePopulated(() => {  // auto-cleanup when component unmounts
-    	     // do work
+        setup(){
+             onTablePopulated(() => {  // auto-cleanup when component unmounts
+             // do work
          })
       }
     })
@@ -229,15 +229,15 @@ Planify provides four basic types of strategies for cleanup.
     
     ```jsx
     onTablePopulated(() => {
-    		// so much work...
-    }, { until: onDocClosed })	
+            // so much work...
+    }, { until: onDocClosed })    
     ```
     
     ```jsx
     // if the listener requires additional parameters beyond the handler:
     
     onTablePopulated(() => {
-    		// so much work...
+            // so much work...
     }, { unlessCanceled: (cancel) => onTimeout(5000, cancel) }) 
     ```
     
@@ -257,22 +257,22 @@ Planify provides four basic types of strategies for cleanup.
     ```jsx
     // GOOD:
     onTablePopulated(() => {
-    		// do work...
+            // do work...
     }, { unlessCanceled: onDocClosed })
     
     // GOOD, but unnecessarily verbose:
     onTablePopulated(() => {
-    		// do work...
+            // do work...
     }, { unlessCanceled: (cancel) => onDocClosed(cancel) })
     
     // BAD:
     onTablePopulated(() => {
-    		// do work...
+            // do work...
     }, { unlessCanceled: (cancel) => { onDocClosed(cancel) } }) // returns void
     
     // GOOD, but unnecessarily verbose
     onTablePopulated(() => {
-    		// do work...
+            // do work...
     }, { unlessCanceled: (cancel) => { return onDocClosed(cancel); } })
     ```
     
@@ -300,24 +300,24 @@ Planify provides four basic types of strategies for cleanup.
     
     // create a 'dragging' scene
     function initDrag(){
-    	 beginScene((dragging) => { // callback runs synchronously
+         beginScene((dragging) => { // callback runs synchronously
     
-    	     onMouseEnter(el, () => {
-    		      // do work
-    	     });
+             onMouseEnter(el, () => {
+                  // do work
+             });
      
            onMouseLeave(el, () => {
-    	 	      // do work
-    	     });
+                   // do work
+             });
     
-        	 onMouseMove(document, () => {
-    		      // do work
-    	     });
+             onMouseMove(document, () => {
+                  // do work
+             });
     
-        	 onMouseUp(document, () => {
-    		      // do work
-    		      dragging.end()  // stops all listeners registered during scene
-    	     })
+             onMouseUp(document, () => {
+                  // do work
+                  dragging.end()  // stops all listeners registered during scene
+             })
        });
     }
     ```
@@ -336,25 +336,25 @@ The `Scene` object can alternatively be accessed from outside the scene:
     
     function initDrag(){
     
-    	 const dragging = 
-    			 beginScene(() => {
+         const dragging = 
+                 beginScene(() => {
     
-    			     onMouseEnter(el, () => {
-    				      // do work
-    			     });
+                     onMouseEnter(el, () => {
+                          // do work
+                     });
      
-    		       onMouseLeave(el, () => {
-    			 	      // do work
-    			     });
+                   onMouseLeave(el, () => {
+                           // do work
+                     });
     
-    		    	 onMouseMove(document, () => {
-    				      // do work
-    				   });
-    		   });
+                     onMouseMove(document, () => {
+                          // do work
+                       });
+               });
     
        onMouseUp(document, () => {
-    	    // do work
-    	    dragging.end()  // stops all listeners registered during scene
+            // do work
+            dragging.end()  // stops all listeners registered during scene
        }, { once: true } )
     }
     ```
@@ -375,7 +375,7 @@ Sometimes it is better for performance to target a particular instance when comm
 
 // shared dependency
 const HIDE_ITEM = defineMessage({
-		message: "hide-item",
+        message: "hide-item",
     targetID: $type as Object 
 });
 
@@ -399,8 +399,8 @@ import { heed } from "@rue/archer"
 
 export default defineComponent({
     props: ["index", "item"],
-		setup(props){
-				const { item, index } = props;
+        setup(props){
+                const { item, index } = props;
 
         heed(HIDE_ITEM, genTargetID({
              id: item.id, // "item01"
@@ -408,7 +408,7 @@ export default defineComponent({
              index: index // 9
         }), // "Mirror-InfoPanel_item01_9"
         () => {
-        	  // mutate local state to hide the item
+              // mutate local state to hide the item
         });
     }
 })
@@ -418,13 +418,13 @@ import { genTargetID } from "@rue/planify";
 import { dispatch } from "@rue/archer"
 
 const HIDE_ITEM = defineMessage({
-		message: "hide-item",
+        message: "hide-item",
     targetID: $type as string 
 });
 
 function workHard(item, index){
-		// do work
-		
+        // do work
+        
     send(HIDE_ITEM, {
        to: genTargetID({
           id: item.id, 
@@ -500,17 +500,17 @@ Event-driven code is notoriously difficult to debug. Additional support for easi
     ```jsx
     // The issue:
     const [castTablePopulated, _onTablePopulated] = createHook({
-    	 hook: "table-populated",
-    	 data: $type as Data[],
-    	 dataAsArg: true,
+         hook: "table-populated",
+         data: $type as Data[],
+         dataAsArg: true,
        // Intellisense (via CTRL+SPACE) fails to show rest of the options :(
     }) 
     
     // Temporary fix
     const [castTablePopulated, _onTablePopulated] = createHook({
-    	 hook: "table-populated",
-    	 data: $type as Data[],
-    	 // dataAsArg: true,
+         hook: "table-populated",
+         data: $type as Data[],
+         // dataAsArg: true,
        // Intellisense can now show the rest of the options
     }) 
     ```
