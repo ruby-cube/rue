@@ -124,7 +124,7 @@ const mouseMoveListener =
 
 onMouseUp(document, () => {
     mouseMoveListener.stop();
-}
+})
 ```
 
 **One-time listeners** return a `PendingOp` object, which is a cancellable `Promise`. If canceled, the handler will never run.
@@ -133,11 +133,11 @@ onMouseUp(document, () => {
 const pendingOp = onTextInserted(() => {
     // do work
     return result;
-}
+})
 
 onActionCanceled(() => {
     pendingOp.cancel();
-}
+})
 
 const result = await pendingOp;
 ```
@@ -289,7 +289,7 @@ Planify provides four basic types of strategies for cleanup.
     
     onMouseUp(document, () => {
         mouseMoveListener.stop();
-    }
+    })
     ```
     
 - **The scene method:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
