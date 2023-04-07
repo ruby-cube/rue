@@ -56,7 +56,7 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 
 **🥀 Ephemr**
 <br/>
-(coming soon-ish) Creates state machines using planified events and hooks
+*(coming soon-ish)* Creates state machines using planified events and hooks
 
 <br/>
 
