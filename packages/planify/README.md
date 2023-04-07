@@ -193,37 +193,37 @@ Planify provides four basic types of strategies for cleanup.
 
 - **Auto-cleanup:** One-time listeners enjoy automatic cleanup inherently. Sustained listeners can also enjoy automatic cleanup if they are initialized within a scope for which auto-cleanup has been defined. To enable auto-cleanup, define an auto-cleanup function before initializing an app:
 
-```tsx
-// main.ts
+    ```tsx
+    // main.ts
+    
+    /* 
+    Auto-cleanup callback must return PendingCancelOp | void.
+    */
+    
+    defineAutoCleanup((cleanup) => { // callback receives a cleanup function as the argument
+        if (isSettingUpComponent()) {
+            return onUnmounted(cleanup);
+        }
+        if (isMakingModel()) {
+            return onDisposedOf(cleanup);
+        }
+    })
+    
+    const app = createApp(App);
+    app.mount('#app');
+    ```
 
-/* 
-Auto-cleanup callback must return PendingCancelOp | void.
-*/
-
-defineAutoCleanup((cleanup) => { // callback receives a cleanup function as the argument
-    if (isSettingUpComponent()) {
-        return onUnmounted(cleanup);
-    }
-    if (isMakingModel()) {
-        return onDisposedOf(cleanup);
-    }
-})
-
-const app = createApp(App);
-app.mount('#app');
-```
-
-```jsx
-// App.vue
-
-export default defineComponent({
-	setup(){
-		 onTablePopulated(() => {  // auto-cleanup when component unmounts
-	     // do work
-     })
-  }
-})
-```
+    ```jsx
+    // App.vue
+    
+    export default defineComponent({
+    	setup(){
+    		 onTablePopulated(() => {  // auto-cleanup when component unmounts
+    	     // do work
+         })
+      }
+    })
+    ```
 
 - **The options argument:** Specify when to stop/cancel a listener with the `until` / `unlessCanceled` property of the options argument.
     
@@ -294,7 +294,7 @@ export default defineComponent({
     
 - **The scene method:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
     
-    ```jsx
+    ```js
     // SFC script
     import { beginScene } from "@rue/planify"
     
@@ -330,34 +330,34 @@ export default defineComponent({
 
 The `Scene` object can alternatively be accessed from outside the scene:
 
-```jsx
-// This example doesn't represent a good use case; will replace with
-// better example if I think of one...
-
-function initDrag(){
-
-	 const dragging = 
-			 beginScene(() => {
-
-			     onMouseEnter(el, () => {
-				      // do work
-			     });
- 
-		       onMouseLeave(el, () => {
-			 	      // do work
-			     });
-
-		    	 onMouseMove(document, () => {
-				      // do work
-				   });
-		   });
-
-   onMouseUp(document, () => {
-	    // do work
-	    dragging.end()  // stops all listeners registered during scene
-   }, { once: true } )
-}
-```
+    ```js
+    // This example doesn't represent a good use case; will replace with
+    // better example if I think of one...
+    
+    function initDrag(){
+    
+    	 const dragging = 
+    			 beginScene(() => {
+    
+    			     onMouseEnter(el, () => {
+    				      // do work
+    			     });
+     
+    		       onMouseLeave(el, () => {
+    			 	      // do work
+    			     });
+    
+    		    	 onMouseMove(document, () => {
+    				      // do work
+    				   });
+    		   });
+    
+       onMouseUp(document, () => {
+    	    // do work
+    	    dragging.end()  // stops all listeners registered during scene
+       }, { once: true } )
+    }
+    ```
 <br/>
 
 ### Memory Leak Warnings
