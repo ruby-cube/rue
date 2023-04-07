@@ -9,13 +9,15 @@
 
 ## Overview & Motivation
 
-When building complex applications with many interacting parts, event-driven programming enables loose-coupling, proper delegation of responsibilities, and extensibility of modules that are closed to modification, thus improving application maintainability.
+When building complex applications, event-driven programming enables loose-coupling, proper delegation of responsibilities, and extensibility, improving application maintainability.
 
-However, memory leaks and stale callbacks are inevitably a concern when it comes to event subscription, and while many event systems do provide methods of cleanup, the ones I’ve encountered have felt somewhat cumbersome and unintuitive to me. 
+However, memory leaks and stale callbacks are an inevitable concern when it comes to event subscription, and while many event systems do provide methods of cleanup, the ones I’ve encountered have felt somewhat cumbersome and unintuitive to me. 
 
-Performance is another potential concern when it comes to event-driven architecture. When an event is too broad, listeners are forced to filter out the majority of triggered events in order to respond to the event that is applicable to their particular instance. That is potentially a lot of extraneous function calls.
+Performance is another potential concern when it comes to event-driven architecture. When an emitter emits too broadly, listeners are forced to filter out the majority of triggered events in order to respond to the event that is applicable to their particular instance. That is potentially a lot of extraneous function calls.
 
-This project is the result of my exploration into how an event system might include a developer-friendly cleanup interface for better memory leak prevention as well as a method of targeted listening for better performance.
+This project is the result of an exploration into how an event system might include a developer-friendly cleanup interface for better memory leak prevention as well as a method of targeted listening for better performance. 
+
+Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as Thread, Pêcherie, and Archer. 
 <br/>
 <br/>
 
@@ -32,7 +34,7 @@ This project is the result of my exploration into how an event system might incl
         - [Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
         - [Options argument](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
         - [Stop/Cancel](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-        - [Scene Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+        - [Scene API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Memory Leak Warnings](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - [Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
@@ -42,14 +44,14 @@ This project is the result of my exploration into how an event system might incl
 
 ## Concepts
 
-In browser and Node.js API, the word “listener” refers to the callback function passed into the `addListener` function. This to me is a misnomer and it pains me to follow this convention. For clarity, this is how terms are used within the Planify framework:
+In browser and Node.js API, the word “listener” refers to the callback function passed into the `addListener` function. This to me is a misnomer and it pains me to follow this convention. For clarity, this is how terms are used within the Planify system:
 
 ```jsx
 // Event: "mousedown"
 
 onMouseDown(document, () => {}, { until: onDestroyed })
     |           |          |             |   
-targeted    target     handler       options
+targeted     target     handler       options
 listener
 ```
 
@@ -58,7 +60,7 @@ listener
 
 onTablePopulated((context) => { context.dataset })
     |                        |
-listener                 handler
+listener                  handler
 
 castTablePopulated({ dataset });
   |                 |
@@ -70,14 +72,17 @@ emitter     context, data, or event object
 
 I use “emit” and “event” as general terms that encompass three distinct types of event emissions:
 
-- **emitting user events** (normally the browser emits user events, but when working with components, you might want to forward user events to a parent component as is possible within the Vue component framework)
-- **casting application/process hooks**
-- **sending messages/commands**
-- 
-These Rue libraries handle the following type of event emission:
+- emitting user events
+- casting application/process hooks
+- sending messages/commands
+
+These Rue libraries handle the corresponding type of event emission:
 - **Thread**: user events
-- **Pecherie**: application/process hooks
+- **Pêcherie**: application/process hooks
 - **Archer**: messages/commands
+
+The example listeners in this README (usually prefixed with "on" or "before") represent listeners created via one of the above libraries.
+<br/>
 <br/>
 
 ### One-time listener vs Sustained listener
@@ -119,7 +124,7 @@ Note: The `cancel` method will not survive a `.then` chain. This is by design. S
 ### Listener Morphing
 
 A one-time listener can be turned into a sustained listener and vice-versa via the options parameter. The listener’s type definition will indicate whether it returns a `PendingOp` (as a one-time listener) or an `ActiveListener` (as a sustained listener). 
-Besides, listener morphing, the options parameter is useful for marking listeners as one-time or sustained explicitly in the code.
+Besides listener morphing, the options parameter is useful for marking listeners as one-time or sustained explicitly in the code.
 
 ```jsx
 onTextInserted(() => {   // sustained listener
@@ -151,7 +156,7 @@ Schedulers are one-time listeners that cannot be converted into a sustained list
 
 ### Synchronous vs Asynchronous Handling
 
-Handlers are called synchronously at the time of event emission. This allows for “before event” hooks and the possibility of handlers communicating back to the source of the event (see [`reply`](https://www.notion.so/P-cherie-acfd28a3d5e94c099603107bd32af191)). 
+Handlers are called synchronously at the time of event emission. This allows for “before event” hooks as well as the possibility of handlers communicating back to the source of the event (see [`reply`](https://www.notion.so/P-cherie-acfd28a3d5e94c099603107bd32af191)). 
 
 If asynchronous handling is needed, the developer can call an async scheduler or one-time listener from within the handler. In the example below, the synchonous handler calls the `addPS` scheduler (an alias for `queueMicrotask`) for asynchronous handling.
 
@@ -161,7 +166,7 @@ onPopulated(() => addPS(() => {
 }))
 ```
 
-Alternatively, when using Pecherie hooks, omit the callback function and options parameter to queue a microtask after an event is emitted via a promise:
+Alternatively, when using Pêcherie hooks, omit the callback function and options parameter to queue a microtask after an event is emitted via a promise:
 
 ```tsx
 onPopulated()
@@ -249,7 +254,7 @@ Planify provides four main cleanup strategies:
     }, { until: (stop) => doc.addEventListener("blur", stop, { once: true }) }) 
     ```
     
-    **Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the Pecherie API.
+    **Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the Pêcherie API.
     
     **Important:** The cancellation scheduler must return a `PendingCancelOp` to ensure the cancel function is cleaned up once the handler is run:
     
@@ -291,7 +296,7 @@ Planify provides four main cleanup strategies:
     })
     ```
     
-- **Scene cleanup:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
+- **Scene API:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
     
     ```js
     // SFC script
@@ -369,7 +374,7 @@ Unless the developer is impeccably conscientious about cleanup, memory leaks wil
 
 ## Targeted Listeners
 
-Sometimes it is better for performance to target a particular instance when communicating via emitters. For this reason, Pecherie and Archer provide targeted listeners. Targeted listeners take in a targetID, which can be any type, so long as the emitter module and listener module agree on what to use as an identifier. 
+Sometimes it is better for performance to target a particular instance when communicating via emitters. For this reason, Pêcherie and Archer provide targeted listeners. Targeted listeners take in a targetID, which can be any type, so long as the emitter module and listener module agree on what to use as an identifier. 
 
 ```tsx
 // using an object as the targetID with Archer API
@@ -439,7 +444,7 @@ function workHard(item, index){
 
 ## Planify API
 
-The functions provided by Pecherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, simply wrap the `$listen` or `$schedule` function in a function that returns its return.
+The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, simply wrap the `$listen` or `$schedule` function in a function that returns its return.
 
 Advanced usage: To provide better developer experience for users of the listener/scheduler, use Typescript generics so that `$listen` and `$schedule` return the appropriate type based on the callback and options passed into it.
 
