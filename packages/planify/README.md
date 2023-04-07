@@ -1,9 +1,11 @@
 # Planify
 
 <aside>
-⚠️ **Experimental:** Planify is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
+⚠️ <b>Experimental:</b> Planify is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
 
 </aside>
+<br/>
+<br/>
 
 ## Overview
 
@@ -14,6 +16,8 @@ However, memory leaks and stale callbacks are inevitably a concern when it comes
 Performance is another potential concern when it comes to event-driven architecture. When an event is too broad, listeners are forced to filter out the majority of triggered events in order to respond to the event that is applicable to their particular instance. That is potentially a lot of extraneous function calls.
 
 This project is the result of my exploration into how an event system might include a developer-friendly cleanup interface for better memory leak prevention as well as a method of targeted listening for better performance.
+<br/>
+<br/>
 
 ## Table of Contents
 
@@ -33,10 +37,13 @@ This project is the result of my exploration into how an event system might incl
 - [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - Planned Features
 - Known Issues
+<br/>
 
 ## Use Case
 
 In most cases, simple function declaration and invocation is sufficient to achieve a task. Beware of overusing these functions as there is a performance cost (in a similar way promises are more costly than simple callbacks). Using emitters and listeners only becomes useful when you need to communicate across different modules or scopes. It allows you to delegate responsibilities to the appropriate scope, improving the readability and maintainability of a complex codebase.
+<br/>
+<br/>
 
 ## Concepts
 
@@ -62,6 +69,7 @@ castTablePopulated({ dataset });
   |                 |
 emitter/caster     hook-context
 ```
+<br/>
 
 ### Event vs Hook vs Message
 
@@ -72,6 +80,8 @@ In this repo, I use “emit” and “event” as the general terms that encompa
 - sending messages/commands
 
 *Whichever it’s called depends on whether the developer more intuitively conceptualizes an event as an event or as a point within a process. However, to draw a clearer distinction user events and app events, I refer to all app events as hooks.
+<br/>
+<br/>
 
 ### Synchronous vs Asynchronous Handling
 
@@ -98,6 +108,7 @@ onTablePopulated()
 await onTablePopulated();
 // do something
 ```
+<br/>
 
 ### One-time listener vs Sustained listener
 
@@ -132,6 +143,8 @@ const result = await pendingOp;
 ```
 
 Note: The `cancel` method will not survive a `.then` chain. This is by design. The return of chained `.then` calls is too easily read as the return of the first call rather than the last call of the chain. Save the `PendingOp` to a variable before chaining or awaiting if you need to call the cancel method.
+<br/>
+<br/>
 
 ### Listener Morphing
 
@@ -156,10 +169,14 @@ onTextInserted(() => {   // one-time listener
 ```
 
 Listeners can also behave differently from their default depending on their context of usage. For example, if a listener is being passed into another listener as a cleanup scheduler as is the case with `onActionCanceled` above, it will behave as a one-time listener even if it is a `SustainedListener`.
+<br/>
+<br/>
 
 ### Schedulers
 
 Schedulers are one-time listeners that cannot be converted into a sustained listeners. These are typically functions that queue a task to the main thread such as: `queueTask`, `beforeScreenPaint` (planified `requestAnimationFrame`), and `onTimeout` (planified `setTimeout`). See Thread for more on existing schedulers.
+<br/>
+<br/>
 
 ## Memory Leak Prevention
 
@@ -168,6 +185,7 @@ Planify prevents memory leaks via three main approaches:
 - by making handler cleanup more user-friendly
 - by logging warnings during development if a cleanup strategy is not in place
 - with Typescript errors during development
+<br/>
 
 ### Cleanup Strategies
 
@@ -340,10 +358,13 @@ function initDrag(){
    }, { once: true } )
 }
 ```
+<br/>
 
 ### Memory Leak Warnings
 
 Unless the developer is impeccably conscientious about cleanup, memory leaks will inevitably creep into your system when using event listeners. As an additional guard against memory leaks, Planify will log a warning during development if it does not detect a cleanup strategy in place for a listener. 
+<br/>
+<br/>
 
 ## Targeted Listeners
 
@@ -413,6 +434,7 @@ function workHard(item, index){
     });
 }
 ```
+<br/>
 
 ## Planify API
 
@@ -463,12 +485,15 @@ OPT extends ListenerOptions
     });
 }
 ```
+<br/>
 
 ## Planned Features
 
 Event-driven code is notoriously difficult to debug. Additional support for easing the debugging experience is in the works.
+<br/>
+<br/>
 
-### Known Issues
+## Known Issues
 
 - [ ]  `dataAsArg` blocks VSCode’s Intellisense when configuring the creation of a hook or message. A work-around (for until I fix this) is to temporarily comment out the `dataAsArg: true` option when you want to access Intellisense.
     
