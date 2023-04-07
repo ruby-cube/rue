@@ -54,7 +54,7 @@ Provides planified versions of schedulers and event listeners from Web API.
 <br/>
 Provides planified versions of Vue’s watch and computed as well as reactivity markers.
 
-[**🥀 Ephemr**](https://www.notion.so/Ephemr-4a919dd842304ed4b1bc6686a9cfe583)
+**🥀 Ephemr**
 <br/>
 (coming soon-ish) Creates state machines using planified events and hooks
 
@@ -65,7 +65,7 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 [**🪴 Être**](https://www.notion.so/tre-61fe158b3d6a4b0991e6f3fabd61f716)
 <br/>A system of composition for rich data models
 
-[**🔔 Modos**](https://www.notion.so/Modos-23f0c39ec7bc448fa94c622c19b9df63)
+**🔔 Modos**
 <br/>
 *(coming soon-ish)* An in-memory data model store that leverages Vue’s reactivity system. Particularly useful for tree structures. Includes several optional modules:
 - **Revive**: normalize and denormalize data *need to implement normalization..
@@ -77,11 +77,11 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 
 ***Control Flow***
 
-[**🔱 Nautic**](https://www.notion.so/Nautic-24c9de45e2aa4dc29f6ebf8a26e03ffd)
+**🔱 Nautic**
 <br/>
 *(coming soon-ish)* Compile control flow maps for complex control flows.
 
-[**⛵ Voile**](https://www.notion.so/Voile-dfa4077876c84475925748a40eda33a2)
+**⛵ Voile**
 <br/>
 *(coming soon-ish)* Compositional control flow for making complex control flows more efficient.
 
