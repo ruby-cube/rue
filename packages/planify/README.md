@@ -316,8 +316,8 @@ Planify provides four basic types of strategies for cleanup.
 
             onMouseUp(document, () => {
                 // do work
-                dragging.end()  // stops all listeners registered during scene
-            })
+                dragging.end();  // stops all listeners registered during scene
+            });
         });
     }
     ```
@@ -354,8 +354,8 @@ Planify provides four basic types of strategies for cleanup.
     
         onMouseUp(document, () => {
             // do work
-            dragging.end()  // stops all listeners registered during scene
-        }, { once: true } )
+            dragging.end();  // stops all listeners registered during scene
+        }, { once: true } );
     }
     ```
 <br/>
