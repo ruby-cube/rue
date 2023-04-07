@@ -1,7 +1,7 @@
 {
-  "name": "@rue/monorepo",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@rue/root",
+  "private": true,
+  "description": "A collection of TypeScript-enhanced libraries to manage complexity. Covers event-driven architecture, composition, tree structures, and control flow",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,7 +12,6 @@
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Ruby Yi Wang",
+  "license": "MIT"
 }

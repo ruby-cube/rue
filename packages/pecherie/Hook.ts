@@ -2,6 +2,7 @@
 import { PerformanceCheck, usePerformanceCheck } from "../utils-dev/performance-check";
 import { $type, Cast, MiscObj, UnionToIntersection } from '../utils/types';
 import { Callback, CallbackRemover, Callbacks, ListenerOptions, OneTimeListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener } from '../planify/planify';
+import { noop } from "../utils/utils";
 
 let performanceCheck: PerformanceCheck;
 if (__DEV__) performanceCheck = usePerformanceCheck();
@@ -10,7 +11,7 @@ export type UseHookState = () => { state: { [key: string]: any }, methods: { [ke
 
 type CastHook<S extends ((data: any) => any) | (() => any)> = S;
 
-export type DevListener<L> = L & {callbacks: Callbacks}
+export type DevListener<L> = L & { callbacks: Callbacks }
 
 export type ContextData<T> = T extends MiscObj ? T : { data: T };
 
@@ -33,7 +34,11 @@ export function createHook<
     const _hook = hook || "[unnamed hook]" as const;
     const callbacks = new Set() as Callbacks;
 
-    function onHook(callback: Callback, options?: ListenerOptions) {
+    function onHook(callback?: Callback, options?: ListenerOptions) {
+        if (callback == null) {
+            callback = noop;
+            options = { once: true }
+        }
         // if (hook === "scene-ended") {console.log("LISTEN: Auto Cleanup scheduled"); console.trace()}
         return $listen(callback, options, {
             enroll: (callback) => { //TODO: create some sort of safeguard ... a test? to make sure enroll function properly registers "once"

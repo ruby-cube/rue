@@ -1,4 +1,5 @@
 import { ActiveListener, Callback, CallbackRemover, ListenerOptions, OneTimeListener, OneTimeTargetedListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener, SustainedTargetedListener } from '../planify/planify';
+import { noop } from '../utils/utils';
 
 const listenerMap: Map<string, SustainedTargetedListener> = new Map();
 
@@ -12,7 +13,11 @@ export function useEventListener<
 >(eventName: K): SustainedTargetedListener<EventTarget, CB, EventListenerOptions> {
     const listener = listenerMap.get(eventName);
     if (listener) return listener as SustainedTargetedListener<EventTarget, CB>;
-    const _listener = ((target: EventTarget, handler: Callback, options?: ListenerOptions & AddEventListenerOptions) => {
+    const _listener = ((target: EventTarget, handler?: Callback, options?: ListenerOptions & AddEventListenerOptions) => {
+        if (handler == null) {
+            handler = noop;
+            options = { once: true }
+        }
         return $listen(handler, options, {
             enroll(handler: EventHandler) {
                 target.addEventListener(eventName, handler)

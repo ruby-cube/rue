@@ -1,13 +1,12 @@
 import "setimmediate"
-import { makePendingOp, PendingOp } from "../planify/PendingOp";
-import { Callback, PendingCancelOp, $schedule, ScheduleCancel, SchedulerOptions } from "../planify/planify";
-import { scheduleAutoCleanup, schedulingAutoCleanup } from "../planify/scheduleAutoCleanup";
+import { Callback, $schedule, SchedulerOptions } from "../planify/planify";
 
 //NOTE:
-// There is no microtask queue during nextRender phase. Any microtasks scheduled within a nextRender cb will be run synchronously.
+// There is no microtask queue during nextRender phase. Any microtasks scheduled within a beforeScreenPaint cb will be run synchronously.
 // vue's nextTick callbacks run after any cbs added to the microtask queue during synchronous calls.
 //
-// microtasks:[update components][ps][nextTick][nested PS] --- [task] (or [nextRender] if ready)
+// Invocation Order
+// [original handler/task][update components][ps][nextTick][nested PS] --- [task] (or [beforeScreenPaint] if ready)
 // render: [style] [queued js via rAF] [paint] //QUESTION: I'm still not clear if [calc style] happens before or after rAF cb. I don't know if vue is causing style to recalc earlier than necessary
 
 

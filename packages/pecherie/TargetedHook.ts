@@ -1,8 +1,7 @@
-import { Cast, MiscObj, UnionToIntersection } from '../utils/types';
+import { Cast, MiscObj } from '../utils/types';
 import { Callback, Callbacks, ListenerOptions, OneTimeTargetedListener, $listen, SustainedTargetedListener, initAutoCleanup, initSceneAutoCleanup, PendingCancelOp } from '../planify/planify';
 import { ContextData, HookConfig, ReturnOfCaster, runCallbacks, UseHookState } from './Hook';
-import { scheduleAutoCleanup, schedulingAutoCleanup } from '../planify/scheduleAutoCleanup';
-import { run } from '../utils/run';
+import { noop } from '../utils/utils';
 
 
 
@@ -29,7 +28,11 @@ export function createTargetedHook<
     const targetMap = new Map() as Map<any, Callbacks>;
 
 
-    function onHook(target: $TGT, callback: Callback, options?: ListenerOptions) {
+    function onHook(target: $TGT, callback?: Callback, options?: ListenerOptions) {
+        if (callback == null) {
+            callback = noop;
+            options = { once: true };
+        }
         const existingCallbacks = targetMap.get(target);
         const callbacks = existingCallbacks ? existingCallbacks : new Set() as Callbacks;
         if (!existingCallbacks) {
