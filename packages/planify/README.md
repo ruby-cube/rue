@@ -328,9 +328,9 @@ Planify provides four basic types of strategies for cleanup.
     ```
     
 
-The `Scene` object can alternatively be accessed from outside the scene:
+    The `Scene` object can alternatively be accessed from outside the scene:
 
-    ```js
+    ```jsx
     // This example doesn't represent a good use case; will replace with
     // better example if I think of one...
     
