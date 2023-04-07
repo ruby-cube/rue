@@ -205,7 +205,7 @@ Planify provides four basic types of strategies for cleanup.
             return onUnmounted(cleanup);
         }
         if (isMakingModel()) {
-            return onDisposedOf(cleanup);
+            return onDestroyed(cleanup);
         }
     })
     
