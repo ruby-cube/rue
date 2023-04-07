@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/ruby-cube/rue/assets/rue-logo.png" />
+  <img width="240" src="https://github.com/ruby-cube/rue/blob/main/rue-logo%403x.png" alt="rue logo"/>
 </p>
 
 # Rue
@@ -170,3 +170,8 @@ The Quill docs and codebase opened my eyes to how beautiful and poetic an open s
 Perusing a complex codebase, with all the paths of communication and connections between components, can sometimes be like wandering the maze-like lantern-lined walkways and underground tunnels of [Jiufen](https://www.nationalgeographic.com/travel/article/exploring-the-magic-of-taiwans-spirited-away-city). 
 
 Confusing and chaotic yet magical and wondrous.
+
+<br/>
+<br/>
+
+© 2023-present Ruby Y Wang
