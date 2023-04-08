@@ -521,9 +521,7 @@ export function onTimeout(delay, handler, options?) {
         enroll(cb) {
             return setTimeout(cb, delay);
         },
-        remove(id) {
-            clearTimeout(id);
-        }
+        remove: clearTimeout
     });
 }
 ```
@@ -563,12 +561,8 @@ OPT extends ListenerOptions
 >(handler: CB, options?: OPT) {
 
     return $schedule(handler, options, {
-        enroll(cb) {
-            return requestAnimationFrame(cb);
-        },
-        remove(id) { 
-            cancelAnimationFrame(id);
-        }
+        enroll: requestAnimationFrame,
+        remove: cancelAnimationFrame
     });
 }
 ```
