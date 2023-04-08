@@ -508,7 +508,7 @@ type SchedulerConfig = {
 
 ### Basic Usage
 
-The `enroll` and `remove` functions must define how a handler is registered and removed. Both functions are passed a wrapped handler (`cb` in the example). Note that you must pass the listener and handler remover the *wrapped handler* and not the original handler. If, for example, you would like to planify an Node.js EventEmitter event, you might write something like this:
+The `enroll` and `remove` functions must define how a handler is registered and removed. Both functions are passed a wrapped handler (`cb` in the example). Note that you must pass the listener and remover the *wrapped handler*, not the original handler. If, for example, you would like to planify an Node.js EventEmitter event, you might write something like this:
 ```tsx
 // planifying a Node EventEmitter listener
 
