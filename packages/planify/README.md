@@ -24,7 +24,6 @@ Since Planify represents the overarching event system, this README presents more
 
 ## Table of Contents
 
-***Guide***
 - [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Event vs Hook vs Message]()
     - [One-time Listener vs Sustained Listener](https://www.notion.so/Overkill-Check-Jan-8-99b852805af84c12aa64779bad3b0a40)
@@ -39,16 +38,10 @@ Since Planify represents the overarching event system, this README presents more
         - [Scene Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Memory Leak Warnings](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - [Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-
-***APIs***
+- [The APIs]()
 - [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-- [Scene API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-- [Auto Cleanup API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-- [Target ID API]()
-
-***Other***
-- Planned Features
-- Known Issues
+- [Planned Features]()
+- [Known Issues]()
 <br/>
 
 ## Concepts
@@ -208,16 +201,12 @@ Planify provides four main cleanup strategies:
     ```tsx
     // main.ts
     
-    /* 
-    Auto-cleanup callback must return PendingCancelOp | void.
-    */
-    
     defineAutoCleanup((cleanup) => { // callback receives a cleanup function as the argument
         if (isSettingUpComponent()) {
-            return onUnmounted(cleanup);
+            return onUnmounted(cleanup); // must return a PendingOp
         }
         if (isMakingModel()) {
-            return onDestroyed(cleanup);
+            return onDestroyed(cleanup); // must return a PendingOp
         }
     })
     
@@ -236,7 +225,7 @@ Planify provides four main cleanup strategies:
         }
     })
     ```
-    Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup. See Planify API for how to planify existing hooks.
+    Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See Planify API for how to planify existing hooks.
 
 - **The options argument:** Specify when to stop/cancel a listener with the `until` / `unlessCanceled` property of the options argument.
     
@@ -457,17 +446,17 @@ function workHard(item, index){
 
 [`$schedule(handler, options, config)`]()
 
-[`beginScene(sceneDef)`]()
+[`beginScene(sceneDef)`]() (Scene API)
 
-[`defineAutoCleanup(cleanupFn)`]()
+[`defineAutoCleanup(cleanupFn)`]() (Auto Cleanup API)
 
-[`genTargetID(config)`]()
+[`genTargetID(config)`]() (Target ID API)
 <br/>
 <br/>
 
 ## Planify API
 
-The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, wrap the `$listen` or `$schedule` function in a function that returns its return.
+The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen` and `$schedule` functions to acheive this.
 <br/>
 <br/>
 
@@ -515,10 +504,10 @@ The `enroll` and `remove` functions must define how a handler is registered and 
 export function onDataReceived(handler, options?) {
     return $listen(handler, options, {
         enroll(cb) {
-            eventEmitter.on('data-received', cb);
+            eventEmitter.on('data-received', cb); // pass in `cb`, not `handler`
         },
         remove(cb) {
-            eventEmitter.off('data-received', cb);
+            eventEmitter.off('data-received', cb);  // pass in `cb`, not `handler`
         }
     });
 }
@@ -538,6 +527,7 @@ export function onTimeout(delay, handler, options?) {
     });
 }
 ```
+<br/>
 
 ### Advanced Usage
 
