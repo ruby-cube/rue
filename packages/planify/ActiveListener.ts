@@ -5,11 +5,11 @@ export function makeActiveListener<R, Arg extends R extends void ? Callback : R,
         callback: CB,
         enroll: (callback: CB) => R,
         remove: (cbOrReturnVal: Arg) => void,
-    },
-    options: ListenerOptions | undefined
+        options: ListenerOptions | undefined
+    }
 ) {
+    const { enroll, remove, callback, options } = config;
     const until = options?.until || null;
-    const { enroll, remove, callback } = config;
     let returnVal: any;
     let pendingAutoStop: PendingCancelOp | void;
     let pendingSceneStop: PendingCancelOp | void;

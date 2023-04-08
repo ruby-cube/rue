@@ -1,5 +1,6 @@
 import { Cast, MiscObj } from "../utils/types";
 import { makeActiveListener } from "./ActiveListener";
+import { makePendingCancelOp } from "./PendingCancelOp";
 import { makePendingOp, PendingOp } from "./PendingOp";
 import { Scene } from "./Scene";
 import { existingPendingAutoCleanup, existingPendingSceneCleanup, scheduleAutoCleanup, scheduleSceneCleanup, schedulingAutoCleanup, schedulingSceneCleanup } from "./scheduleAutoCleanup";
@@ -80,18 +81,20 @@ type Remover = (callback: Callback) => void
 
 export function $listen<
     CB extends Callback,
-    R,
-    Arg extends R extends void ? Callback : R,
-    CFG extends { remove: (cbOrReturnVal: Arg) => void, enroll: (callback: CB) => R, onceAsDefault?: true | undefined },
+    RET,
+    ARG extends RET extends void ? CB : RET,
+    ONCE extends true | undefined,
     OPT extends ListenerOptions | undefined,
     C extends MaybeCB,
     MaybeCB extends MaybeBadScheduler<OPT, CB>,
->(callback: CB, options: OPT, config: CFG): CFG extends { onceAsDefault: true } ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB> {
+>(callback: CB, options: OPT, config: {
+    enroll: (callback: Callback) => RET,
+    remove: (cbOrReturnVal: ARG) => void
+} & { onceAsDefault?: ONCE }): ONCE extends true ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB> {
 
     const { enroll, remove, onceAsDefault } = config;
     let once: boolean | undefined = "once" in callback && callback.once === true || false;
     let sustain: boolean | undefined = true;
-    const isRemover = "isRemover" in callback;
     const until = options?.until;
     const scheduleCancellation = options?.unlessCanceled;
 
@@ -120,65 +123,33 @@ export function $listen<
         if (once && until) throw new Error("Option `until` cannot be applied to a hook op that runs only once. Use the `unlessCanceled` option or sustain the listener with the `sustain` option");
     }
 
-    if (isRemover) {
-        let returnVal: any;
-        let pendingAutoCleanup: PendingCancelOp | void;
-        let pendingSceneCleanup: PendingCancelOp | void;
-        const _callback = () => {  // remover runs only once (self-removal)
-            callback();
-            remove(returnVal ?? _callback);
-            // cleanup any registered autocleanup
-            if (pendingAutoCleanup) pendingAutoCleanup.cancel();
-            if (pendingSceneCleanup) pendingSceneCleanup.cancel();
-        }
-        const cancel = () => {
-            remove(returnVal ?? _callback); // cancel remover if callback actually runs
-        }
-        cancel.isRemover = true as const;
-        pendingAutoCleanup = initAutoCleanup(cancel)
-        pendingSceneCleanup = initSceneAutoCleanup(cancel)
-        returnVal = enroll(<Cast>_callback as CB);
-
-        return <Cast>{
-            cancel
-        } as $ListenerReturn<CFG, CB, OPT, C, MaybeCB>
+    if ("isRemover" in callback && callback.isRemover) {
+        return makePendingCancelOp({
+            callback,
+            enroll,
+            remove
+        }) as $ListenerReturn<ONCE, CB, OPT, C, MaybeCB>
     }
 
     if (once) {
-        const pendingOp = makePendingOp({ //TODO: I potentially don't need to return cancel
+        return makePendingOp({
             callback,
             enroll,
             remove,
             scheduleCancellation
-        });
-        return pendingOp as $ListenerReturn<CFG, CB, OPT, C, MaybeCB>
+        }) as $ListenerReturn<ONCE, CB, OPT, C, MaybeCB>
     }
 
-    // let pendingAutoStop: PendingCancelOp | false;
-    // let pendingSceneStop: PendingCancelOp | false;
-    // const stop = () => {
-    //     remove(callback);
-    //     if (pendingAutoStop) pendingAutoStop.cancel()
-    //     if (pendingSceneStop) pendingSceneStop.cancel()
-    // }
-    // stop.isRemover = true as const;
-    // if (until) until(stop);
-    // const success = pendingAutoStop = initAutoCleanup(stop);
-    // pendingSceneStop = initSceneAutoCleanup(stop);
-    // if (__DEV__ && !pendingSceneStop && !success && !once && !until && !$lifetime && !$tilStop) {
-    //     console.warn("This listener doesn't have a callback removal strategy (run once, run until, or auto cleanup). This is considered a memory leak if this listener is not intended to last the lifetime of the app. Pass the `$lifetime` or `$tilStop` flag in the options param to prevent this warning. Also check if auto cleanup callback returns a success flag")
-    //     console.trace();
-    // }
-    const activeListener = makeActiveListener({
+    return makeActiveListener({
         callback,
         enroll,
-        remove
-    }, options)
-
-    return activeListener as $ListenerReturn<CFG, CB, OPT, C, MaybeCB>
+        remove,
+        options
+    }) as $ListenerReturn<ONCE, CB, OPT, C, MaybeCB>
 }
 
-type $ListenerReturn<CFG, CB extends Callback, OPT, C extends MaybeCB, MaybeCB extends MaybeBadScheduler<OPT, CB>> = CFG extends { onceAsDefault: true; } ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB>
+
+type $ListenerReturn<ONCE, CB extends Callback, OPT, C extends MaybeCB, MaybeCB extends MaybeBadScheduler<OPT, CB>> = ONCE extends true ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB>
 
 
 export type SchedulerOptions = {
@@ -187,38 +158,33 @@ export type SchedulerOptions = {
 
 type ScheduledOp<CB extends Callback> = CB extends { isRemover: true } ? PendingCancelOp : PendingOp<ReturnType<CB>>
 
-export function $schedule<CB extends Callback, R, Arg extends R extends void ? Callback : R>(callback: CB, options: SchedulerOptions | undefined, config: { enroll: (cb: Callback) => R, remove: (cbOrReturnVal: Arg) => void }): ScheduledOp<CB> {
+export function $schedule<
+    CB extends Callback,
+    R,
+    Arg extends R extends void ? Callback : R
+>(callback: CB, options: SchedulerOptions | undefined, config: {
+    enroll: (cb: Callback) => R,
+    remove: (cbOrReturnVal: Arg) => void
+}): ScheduledOp<CB> {
     const { enroll, remove } = config;
-    
-    if ("isRemover" in callback) {
-        let returnVal: any;
-        let pendingAutoCleanup: PendingCancelOp | void;
-        let pendingSceneCleanup: PendingCancelOp | void;
-        const _callback = () => {
-            callback();
-            remove(returnVal ?? _callback);
-            if (pendingAutoCleanup) pendingAutoCleanup.cancel();
-            if (pendingSceneCleanup) pendingSceneCleanup.cancel();
-        }
-        const cancel = () => { remove(returnVal ?? _callback) }
-        cancel.isRemover = true as const;
-        pendingAutoCleanup = initAutoCleanup(cancel)
-        pendingSceneCleanup = initSceneAutoCleanup(cancel)
-        returnVal = enroll(_callback);
 
-        return <Cast>{
-            cancel
-        } as ScheduledOp<CB>
+    if ("isRemover" in callback && callback.isRemover) {
+        return makePendingCancelOp({
+            callback,
+            enroll,
+            remove
+        }) as ScheduledOp<CB>
     }
 
-    const pendingOp = makePendingOp({
+    return makePendingOp({
         callback,
         enroll,
         remove,
         scheduleCancellation: options?.unlessCanceled
-    })
-    return pendingOp as ScheduledOp<CB>
+    }) as ScheduledOp<CB>
 }
+
+
 
 
 // export function initAutoCancel(cancel: CallbackRemover<void>) {

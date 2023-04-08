@@ -105,31 +105,33 @@ export function onChange<
     T extends Parameters<typeof watch>[0],
     CB extends Parameters<typeof watch>[1],
     O extends ListenerOptions & WatchOptions,
->(target: T, callback: CB, options?: O): SustainedListenerReturn<CB, O> {
-    let unwatch: WatchStopHandle;
-
-    return <Cast>$listen(<Cast>callback as Callback, options, {
-        remove() {
-            unwatch();
-        },
+>(target: T, callback: CB, options?: O) {
+    return $listen(callback, options, {
         enroll(callback) {
-            unwatch = watch(target, callback, options);
+            return watch(target, callback, options);
+        },
+        remove(unwatch) {
+            unwatch();
         }
-    }) as SustainedListenerReturn<CB, O>;
+    });
 }
 
 export function compute<T>(getter: () => T, options?: { until: (stop: () => void) => void, $lifetime?: true } & DebuggerOptions): ComputedRef<T> {
     if (options && "until" in options) {
         let computedRef: ComputedRef<T>;
         const scope = effectScope(true);
-
-        makeActiveListener({
-            remove: () => scope.stop()
-        }, options)
-
         scope.run(() => {
-            if (__DEV__) computedRef = computed(getter, options); //assumes `run` runs synchronously. TODO: check if this is true
-            else computedRef = computed(getter); //assumes `run` runs synchronously. TODO: check if this is true
+
+            makeActiveListener({
+                callback: getter,
+                enroll: (getter) => {
+                    if (__DEV__) computedRef = computed(getter, options); //assumes `run` runs synchronously. TODO: check if this is true
+                    else computedRef = computed(getter); //assumes `run` runs synchronously. TODO: check if this is true
+                },
+                remove: () => scope.stop(),
+                options
+            })
+
         })
         return computedRef!;
     }
@@ -159,7 +161,6 @@ export function onUnmounted(callback: Callback, options?: ListenerOptions) {
     return $listen(callback, options, {
         enroll(callback) {
             callbacks.add(callback);
-
         },
         remove(callback) {
             callbacks.delete(callback)
