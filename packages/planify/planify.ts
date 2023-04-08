@@ -2,7 +2,6 @@ import { Cast, MiscObj } from "../utils/types";
 import { makeActiveListener } from "./ActiveListener";
 import { makePendingCancelOp } from "./PendingCancelOp";
 import { makePendingOp, PendingOp } from "./PendingOp";
-import { Scene } from "./Scene";
 import { existingPendingAutoCleanup, existingPendingSceneCleanup, scheduleAutoCleanup, scheduleSceneCleanup, schedulingAutoCleanup, schedulingSceneCleanup } from "./scheduleAutoCleanup";
 
 
@@ -77,7 +76,6 @@ export function markSceneSetup(state: boolean, unattached: boolean) {
     unattachedScene = unattached;
 }
 
-type Remover = (callback: Callback) => void
 
 export function $listen<
     CB extends Callback,
@@ -97,7 +95,6 @@ export function $listen<
     let sustain: boolean | undefined = true;
     const until = options?.until;
     const scheduleCancellation = options?.unlessCanceled;
-
 
     if (onceAsDefault) {
         sustain = options?.sustain || options?.$lifetime || options?.$tilStop;
@@ -123,7 +120,7 @@ export function $listen<
         if (once && until) throw new Error("Option `until` cannot be applied to a hook op that runs only once. Use the `unlessCanceled` option or sustain the listener with the `sustain` option");
     }
 
-    if ("isRemover" in callback && callback.isRemover) {
+    if (isRemover(callback)) {
         return makePendingCancelOp({
             callback,
             enroll,
@@ -168,7 +165,7 @@ export function $schedule<
 }): ScheduledOp<CB> {
     const { enroll, remove } = config;
 
-    if ("isRemover" in callback && callback.isRemover) {
+    if (isRemover(callback)) {
         return makePendingCancelOp({
             callback,
             enroll,
@@ -184,7 +181,9 @@ export function $schedule<
     }) as ScheduledOp<CB>
 }
 
-
+function isRemover(callback: Callback) {
+    return "isRemover" in callback && callback.isRemover;
+}
 
 
 // export function initAutoCancel(cancel: CallbackRemover<void>) {
