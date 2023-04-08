@@ -24,6 +24,7 @@ Since Planify represents the overarching event system, this README presents more
 
 ## Table of Contents
 
+***Guide***
 - [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Event vs Hook vs Message]()
     - [One-time Listener vs Sustained Listener](https://www.notion.so/Overkill-Check-Jan-8-99b852805af84c12aa64779bad3b0a40)
@@ -35,10 +36,17 @@ Since Planify represents the overarching event system, this README presents more
         - [Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
         - [Options argument](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
         - [Stop/Cancel](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-        - [Scene API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+        - [Scene Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Memory Leak Warnings](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - [Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+
+***APIs***
 - [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+- [Scene API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+- [Auto Cleanup API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+- [Target ID API]()
+
+***Other***
 - Planned Features
 - Known Issues
 <br/>
@@ -297,7 +305,7 @@ Planify provides four main cleanup strategies:
     })
     ```
     
-- **Scene API:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
+- **Scene Auto-Cleanup:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
     
     ```js
     // SFC script
@@ -443,11 +451,97 @@ function workHard(item, index){
 ```
 <br/>
 
+## The APIs
+
+[`$listen(handler, options, config)`]()
+
+[`$schedule(handler, options, config)`]()
+
+[`beginScene(sceneDef)`]()
+
+[`defineAutoCleanup(cleanupFn)`]()
+
+[`genTargetID(config)`]()
+<br/>
+<br/>
+
 ## Planify API
 
-The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, simply wrap the `$listen` or `$schedule` function in a function that returns its return.
+The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, wrap the `$listen` or `$schedule` function in a function that returns its return.
+<br/>
+<br/>
 
-Advanced usage: To provide better developer experience for users of the listener/scheduler, use Typescript generics so that `$listen` and `$schedule` return the appropriate type based on the callback and options passed into it.
+### `$listen(handler, options, config)`
+```tsx
+$listen(handler, options, config)
+          |         |        |
+        Handler     |   ListenerConfig
+              ListenerOptions
+```
+
+### Type Definitions
+```tsx
+type ListenerConfig = {
+    enroll: (handler) => void, 
+    remove: (handlerOrReturnVal) => void, 
+    onceAsDefault?: true | undefined
+}
+```
+<br/>
+
+### `$schedule(handler, options, config)`
+```tsx
+$listen(handler, options, config)
+          |         |        |
+        Handler     |   ListenerConfig
+              ListenerOptions
+```
+
+### Type Definitions
+```tsx
+type SchedulerConfig = {
+    enroll: (handler) => void, 
+    remove: (handlerOrReturnVal) => void, 
+}
+```
+<br/>
+
+### Basic Usage
+
+The `enroll` and `remove` functions must define how a handler is registered and removed. Both functions are passed a wrapped handler (`cb` in the example). Note that you must pass the listener and handler remover the *wrapped handler* and not the original handler. If, for example, you would like to planify an Node.js EventEmitter event, you might write something like this:
+```tsx
+// planifying a Node EventEmitter listener
+
+export function onDataReceived(handler, options?) {
+    return $listen(handler, options, {
+        enroll(cb) {
+            eventEmitter.on('data-received', cb);
+        },
+        remove(cb) {
+            eventEmitter.off('data-received', cb);
+        }
+    });
+}
+```
+If the `enroll` function returns something other than `void`, the return value will be passed to the remove function instead of the wrapped handler.
+```tsx
+// planifying a setTimeout
+
+export function onTimeout(delay, handler, options?) {
+    return $schedule(handler, options, {
+        enroll(cb) {
+            return setTimeout(cb, delay);
+        },
+        remove(id) {
+            clearTimeout(id);
+        }
+    });
+}
+```
+
+### Advanced Usage
+
+To provide better developer experience for users of the listener/scheduler, use Typescript generics so that `$listen` and `$schedule` return the appropriate type based on the callback and options passed into it.
 
 ```tsx
 // planifying Vue's `watch`
@@ -457,14 +551,13 @@ type Watch = typeof watch;
 export function onChange<
 CB extends Parameters<Watch>[1], 
 OPT extends ListenerOptions & WatchOptions,
->(target: Parameters<Watch>[0], callback: CB, options?: OPT) {
-    let unwatch: WatchStopHandle;
+>(target: Parameters<Watch>[0], handler: CB, options?: OPT) {
 
-    return $listen(callback, options, {
+    return $listen(handler, options, {
         enroll(cb) {
-            unwatch = watch(target, cb, options);
+            return watch(target, cb, options);
         },
-        remove() {
+        remove(unwatch) {
             unwatch();
         }
     });
@@ -477,16 +570,13 @@ OPT extends ListenerOptions & WatchOptions,
 export function beforeScreenPaint<
 CB extends Callback,
 OPT extends ListenerOptions
->(callback: CB, options?: OPT) {
-    let id: number;
+>(handler: CB, options?: OPT) {
 
-    return $schedule(callback, options, {
+    return $schedule(handler, options, {
         enroll(cb) {
-            id = requestAnimationFrame(cb);
+            return requestAnimationFrame(cb);
         },
-        remove(cb) { 
-            // NOTE: `remove` receives the callback as the argument 
-            // for cases such as target.removeListener(cb)
+        remove(id) { 
             cancelAnimationFrame(id);
         }
     });
