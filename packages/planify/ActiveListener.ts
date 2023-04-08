@@ -14,7 +14,7 @@ export function makeActiveListener<R, Arg extends R extends void ? Callback : R,
     let pendingAutoStop: PendingCancelOp | void;
     let pendingSceneStop: PendingCancelOp | void;
     const stop = () => {
-        remove(returnVal || callback!);
+        remove(returnVal ?? callback!);
      
         if (pendingAutoStop) pendingAutoStop.cancel()
         if (pendingSceneStop) pendingSceneStop.cancel()

@@ -32,7 +32,7 @@ export function makePendingOp<R, Arg extends R extends void ? Callback : R, CB e
     let pendingAutoCleanup: PendingCancelOp | void;
     let pendingSceneCleanup: PendingCancelOp | void;
     const _cancel = ((arg: any) => {
-        remove(returnVal || _callback);
+        remove(returnVal ?? _callback);
         if (pendingAutoCleanup) pendingAutoCleanup.cancel();
         if (pendingSceneCleanup) pendingSceneCleanup.cancel();
         if (arg) {
@@ -52,11 +52,11 @@ export function makePendingOp<R, Arg extends R extends void ? Callback : R, CB e
     if (__DEV__ && pendingCancelOp === undefined) console.warn("Cancellation Scheduler doesn't return a pending op for cleanup. This could potentially cause a memory leak")  //TBH, this is not a serious memory leak since it'll just run a callback that deletes a non-existent callback. But it may be more complicated for instance hooks...
 
     const _callback = (pendingCancelOp ? (arg: unknown) => {
-        remove(returnVal || _callback);
+        remove(returnVal ?? _callback);
         pendingCancelOp.cancel();
         $resolve(callback(arg));
     } : (arg: unknown) => {
-        remove(returnVal || _callback);
+        remove(returnVal ?? _callback);
         $resolve(callback(arg));
     }) as CB
     returnVal = enroll(_callback);

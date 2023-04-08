@@ -126,13 +126,13 @@ export function $listen<
         let pendingSceneCleanup: PendingCancelOp | void;
         const _callback = () => {  // remover runs only once (self-removal)
             callback();
-            remove(returnVal || _callback);
+            remove(returnVal ?? _callback);
             // cleanup any registered autocleanup
             if (pendingAutoCleanup) pendingAutoCleanup.cancel();
             if (pendingSceneCleanup) pendingSceneCleanup.cancel();
         }
         const cancel = () => {
-            remove(returnVal || _callback); // cancel remover if callback actually runs
+            remove(returnVal ?? _callback); // cancel remover if callback actually runs
         }
         cancel.isRemover = true as const;
         pendingAutoCleanup = initAutoCleanup(cancel)
@@ -196,11 +196,11 @@ export function $schedule<CB extends Callback, R, Arg extends R extends void ? C
         let pendingSceneCleanup: PendingCancelOp | void;
         const _callback = () => {
             callback();
-            remove(returnVal || _callback);
+            remove(returnVal ?? _callback);
             if (pendingAutoCleanup) pendingAutoCleanup.cancel();
             if (pendingSceneCleanup) pendingSceneCleanup.cancel();
         }
-        const cancel = () => { remove(returnVal || _callback) }
+        const cancel = () => { remove(returnVal ?? _callback) }
         cancel.isRemover = true as const;
         pendingAutoCleanup = initAutoCleanup(cancel)
         pendingSceneCleanup = initSceneAutoCleanup(cancel)
