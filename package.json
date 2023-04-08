@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "test": "vitest --run --reporter verbose",
     "ni:pecherie": "pnpm -F @rue/pecherie install",
     "ni:actionry": "pnpm -F @rue/actionry install",
     "ni:archer": "pnpm -F @rue/archer install",
@@ -26,7 +27,8 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "vitest": "^0.29.2"
   },
   "author": "Ruby Yi Wang",
   "license": "MIT"

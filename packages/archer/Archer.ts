@@ -38,9 +38,9 @@ export function send<
     $DAT extends MSG extends { data: infer C } ? C : {},
     USE extends MSG extends { reply: infer S } ? S extends UseHookState ? S : () => { state: {} } : () => { state: {}, methods: {} },
     D extends MSG extends { dataAsArg: true } ? $DAT : keyof $DAT extends never ? never : { [Key in keyof $DAT]: $DAT[Key] },
->(MESSAGE: MSG, destination: { to: $TGT, data?: D }): ReturnOfCaster<USE> {
+>(MESSAGE: MSG, destination: { to: $TGT }, data?: D): ReturnOfCaster<USE> {
     const { message, reply, dataAsArg } = MESSAGE;
-    const { to: targetID, data } = destination;
+    const { to: targetID } = destination;
     const callbackMap = messageMap.get(MESSAGE);
     if (callbackMap == null) throw new Error("Cannot find callbackMap") //TODO: write a more helpful error message
     const cb = callbackMap.get(targetID);
@@ -176,10 +176,7 @@ const ACTIVATE_SPOTLIGHT = defineMessage({
 const item = $type as Modo;
 
 
-send(ACTIVATE_SPOTLIGHT, {
-    to: item,
-    data: { snow: "ljk" },
-})
+send(ACTIVATE_SPOTLIGHT, { to: item }, { snow: "ljk" })
 
 const activateSpotlightListener =
     heed(ACTIVATE_SPOTLIGHT, item, (ctx) => {

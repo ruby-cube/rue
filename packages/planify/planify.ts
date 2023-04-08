@@ -80,10 +80,12 @@ type Remover = (callback: Callback) => void
 
 export function $listen<
     CB extends Callback,
-    CFG extends { remove: Remover, enroll: (callback: CB) => void, onceAsDefault?: true | undefined },
+    R,
+    Arg extends R extends void ? Callback : R,
+    CFG extends { remove: (cbOrReturnVal: Arg) => void, enroll: (callback: CB) => R, onceAsDefault?: true | undefined },
     OPT extends ListenerOptions | undefined,
     C extends MaybeCB,
-    MaybeCB extends MaybeBadScheduler<OPT, CB>
+    MaybeCB extends MaybeBadScheduler<OPT, CB>,
 >(callback: CB, options: OPT, config: CFG): CFG extends { onceAsDefault: true } ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB> {
 
     const { enroll, remove, onceAsDefault } = config;
@@ -119,22 +121,23 @@ export function $listen<
     }
 
     if (isRemover) {
+        let returnVal: any;
         let pendingAutoCleanup: PendingCancelOp | void;
         let pendingSceneCleanup: PendingCancelOp | void;
         const _callback = () => {  // remover runs only once (self-removal)
             callback();
-            remove(_callback);
+            remove(returnVal || _callback);
             // cleanup any registered autocleanup
             if (pendingAutoCleanup) pendingAutoCleanup.cancel();
             if (pendingSceneCleanup) pendingSceneCleanup.cancel();
         }
         const cancel = () => {
-            remove(_callback); // cancel remover if callback actually runs
+            remove(returnVal || _callback); // cancel remover if callback actually runs
         }
         cancel.isRemover = true as const;
         pendingAutoCleanup = initAutoCleanup(cancel)
         pendingSceneCleanup = initSceneAutoCleanup(cancel)
-        enroll(<Cast>_callback as CB);
+        returnVal = enroll(<Cast>_callback as CB);
 
         return <Cast>{
             cancel
@@ -142,14 +145,12 @@ export function $listen<
     }
 
     if (once) {
-        const [pendingOp, _callback] = makePendingOp({ //TODO: I potentially don't need to return cancel
+        const pendingOp = makePendingOp({ //TODO: I potentially don't need to return cancel
             callback,
+            enroll,
             remove,
             scheduleCancellation
         });
-
-        enroll(_callback);
-
         return pendingOp as $ListenerReturn<CFG, CB, OPT, C, MaybeCB>
     }
 
@@ -170,9 +171,9 @@ export function $listen<
     // }
     const activeListener = makeActiveListener({
         callback,
+        enroll,
         remove
     }, options)
-    enroll(callback);
 
     return activeListener as $ListenerReturn<CFG, CB, OPT, C, MaybeCB>
 }
@@ -186,35 +187,36 @@ export type SchedulerOptions = {
 
 type ScheduledOp<CB extends Callback> = CB extends { isRemover: true } ? PendingCancelOp : PendingOp<ReturnType<CB>>
 
-export function $schedule<CB extends Callback>(callback: CB, options: SchedulerOptions | undefined, schedulerFn: (cb: Callback) => any, cancelFunction: (id: any) => void): ScheduledOp<CB> {
-    let id: any;
-
-    let pendingAutoCleanup: PendingCancelOp | void;
-    let pendingSceneCleanup: PendingCancelOp | void;
+export function $schedule<CB extends Callback, R, Arg extends R extends void ? Callback : R>(callback: CB, options: SchedulerOptions | undefined, config: { enroll: (cb: Callback) => R, remove: (cbOrReturnVal: Arg) => void }): ScheduledOp<CB> {
+    const { enroll, remove } = config;
+    
     if ("isRemover" in callback) {
+        let returnVal: any;
+        let pendingAutoCleanup: PendingCancelOp | void;
+        let pendingSceneCleanup: PendingCancelOp | void;
         const _callback = () => {
             callback();
-            cancelFunction(_callback);
+            remove(returnVal || _callback);
             if (pendingAutoCleanup) pendingAutoCleanup.cancel();
             if (pendingSceneCleanup) pendingSceneCleanup.cancel();
         }
-        const cancel = () => { cancelFunction(id) }
+        const cancel = () => { remove(returnVal || _callback) }
         cancel.isRemover = true as const;
         pendingAutoCleanup = initAutoCleanup(cancel)
         pendingSceneCleanup = initSceneAutoCleanup(cancel)
-        id = schedulerFn(_callback);
+        returnVal = enroll(_callback);
 
         return <Cast>{
             cancel
         } as ScheduledOp<CB>
     }
 
-    const [pendingOp, _callback] = makePendingOp({
+    const pendingOp = makePendingOp({
         callback,
-        remove: () => { cancelFunction(id); },
+        enroll,
+        remove,
         scheduleCancellation: options?.unlessCanceled
     })
-    id = schedulerFn(_callback);
     return pendingOp as ScheduledOp<CB>
 }
 

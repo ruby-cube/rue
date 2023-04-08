@@ -15,13 +15,13 @@ export const addPS = queueMicrotask;
 export const addPostscript = queueMicrotask;
 
 export function queueTask<CB extends Callback>(callback: CB, options?: SchedulerOptions) {
-    return $schedule(callback, options, setImmediate, clearImmediate);
+    return $schedule(callback, options, { enroll: setImmediate, remove: clearImmediate });
 }
 export function beforeScreenPaint<CB extends Callback>(callback: CB, options?: SchedulerOptions) { //TODO: These should be usable as CancelSchedulers
-    return $schedule(callback, options, requestAnimationFrame, cancelAnimationFrame);
+    return $schedule(callback, options, { enroll: requestAnimationFrame, remove: cancelAnimationFrame });
 }
 export function onTimeout<CB extends Callback>(delay: number, callback: CB, options?: SchedulerOptions) {
-    return $schedule(callback, options, (cb) => setTimeout(cb, delay), clearTimeout)
+    return $schedule(callback, options, { enroll: (cb) => setTimeout(cb, delay), remove: clearTimeout })
 }
 
 

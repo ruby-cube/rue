@@ -1,24 +1,27 @@
 import { ActiveListener, Callback, initAutoCleanup, initSceneAutoCleanup, ListenerOptions, PendingCancelOp } from "./planify";
 
-export function makeActiveListener(
+export function makeActiveListener<R, Arg extends R extends void ? Callback : R, CB extends Callback>(
     config: {
-        callback?: Callback,
-        remove: (callback: (...args: any) => any) => void,
+        callback: CB,
+        enroll: (callback: CB) => R,
+        remove: (cbOrReturnVal: Arg) => void,
     },
     options: ListenerOptions | undefined
 ) {
     const until = options?.until || null;
-    const { remove, callback } = config;
+    const { enroll, remove, callback } = config;
+    let returnVal: any;
     let pendingAutoStop: PendingCancelOp | void;
     let pendingSceneStop: PendingCancelOp | void;
     const stop = () => {
-        remove(callback!);
+        remove(returnVal || callback!);
      
         if (pendingAutoStop) pendingAutoStop.cancel()
         if (pendingSceneStop) pendingSceneStop.cancel()
     }
     stop.isRemover = true as const;
     if (until) until(stop);
+    returnVal = enroll(callback);
 
     const success = pendingAutoStop = initAutoCleanup(stop);
     pendingSceneStop = initSceneAutoCleanup(stop);
