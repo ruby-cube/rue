@@ -1,19 +1,16 @@
 //-@ts-nocheck
-import { $type, Cast } from "../utils/types";
-import { uid } from "../utils/uid";
-import { createHook } from "../pecherie/Hook";
-import { createTargetedHook } from "../pecherie/TargetedHook";
+import { $type, Cast, uid } from "@rue/utils";
+import { createHook , createTargetedHook} from "@rue/pecherie";
 import { DataEntry, Dataset, toDatasetName } from "./datasets";
 import { ModelsToRevive, _reviveFlatPeasAndProps } from "./revival/flatdata";
 import { getModelDef, ModoDef, _IS_LIABLE_POD_, _REVIVE_ } from "./Model";
 import { Modo } from "./Modo.role";
 import { UID } from "./types";
-import { heed, defineMessage, send } from "../archer/Archer";
-import { DevHookCaster, DevHookListener } from '../planify/dev-utils';
-import { useRegistrar } from "../utils/registrar";
+import { heed, defineMessage, send } from "@rue/archer";
+import { DevHookCaster, DevHookListener } from '@rue/planify';
+import { useRegistrar } from "@rue/utils";
 import { Revived, toRevived } from "./revival/flatten";
 import { initLiablePod } from "./vine/PodNode.role";
-import { Mod } from "../../../OLD/x_modos/x_roles";
 
 
 const [initializers, enrollInitializer] = __DEV__ ? useRegistrar<Function>() : <Cast>null as ReturnType<(typeof useRegistrar<Function>)>;

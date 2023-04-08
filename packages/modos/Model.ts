@@ -1,8 +1,6 @@
-import { getKeyPathValue, KeyPath, setKeyPath, toKeyPath } from "../utils/keypath";
-import { clone } from "../utils/object";
-import { $type, Cast, Class, Consolidate, isClass, MiscObj } from "../utils/types";
+import { getKeyPathValue, KeyPath, setKeyPath, toKeyPath, clone, $type, Cast, Class, Consolidate, isClass, MiscObj } from "@rue/utils";
 import { DataEntry, DatasetName, toDatasetName } from "./datasets";
-import { $Role, _DATA_MARKER_, _ID_, _INTERFACE_, _MARKER_, _PREREQS_, _Role } from "../etre/Role";
+import { $Role, _DATA_MARKER_, _ID_, _INTERFACE_, _MARKER_, _PREREQS_, _Role } from "@rue/etre";
 import { Modo } from './Modo.role';
 import { UID } from './types';
 import { createModel } from './depot';
@@ -116,7 +114,7 @@ export function enrollModelMaker<
     }
 
     resetIsLiablePod();
-    
+
     registerModelDef(modoDef); //main 
 
     return [create, <Cast>Symbol(name) as ModoSymbol<ReturnType<MKE> & Modo>];

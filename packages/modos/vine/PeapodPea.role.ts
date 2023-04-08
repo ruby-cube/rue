@@ -1,10 +1,9 @@
-import { defineRole, Role, PrivateRole } from '../../etre/Role';
-import { $type, Mutable } from '../../utils/types';
+import { defineRole, Role, PrivateRole, enacts } from '@rue/etre';
+import { $type, Mutable } from '@rue/utils';
 import { PodNode } from './PodNode.role';
 import * as ThisModule from "./PeapodPea.role"
 import { $PeaNode } from './PeaNode.role';
-import { IReactive } from '../../paravue/reactivity';
-import { enacts } from '../../etre/typecheck';
+import { IReactive } from '@rue/paravue';
 console.log('LOADING PeapodPea.role.ts ...');
 
 

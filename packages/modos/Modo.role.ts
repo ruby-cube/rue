@@ -1,5 +1,5 @@
-import { $type } from "../utils/types";
-import { defineRole } from "../etre/Role";
+import { $type } from "@rue/utils";
+import { defineRole } from "@rue/etre";
 import { UID } from "./types";
 
 

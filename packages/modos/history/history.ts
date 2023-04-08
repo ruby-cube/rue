@@ -1,11 +1,9 @@
 //@-ts-nocheck
-import { getKeyPathValue, KeyPath, toKeyPath } from "../../utils/keypath";
-import { onActionCompleted, onActionStart } from '../../actionry/actionry';
-import { createHook } from '../../pecherie/Hook';
-import { $type } from '../../utils/types';
-import { $tilStop, OneTimeListener } from "../../planify/planify";
-import { onChange } from "../../paravue/reactivity";
-import { beginScene } from "../../planify/Scene";
+import { getKeyPathValue, KeyPath, toKeyPath, $type } from "@rue/utils";
+import { onActionCompleted, onActionStart } from '@rue/actionry';
+import { createHook } from '@rue/pecherie';
+import { $tilStop, OneTimeListener, beginScene } from "@rue/planify";
+import { onChange } from "@rue/paravue";
 import { Modo } from "../Modo.role";
 import { ModoSymbol } from "../Model";
 import { $onDestroyed, onModelMade } from "../depot";

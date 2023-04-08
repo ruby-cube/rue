@@ -1,5 +1,5 @@
 import "setimmediate"
-import { Callback, $schedule, SchedulerOptions } from "../planify/planify";
+import { Callback, $schedule, SchedulerOptions } from "@rue/planify";
 
 //NOTE:
 // There is no microtask queue during nextRender phase. Any microtasks scheduled within a beforeScreenPaint cb will be run synchronously.
@@ -12,7 +12,6 @@ import { Callback, $schedule, SchedulerOptions } from "../planify/planify";
 
 
 export const addPS = queueMicrotask;
-export const addPostscript = queueMicrotask;
 
 export function queueTask<CB extends Callback>(callback: CB, options?: SchedulerOptions) {
     return $schedule(callback, options, { enroll: setImmediate, remove: clearImmediate });

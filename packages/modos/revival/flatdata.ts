@@ -1,6 +1,5 @@
 import { watch } from "vue";
-import { getKeyPathValue, KeyPath, KeyPathString, setKeyPath, toKeyPath } from "../../utils/keypath";
-import { Cast, MiscObj, Mutable } from "../../utils/types";
+import { getKeyPathValue, KeyPath, KeyPathString, setKeyPath, toKeyPath, Cast, MiscObj, Mutable } from "@rue/utils";
 import { getModel, populateDepot } from "../depot";
 import { PEA_MARKER } from "../Model";
 import { $PeapodPea, PeapodPea } from "../vine/PeapodPea.role";

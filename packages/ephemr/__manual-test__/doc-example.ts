@@ -1,7 +1,7 @@
 import { spawnArcher } from "../archer/spawnArcher_x";
-import { createHook } from "../pecherie/Hook";
-import { $type } from "../utils/types";
-import { stateRef } from "./State";
+import { createHook } from "../../pecherie/Hook";
+import { $type } from "../../utils/types";
+import { stateRef } from "../State";
 
 const [castInsertText, onInsertText ] = createHook();
 

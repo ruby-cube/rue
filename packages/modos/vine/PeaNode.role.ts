@@ -1,10 +1,8 @@
-import { Skip } from '../../utils/types';
-import { defineRole, Role, PrivateRole, Data } from '../../etre/Role';
-import { $type } from '../../utils/types';
+import { defineRole, Role, PrivateRole, enacts } from '@rue/etre';
+import { $type } from '@rue/utils';
 import { $Modo } from '../Modo.role';
 import { PodNode } from './PodNode.role';
-import { IReactive } from '../../paravue/reactivity';
-import { enacts } from '../../etre/typecheck';
+import { IReactive } from '@rue/paravue';
 console.log('LOADING PeaNode.role.ts ...');
 
 

@@ -1,6 +1,5 @@
-import { MiscObj } from './../utils/types';
 //@ts-nocheck
-import { createHook } from "../pecherie/Hook"
+import { createHook } from "@rue/pecherie"
 import { Callback, markSceneSetup, OneTimeListener } from './planify';
 import { defineSceneCleanup } from './scheduleAutoCleanup';
 

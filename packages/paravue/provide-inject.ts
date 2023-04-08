@@ -1,7 +1,5 @@
 // import { InjectionKey } from 'vue';
 import { InjectionKey } from 'vue';
-import { C } from '../utils/types';
-import { MiscObj } from '../modos/types';
 
 type Dog = "dog"
 

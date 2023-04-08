@@ -1,4 +1,4 @@
-import { $type, Mutable } from "../../utils/types";
+import { $type, Mutable } from "@rue/utils";
 import { connectPodToLonePea, disconnectPodFromLonePea, LonePea } from "./LonePea.role";
 import { connectPodToPeapodPea, disconnectPodFromPeapodPea, PeapodPea } from "./PeapodPea.role";
 import { PodNode, connectPeaToPod, disconnectPeaFromPod } from "./PodNode.role";

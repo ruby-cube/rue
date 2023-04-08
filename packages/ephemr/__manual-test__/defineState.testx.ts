@@ -1,10 +1,10 @@
 import { D } from "vitest/dist/types-5872e574";
 import { onUnmounted, Ref, ref } from "vue";
-import { r, r$ } from "../paravue/reactivity";
-import { useEventListener } from "../thread/event-listeners";
-import { $type, Cast, Consolidate } from "../utils/types";
-import { defineState } from "./defineState";
-import { StateRef, stateRef } from "./State";
+import { r, r$ } from "../../paravue/reactivity";
+import { useEventListener } from "../../thread/event-listeners";
+import { $type, Cast, Consolidate } from "../../utils/types";
+import { defineState } from "../defineState";
+import { StateRef, stateRef } from "../State";
 
 
 const onClick = useEventListener("click");

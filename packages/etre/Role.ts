@@ -1,5 +1,5 @@
 import { DeepReadonly, readonly } from 'vue';
-import { UnionToIntersection, MiscObj } from '../utils/types';
+import { UnionToIntersection, MiscObj } from '@rue/utils';
 import { reifier } from './reifier';
 
 export const _PREREQS_ = Symbol("prereqs")

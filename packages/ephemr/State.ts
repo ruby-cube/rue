@@ -1,12 +1,10 @@
-import { MiscObj } from '../utils/types';
 import { computed, ComputedRef, nextTick, onMounted, Ref, ref } from 'vue';
-import { ExtensibleRef, set$, r$ } from '../paravue/reactivity';
-import { createHook } from '../pecherie/Hook';
-import { ScheduleStop } from '../planify/planify';
-import { beginScene, Scene } from '../planify/Scene';
-import { addPostscript, thread } from '../thread/thread';
-import { $type } from '../utils/types';
-import { isSettingUpComponent } from '../paravue/component';
+import { ExtensibleRef, set$, r$ } from '@rue/paravue';
+import { createHook } from '@rue/pecherie';
+import { ScheduleStop, beginScene, Scene } from '@rue/planify';
+import { addPS } from '@rue/thread';
+import { $type, MiscObj } from '@rue/utils';
+import { isSettingUpComponent } from '@rue/paravue';
 
 type StateValue = string | null
 
@@ -86,7 +84,7 @@ class State extends ExtensibleRef {
                 onMounted(() => this.initTransitions(initialValue))
             }
             else {
-                addPostscript(() => this.initTransitions(initialValue))
+                addPS(() => this.initTransitions(initialValue))
             }
         }
     }
@@ -220,7 +218,7 @@ class State extends ExtensibleRef {
     [_init]() {
         const initial = this.initial
         set$(this.stateValue, isInitialValue(initial) ? initial : initial(this.context));
-        addPostscript(() => {
+        addPS(() => {
             this.initTransitions(this.initialValue)
         })
     }

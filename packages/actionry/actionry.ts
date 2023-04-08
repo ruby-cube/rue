@@ -1,32 +1,10 @@
 //@-ts-nocheck
-import { $type, MiscObj } from '../utils/types';
-import { createHook } from '../pecherie/Hook';
-import { createTargetedHook } from '../pecherie/TargetedHook';
+import { $type, MiscObj } from '@rue/utils';
+import { createHook, createTargetedHook } from '@rue/pecherie';
+import { afterReactiveFlush } from '@rue/paravue';
 
 
 //NOTE: An action is the main operation that captures user intent.
-
-// const moduleRegistrarCBs = new Set() as Set<Function>;
-// function registerWithModules(action) {
-//     console.log("registerWithMODULES", action)
-//     for (const registrar of moduleRegistrarCBs) {
-//         console.log("running registrar")
-//         registrar(action);
-//     }
-// }
-// export function enlistActionRegistrar(cb) {
-//     console.log("enlisting registrar", cb);
-//     moduleRegistrarCBs.add(cb);
-// }
-
-// const registeredActions = new Set();
-// export function registerAction(action) {
-//     console.log("registering action", action);
-//     registeredActions.add(action.do);
-//     registerWithModules(action);
-// }
-
-
 
 export type ActionContext = {
     event?: { type: string }

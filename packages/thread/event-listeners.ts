@@ -1,5 +1,5 @@
-import { ActiveListener, Callback, CallbackRemover, ListenerOptions, OneTimeListener, OneTimeTargetedListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener, SustainedTargetedListener } from '../planify/planify';
-import { noop } from '../utils/utils';
+import { ActiveListener, Callback, CallbackRemover, ListenerOptions, OneTimeListener, OneTimeTargetedListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener, SustainedTargetedListener } from '@rue/planify';
+import { noop } from '@rue/utils';
 
 const listenerMap: Map<string, SustainedTargetedListener> = new Map();
 

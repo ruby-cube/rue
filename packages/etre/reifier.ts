@@ -1,7 +1,7 @@
-import { $type, Cast, Class, UnionToIntersection, MiscObj } from "../utils/types";
+import { $type, Cast, Class, UnionToIntersection, MiscObj } from "@rue/utils";
 import { conferCount, Data, Interface, Prereqs, resetConferCount, RoleMarker, _INIT_, _DATA_MARKER_, _PREREQS_, _Role, _INTERFACE_, $Role, Core, ValueInRole, KeysOfRole, OMIT_ROLE_MARKERS, INCLUDE_ROLE_MARKERS } from "./Role";
 import { rolesMap } from './typecheck';
-import { createHook } from '../pecherie/Hook';
+import { createHook } from '@rue/pecherie';
 
 
 export type KeyCollisionCheck<R extends $Role> = { [Key in (keyof Core<R> & KeysOfPrereqs<R>)]: "collision" } & (R extends { [_PREREQS_]: infer P } ? P extends { [key: string]: infer R } ? R extends $Role ? KeyCollisionCheck<R> : never : {} : never);

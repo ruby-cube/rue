@@ -35,7 +35,3 @@ export function propDef<C extends PropType<T>, T>(type: C) {
 export function isSettingUpComponent() {
   return Boolean(getCurrentInstance());
 }
-
-export function onUnmounted(){ //TODO: Planified unmounted for autocleanup cleanup
-
-}

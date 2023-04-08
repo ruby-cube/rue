@@ -12,7 +12,7 @@ we need to prevent updates to the DOM until absolutely essential
 */
 
 import { Ref, ref, watch } from "vue";
-import { noop } from "../utils/utils";
+import { noop } from "@rue/utils";
 
 let noTurtle: true | false = false;
 

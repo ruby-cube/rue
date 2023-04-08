@@ -1,7 +1,6 @@
-import { $listen, ActiveListener, Callback, ListenerOptions, MaybeBadScheduler } from "../planify/planify";
+import { $listen, ActiveListener, Callback, ListenerOptions, PendingOp } from "@rue/planify";
 import { $beforeDestroyed, $beforeDisposedOf, $onDestroyed, $onDisposedOf, isMakingModel, onModelCreated, onModelMade, $onInstated, $onReinstated } from "./depot";
 import { Modo } from "./Modo.role";
-import { PendingOp } from '../planify/PendingOp';
 
 
 //NOTE: Lifecycle hooks can only be called within "make" function or role $construct

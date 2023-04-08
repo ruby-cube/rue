@@ -1,5 +1,5 @@
-import { defineRole, Role, PrivateRole } from '../../etre/Role';
-import { $type, Mutable, Skip } from '../../utils/types';
+import { defineRole, Role, PrivateRole } from '@rue/etre';
+import { $type, Mutable, Skip } from '@rue/utils';
 import { PodNode } from './PodNode.role';
 import { $PeaNode } from './PeaNode.role';
 import { enacts } from '../../etre/typecheck';

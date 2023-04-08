@@ -1,6 +1,5 @@
-import { readonly } from 'vue';
-import { ScheduleStop } from '../planify/planify';
-import { MiscObj } from '../utils/types';
+import { ScheduleStop } from '@rue/planify';
+import { MiscObj } from '@rue/utils';
 import { Precondition, StateRef, StateTransitions } from './State';
 
 

@@ -1,4 +1,4 @@
-import { KeyPath, KeyPathString } from "../../utils/keypath";
+import { KeyPath, KeyPathString } from "@rue/utils";
 import { Modo } from "../Modo.role";
 import { ReviveConfig } from "./flatdata";
 

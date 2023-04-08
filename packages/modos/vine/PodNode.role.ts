@@ -1,19 +1,13 @@
-import { defineRole, Role, PrivateRole } from '../../etre/Role';
-import { $type, Cast, Mutable } from '../../utils/types';
+import { defineRole, Role, PrivateRole , enacts} from '@rue/etre';
+import { $type, Cast, Mutable } from '@rue/utils';
 import { $Modo } from '../Modo.role';
 import { disposeOfModel, getModel, inTrash, onModelMade, reinstateModel } from '../depot';
 import { PeaNode } from './PeaNode.role';
-import { enacts } from '../../etre/typecheck';
 import { beforeDisposedOf, onDestroyed, onInstated, onMade } from '../lifecycle-hooks';
-import { nextTick } from 'vue';
-import { onActionCompleted, onActionStart } from '../../actionry/actionry';
-import { createHook } from '../../pecherie/Hook';
-import { beginScene } from '../../planify/Scene';
-import { $lifetime } from '../../planify/planify';
+import { onActionCompleted, onActionStart } from '@rue/actionry';
+import { createHook } from '@rue/pecherie';
+import { $lifetime, beginScene } from '@rue/planify';
 console.log('LOADING Pod.role.ts ...');
-
-
-
 
 
 export type PodNode = Role<typeof $PodNode>

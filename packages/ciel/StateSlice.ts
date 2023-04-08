@@ -1,9 +1,6 @@
 import { ComputedRef, effectScope, inject, Ref } from "vue";
-import { addProps, cloneWithAdditionalProps } from "../utils/object";
-import { UnionToIntersection } from "../utils/types";
+import { addProps, UnionToIntersection } from "@rue/utils";
 import { CIEL } from "./Ciel";
-
-
 
 export function defineStateSlice<F extends (...initialSetupConfig: any[]) => { [key: string]: Function }>(useStateSlice: F) {
     if (__DEV__) {

@@ -1,8 +1,8 @@
 //@-ts-nocheck
-import { PerformanceCheck, usePerformanceCheck } from "../dev/performance-check";
-import { $type, Cast, MiscObj, UnionToIntersection } from '../utils/types';
-import { Callback, CallbackRemover, Callbacks, ListenerOptions, OneTimeListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener } from '../planify/planify';
-import { noop } from "../utils/utils";
+import { PerformanceCheck, usePerformanceCheck } from "@rue/dev";
+import { $type, Cast, MiscObj, UnionToIntersection } from '@rue/utils';
+import { Callback, CallbackRemover, Callbacks, ListenerOptions, OneTimeListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener } from '@rue/planify';
+import { noop } from "@rue/utils";
 
 let performanceCheck: PerformanceCheck;
 if (__DEV__) performanceCheck = usePerformanceCheck();

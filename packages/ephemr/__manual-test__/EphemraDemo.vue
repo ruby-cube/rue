@@ -1,8 +1,8 @@
 <script lang='ts'>
 import { defineComponent, onMounted, ref } from 'vue';
-import { useEventListener } from '../thread/event-listeners';
-import { onlyIf, stateRef } from './State';
-import { r$, nr } from "../paravue/reactivity"
+import { useEventListener } from '../../thread/event-listeners';
+import { onlyIf, stateRef } from '../State';
+import { r$, nr } from "../../paravue/reactivity"
 
 export const EPHEMRA_DEMO = 'EphemraDemo';
 const onClick = useEventListener("click");
