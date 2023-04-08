@@ -1,4 +1,4 @@
-import { EqualTypes, typeTest } from "../../utils-dev/type-test"
+import { EqualTypes, typeTest } from "../../dev/type-test"
 import { createHook } from "../Hook"
 import { PendingOp } from "../../planify/PendingOp"
 import { createTargetedHook } from "../TargetedHook"

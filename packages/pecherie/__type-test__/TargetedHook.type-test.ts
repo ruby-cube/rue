@@ -1,4 +1,4 @@
-import { EqualTypes, typeTest } from "../../utils-dev/type-test";
+import { EqualTypes, typeTest } from "../../dev/type-test";
 import { Callback, OneTimeTargetedListener } from "../../planify/planify";
 import { $type, MiscObj } from "../../utils/types";
 import { createHook } from "../Hook"

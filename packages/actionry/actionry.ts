@@ -2,10 +2,7 @@
 import { $type, MiscObj } from '../utils/types';
 import { createHook } from '../pecherie/Hook';
 import { createTargetedHook } from '../pecherie/TargetedHook';
-import { nextTick } from 'vue';
-import { $lifetime } from '../planify/planify';
 
-const afterReactiveFlush = nextTick;
 
 //NOTE: An action is the main operation that captures user intent.
 

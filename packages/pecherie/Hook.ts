@@ -1,5 +1,5 @@
 //@-ts-nocheck
-import { PerformanceCheck, usePerformanceCheck } from "../utils-dev/performance-check";
+import { PerformanceCheck, usePerformanceCheck } from "../dev/performance-check";
 import { $type, Cast, MiscObj, UnionToIntersection } from '../utils/types';
 import { Callback, CallbackRemover, Callbacks, ListenerOptions, OneTimeListener, PendingCancelOp, ScheduleCancel, ScheduleRemoval, ScheduleStop, $listen, SustainedListener } from '../planify/planify';
 import { noop } from "../utils/utils";

@@ -7,7 +7,7 @@ import { Data, Role, defineRole, $val, $Role, _INTERFACE_, _IMPLEMENTS_ } from "
 import { $BullFrog, $GrumpyFrog, $SwampFrog, BULLY, SWAMP_FROG } from "./Role.type-test";
 import { flatPea, flatPeapod, PeaType } from "../revival/flatdata";
 import { implement } from "../../etre/reifier"
-import { EqualTypes, typeTest } from '../../utils-dev/type-test';
+import { EqualTypes, typeTest } from '../../dev/type-test';
 import { beforeDisposedOf, onCreated, onDisposedOf, onMade } from '../lifecycle-hooks';
 import { InjectionKey } from 'vue';
 // export type ListItem = Role<typeof $ListItem>

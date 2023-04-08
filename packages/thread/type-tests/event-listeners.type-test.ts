@@ -1,4 +1,4 @@
-import { EqualTypes, typeTest } from "../../utils-dev/type-test";
+import { EqualTypes, typeTest } from "../../dev/type-test";
 import { PendingOp } from "../../planify/PendingOp";
 import { $lifetime, $tilStop, ActiveListener, Callback, OneTimeTargetedListener, SustainedTargetedListener } from "../../planify/planify";
 import { useEventListener } from "../event-listeners";

@@ -14,6 +14,30 @@ importers:
       vite: 4.2.1_@types+node@18.15.11
       vitest: 0.29.8
 
+  packages/actionry:
+    specifiers:
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    devDependencies:
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
+  packages/archer:
+    specifiers:
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    devDependencies:
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
   packages/paravue:
     specifiers:
       vue: ^3.2.47

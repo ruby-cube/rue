@@ -1,5 +1,5 @@
 //@-ts-nocheck
-import { PerformanceCheck, usePerformanceCheck } from "../utils-dev/performance-check";
+import { PerformanceCheck, usePerformanceCheck } from "../dev/performance-check";
 import { $type, MiscObj } from '../utils/types';
 import { Callback, CallbackRemover, ListenerOptions, $listen, SustainedListenerReturn, MaybeBadScheduler, OneTimeListenerReturn } from '../planify/planify';
 import { ContextData, HookConfig, ReturnOfCaster, UseHookState } from '../pecherie/Hook';
