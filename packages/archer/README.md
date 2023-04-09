@@ -185,7 +185,7 @@ function hideItems(){
 
 heed(HIDE_ITEM, item, (data) => {
    // hide item
-}
+})
 
 ```
 </br>
