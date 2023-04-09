@@ -20,26 +20,20 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 <br/>
 
 ## Thread API
-
-`addPS(callback)` 
-<br/>
-an alias for `queueMicrotask` from browser API. Here, microtasks are conceptualized as postscripts to event loop tasks.
-
-`queueTask(callback, options?)`
-<br/>
-planified `setImmediate` (as implemented by https://github.com/yuzujs/setImmediate). It essentially queues a task in the event loop’s task queue.
-
-`beforeScreenPaint(callback, options?)`
-<br/>
-planified `requestAnimationFrame`, which schedules code to run before the next screen paint.
-
-`onTimeout(delay, callback, options?)`
-<br/>
-planified `setTimeout`
-
 The planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
-<br/>
+`addPS(callback)` 
+
+`queueTask(callback, options?)`
+
+`beforeScreenPaint(callback, options?)`
+
+`onTimeout(delay, callback, options?)`
+
+
+##`addPS(callback)` 
+
+an alias for `queueMicrotask` from browser API. Here, microtasks are conceptualized as postscripts to event loop tasks.
 
 ### Usage
 
@@ -48,23 +42,48 @@ addPS(() => {
     // code that will run after the original task/handlers 
     // and previously queued microtasks finish running
     // and before the next event loop task
-})
+});
+```
 
+##`queueTask(callback, options?)`
+
+planified `setImmediate` (as implemented by https://github.com/yuzujs/setImmediate). It essentially queues a task in the event loop’s task queue.
+
+### Usage
+
+```jsx
 queueTask(() => {
     // code that will run after any previously 
     // queued tasks/events in the event loop
     // (unless canceled by the action-completed hook)
-}, { unlessCanceled: onActionCompleted })
+}, { unlessCanceled: onActionCompleted });
+```
 
+##`beforeScreenPaint(callback, options?)`
+
+planified `requestAnimationFrame`, which schedules code to run before the next screen paint.
+
+### Usage
+
+```jsx
 beforeScreenPaint(() => {
     // code that will after any previously queued rAF callbacks
     // and before the next screen paint
-})
+});
+```
 
+##`onTimeout(delay, callback, options?)`
+
+planified `setTimeout`
+
+### Usage
+
+```jsx
 onTimeout(500, () => {
     // code that will run after 500ms
 })
 ```
+
 <br/>
 
 ## Event Listeners API
