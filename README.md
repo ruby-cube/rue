@@ -15,19 +15,19 @@
 Rue.js is a collection of tools I created for myself in the process of building a fairly complex app. The tools aim to support maintainability and extensibility as an app becomes more complex and thus more prone to scattered logic and tight coupling of unrelated modules. 
 
 The repo contains the following categories of tools: Event-driven programming, data management, control flow, and Vue reactivity. (Note that since Vue’s reactivity system is decoupled from the Vue component framework, the tools in this category can be used outside of Vue components)
-<br/>
+
 <br/>
 
 ## Installation
 
 *(coming soon)*
-<br/>
+
 <br/>
 
 ## Demo
 
 *(coming eventually)*
-<br/>
+
 <br/>
 
 ## The Tools
@@ -96,7 +96,7 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 [**🎬 Actionry**](https://www.notion.so/Actionry-75c2b783ca6d4f64a7f1be8515fafd1f)
 <br/>
 Define actions. Useful for batching reactive effects based on actions.
-<br/>
+
 <br/>
 
 ## Compatibility
@@ -104,7 +104,7 @@ Define actions. Useful for batching reactive effects based on actions.
 While most of the tools are theoretically framework-agnostic, they were built with Vue 3 in mind and have not been tested with other frameworks. Note that some of the libraries leverage Vue 3’s (awesome!) reactivity system though the library itself can be used within any framework or a vanilla app.
 
 Typescript is highly encouraged for less headaches when defining types.
-<br/>
+
 <br/>
 
 ## Conventions
@@ -171,7 +171,7 @@ I am heavily influenced and greatly inspired by Vue and its brilliant, elegant, 
 **Quill**
 
 The Quill docs and codebase opened my eyes to how beautiful and poetic an open source codebase can be without compromising the end product. I previously felt I had to suppressed the urge to write poetic code. Quill helped me realize that as long as it doesn’t impede clarity and I’m working on my own project… why not? :)
-<br/>
+
 <br/>
 
 ## Jiufen
