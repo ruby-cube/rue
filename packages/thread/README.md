@@ -30,6 +30,7 @@ The planified schedulers return a `ScheduledOp`, which is essentially a cancella
 
 `onTimeout(delay, callback, options?)`
 
+<br/>
 
 ## `addPS(callback)` 
 
