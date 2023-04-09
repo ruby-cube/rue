@@ -1,4 +1,5 @@
-import { $type, Cast, Class, UnionToIntersection, MiscObj } from "@rue/utils";
+import { $type } from "@rue/utils";
+import { Cast, Class, UnionToIntersection, MiscObj } from "@rue/types";
 import { conferCount, Data, Interface, Prereqs, resetConferCount, RoleMarker, _INIT_, _DATA_MARKER_, _PREREQS_, _Role, _INTERFACE_, $Role, Core, ValueInRole, KeysOfRole, OMIT_ROLE_MARKERS, INCLUDE_ROLE_MARKERS } from "./Role";
 import { rolesMap } from './typecheck';
 import { createHook } from '@rue/pecherie';
