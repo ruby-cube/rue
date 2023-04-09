@@ -93,9 +93,9 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 <br/>
 Provides planified versions of Vue’s watch and computed as well as reactivity markers.
 
-[**🎬 Actionry**](https://www.notion.so/Actionry-75c2b783ca6d4f64a7f1be8515fafd1f)
+**🎬 Actionry**
 <br/>
-Define actions. Useful for batching reactive effects based on actions.
+*(coming soon-ish)* Define actions. Useful for batching reactive effects based on actions.
 
 <br/>
 
@@ -176,7 +176,7 @@ The Quill docs and codebase opened my eyes to how beautiful and poetic an open s
 
 ## Jiufen
 
-Perusing a complex codebase, with all the paths of communication and connections between components, can sometimes be like wandering the maze-like lantern-lined walkways and underground tunnels of [Jiufen](https://www.nationalgeographic.com/travel/article/exploring-the-magic-of-taiwans-spirited-away-city). 
+A complex codebase, with all the paths of communication and connections between components, can sometimes be like wandering the maze-like lantern-lined walkways and underground tunnels of [Jiufen](https://www.nationalgeographic.com/travel/article/exploring-the-magic-of-taiwans-spirited-away-city). 
 
 Confusing and chaotic yet magical and wondrous.
 
