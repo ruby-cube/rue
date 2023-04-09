@@ -194,3 +194,10 @@ heed(HIDE_ITEM, item, (data) => {
 ## Targeted Listening
 
 Archer’s heed function is a targeted listener for performance reasons. See [Planify: Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496) for more information on targeted listeners and how to generate deterministic target ids.
+
+<br/>
+<br/>
+
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+
+© 2023-present Ruby Y Wang

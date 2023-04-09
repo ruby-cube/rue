@@ -323,3 +323,10 @@ Objects can be type-checked via the `enacts` function, which takes in an abstrac
 ```jsx
 const isFrog = enacts($Frog, character);
 ```
+
+<br/>
+<br/>
+
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+
+© 2023-present Ruby Y Wang

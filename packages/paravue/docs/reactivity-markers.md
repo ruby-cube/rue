@@ -113,3 +113,10 @@ Note that in the case of reactive objects, the reactive marker functions do abso
 Ultimately, the use of this library is a matter of personal preference. For many, using function calls as reactivity markers may be less pleasant than simply using `.value`. For others, it’s nicer to read `firstName` rather than `firstName.value` , even if it means passing the ref through an extraneous accessor function. 
 
 Aesthetics aside, the primary purpose of this library to make reactive tracking and triggering explicit for both refs and reactive objects.
+
+<br/>
+<br/>
+
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+
+© 2023-present Ruby Y Wang
