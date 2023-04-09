@@ -115,12 +115,12 @@ People often name event handlers using the prefix “on-” followed by the even
 ```jsx
 // handler
 function reMouseDown(event) {
-	// handle mouse down...
+    // handle mouse down...
     // if this case, do this
     // if that case, do that
 
     // listener
-	onMouseUp(document, () => {
+    onMouseUp(document, () => {
        // handle mouse up
     }, { once: true });
 }
