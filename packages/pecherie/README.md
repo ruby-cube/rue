@@ -1,7 +1,7 @@
 # Pêcherie
 
 <aside>
-⚠️ Experimental: Pêcherie is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
+⚠️ <b>Experimental</b>: Pêcherie is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
 </aside>
 <br/>
 <br/>
@@ -35,7 +35,6 @@ Pêcherie is based on the Planify event system. See Planify for an overview of f
 ## `createHook(config)`
 
 Creates an un-targeted hook.
-
 <br/>
 
 ### **Syntax**
@@ -47,7 +46,6 @@ const [emitter, listener] = createHook(config);
                     |
             SustainedListener | OneTimeListener
 ```
-<br/>
 
 ### Basic Usage
 
@@ -77,7 +75,6 @@ function initFormatting(){
 }
 
 ```
-<br/>
 
 ### Type Definitions
 
@@ -127,7 +124,6 @@ type ScheduleStop = OneTimeListener | Scheduler | SustainedListener
 ## `createTargetedHook(*config*)`
 
 Creates a targeted hook. Emitters can target listeners using a target id.
-
 <br/>
 
 ### Syntax
@@ -139,7 +135,6 @@ const [emitter, listener] = createTargetedHook(config);
                     |
             SustainedListener | OneTimeListener
 ```
-<br/>
 
 ### Basic Usage
 
@@ -167,7 +162,6 @@ function initFormatting(doc: Doc){
    })
 }
 ```
-<br/>
 
 ### Type Definitions
 
