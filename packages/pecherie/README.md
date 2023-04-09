@@ -2,14 +2,17 @@
 
 <aside>
 ⚠️ Experimental: Pêcherie is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
-
 </aside>
+<br/>
+<br/>
 
 ## Overview
 
 Pêcherie is an exploration into how to make asynchronous and event-driven programming more developer-friendly. It exposes an API that creates custom events, targeted and un-targeted.
 
 Pêcherie is based on the Planify event system. See Planify for an overview of foundational concepts as well as examples and explanations of one-time listeners vs sustained listeners, preventing memory leaks, and targeted listeners.
+
+<br/>
 
 ## Table of Contents
 
@@ -19,15 +22,21 @@ Pêcherie is based on the Planify event system. See Planify for an overview of f
 - Hook Configuration
 - TargetIDs
 
-## P**ê**cherie API
+<br/>
 
-`createHook(*config*)`
+## Pêcherie API
 
-`createTargetedHook(*config*)`
+`createHook(config)`
 
-## `createHook(*config*)`
+`createTargetedHook(config)`
+
+<br/>
+
+## `createHook(config)`
 
 Creates an un-targeted hook.
+
+<br/>
 
 ### **Syntax**
 
@@ -38,6 +47,7 @@ const [emitter, listener] = createHook(config);
                     |
             SustainedListener | OneTimeListener
 ```
+<br/>
 
 ### Basic Usage
 
@@ -67,6 +77,7 @@ function initFormatting(){
 }
 
 ```
+<br/>
 
 ### Type Definitions
 
@@ -111,10 +122,13 @@ type ListenerOptions = { once: true }
 type ScheduleCancel = OneTimeListener | Scheduler | SustainedListener
 type ScheduleStop = OneTimeListener | Scheduler | SustainedListener
 ```
+<br/>
 
-### `createTargetedHook(*config*)`
+## `createTargetedHook(*config*)`
 
 Creates a targeted hook. Emitters can target listeners using a target id.
+
+<br/>
 
 ### Syntax
 
@@ -125,6 +139,7 @@ const [emitter, listener] = createTargetedHook(config);
                     |
             SustainedListener | OneTimeListener
 ```
+<br/>
 
 ### Basic Usage
 
@@ -152,6 +167,7 @@ function initFormatting(doc: Doc){
    })
 }
 ```
+<br/>
 
 ### Type Definitions
 
@@ -174,8 +190,9 @@ type Config = {
     };
 }
 ```
+<br/>
 
-### Hook Configuration
+## Hook Configuration
 
 - `hook`: *(optional)* name of the hook
 - `data`: *(optional)* data to pass to the listener
@@ -217,12 +234,9 @@ type Config = {
         })
     }
     ```
-    
+<br/>
 
-### Target IDs
+## Target IDs
 
 The targetID can be any type so long as the emitter module and listener module agree on what to use as an identifier. See [Planify: Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496) for more information on targeted listeners and how to generate deterministic target ids.
 
-Discussion:
-
-- Is it worth it to have a single callback hook option? tradeoff: a bit more code vs extraneous callbacks Set and looping through the set.
