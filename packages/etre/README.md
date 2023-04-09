@@ -1,5 +1,11 @@
 # Être 🪴
 
+<aside>
+⚠️ Experimental: Archer is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
+</aside>
+</br>
+</br>
+
 ## Overview
 
 Composition over inheritance, they say. How about both? This is an exploration into creating a system of composition that retains elements of inheritance.
