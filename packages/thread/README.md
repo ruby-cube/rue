@@ -27,7 +27,7 @@ an alias for `queueMicrotask` from browser API. Here, microtasks are conceptuali
 
 `queueTask(callback, options?)`
 <br/>
-planified `setImmediate` from as implemented by https://github.com/yuzujs/setImmediate. It essentially queues a task in the event loop’s task queue.
+planified `setImmediate` (as implemented by https://github.com/yuzujs/setImmediate). It essentially queues a task in the event loop’s task queue.
 
 `beforeScreenPaint(callback, options?)`
 <br/>
