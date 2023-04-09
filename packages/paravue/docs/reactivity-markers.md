@@ -1,15 +1,18 @@
 # Reactivity Markers
 
 <aside>
-⚠️ Experimental: Reactivity Markers is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
-
+⚠️ <b>Experimental</b>: Reactivity Markers is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
 </aside>
+<br/>
+<br/>
 
 ## Overview
 
 Reactivity markers address two seemingly conflicting desires in the Vue community. On the one hand, people have expressed interest in eliminating `.value` , resulting in the experimental but ultimately abandoned Reactivity Transform. On the other hand, people have also expressed appreciation for how `.value` serves to make reactivity more explicit.
 
 This library eliminates the need for writing `.value` while providing visual markers for reactivity for both refs and reactives that can be used in both SFC and non-SFC Vue apps.
+
+<br/>
 
 ## Reactivity Markers for Refs
 
@@ -35,6 +38,8 @@ doSomething(firstName)
 Note that the difference between `r$` and `nr` is purely cosmetic. They are the same function, which returns the `.value` value; the name difference simply allows the developer to see at a glance where reactive tracking is happening.
 
 The function calls can potentially be transformed to `.value` during build time.
+
+<br/>
 
 ## Reactivity Markers for Reactives
 
@@ -76,8 +81,8 @@ Note that in the case of reactive objects, the reactive marker functions do abso
 ⚠️ **Warning**: There are no safeguards in place for appropriate usage of these functions. It’s purely up to the developer whether the function correctly marks reactivity or not. Since they are cosmetic in nature, their usage can become incongruous during future code edits in a similar way comments can become outdated.
 
 </aside>
-
- 
+<br/>
+<br/> 
 
 ## Closing Thoughts
 

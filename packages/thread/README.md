@@ -1,8 +1,16 @@
 # Thread ⏳
 
+<aside>
+⚠️ <b>Experimental:</b> Thread is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
+</aside>
+<br/>
+<br/>
+
 ### Overview
 
 Thread provides planified versions of schedulers and event listeners from Web APIs.
+
+<br/>
 
 ### Thread API
 
@@ -23,6 +31,8 @@ planified `requestAnimationFrame`, which schedules code to run before the next s
 planified `setTimeout`
 
 The planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
+
+<br/>
 
 ### Example Usage
 
@@ -48,10 +58,13 @@ onTimeout(500, () => {
     // code that will run after 500ms
 })
 ```
+<br/>
 
 ### Event Listeners API
 
 The Event Listeners API provides planified browser event listeners with the `useEventListener` function. `useEventListener` returns the requested event listener if it already exists in the app, otherwise, it creates the listener and stores it for future access to avoid redundant instances.
+
+<br/>
 
 ### Usage
 
@@ -62,6 +75,7 @@ onMouseDown(element, (event) => {
     // handle mouse down
 })
 ```
+<br/>
 
 ### Naming Conventions
 

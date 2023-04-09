@@ -1,14 +1,14 @@
 # Être 🪴
 
 <aside>
-⚠️ Experimental: Archer is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
+⚠️ Experimental: Être is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
 </aside>
 </br>
 </br>
 
 ## Overview
 
-Composition over inheritance, they say. How about both? This is an exploration into creating a system of composition that retains elements of inheritance.
+Composition over inheritance, they say. How about both? Être is an exploration into creating a system of composition that retains elements of inheritance.
 
 </br>
 
@@ -146,7 +146,7 @@ const sirRobin = createFrogPrince(); // logs "setup" once
 ```
 </br>
 
-### Auto-compose vs Manual Compose
+## Auto-compose vs Manual Compose
 
 In the examples above, the `reifier` method generates a function that will auto-compose the different roles into one object. However, in cases where roles interact with each other during construction, you will need to pass a manual compose function into the `reifier`:
 

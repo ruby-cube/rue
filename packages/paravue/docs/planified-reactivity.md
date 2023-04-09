@@ -1,19 +1,24 @@
 # Planified Reactivity
 
 <aside>
-⚠️ Experimental: A work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
-
+⚠️ <b>Experimental</b>: A work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
 </aside>
+<br/>
+<br/>
 
-### Overview
+## Overview
 
 For rare use cases, where maybe you want to pass `watch` as a cleanup scheduler to a planified listener or you want to specify when to stop computing a value. Or you are working outside of a Vue component and want auto-cleanup using the Scene API. See Planify for an explanation of the Planify system.
 
-### The API
+<br/>
+
+## The API
 
 `onChange(accessor, handler, options)`
 
 `compute(computation, options)`
+
+<br/>
 
 ## `onChange(accessor, handler, options)`
 
@@ -29,6 +34,7 @@ onChange(() => item.bullet, (value) => {
 		// do stuff
 }, { until: docClosed })
 ```
+<br/>
 
 ## `compute(computation, options)`
 
@@ -41,10 +47,11 @@ const fullName = compute(() => firstName.value + " " + lastName.value, {
 		until: sessionDone 
 })
 ```
+<br/>
 
-### Auto-cleanup With Scene API
+## Auto-cleanup With Scene API
 
-As with all Planify listeners, auto-cleanup can be achieved using the Scene API
+Auto-cleanup can be achieved using the Scene API
 
 ```jsx
 import { beginScene } from "@rue/planify"
@@ -78,9 +85,3 @@ function initDrag(event){
     });
 }
 ```
-
-Because reactivity is implemented through getters and setters, reactive values must be stored as a property of an object rather than a variable.
-
-while adding verbosity in places it didn’t previously exist 
-
-Consistency across refs and reactives
