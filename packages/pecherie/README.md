@@ -53,14 +53,14 @@ const [emitter, listener] = createHook(config);
 // module A (service)
 
 const [castPopulated, _onPopulated] = createHook({
-	 hook: "populated",
-	 data: $type as { dataset: Data[]}, // enables type hints
+    hook: "populated",
+    data: $type as { dataset: Data[]}, // enables type hints
 }) 
 export onPopulated = _onPopulated // 'planified' listener
 
 function populateTable(dataset: Data[]){
-	 // ...beep beep boop...
-   castPopulated({ dataset }); // emitter
+    // ...beep beep boop...
+    castPopulated({ dataset }); // emitter
 }
 ```
 
@@ -68,10 +68,10 @@ function populateTable(dataset: Data[]){
 // module B (consumer)
 
 function initFormatting(){
-	 onPopulated((data)=>{
-      data // type hint: { dataset: Data[] }
-		  // do work
-   })
+    onPopulated((data)=>{
+        data // type hint: { dataset: Data[] }
+        // do work
+    })
 }
 
 ```
@@ -90,9 +90,9 @@ type OptionalConfig = {
     data?: Data; // any;
     dataAsArg?: boolean;
     onceAsDefault?: boolean;
-    reply?: () *=>* { 
-        state: ReplyState, // { [*key*: *string*]: *any* };
-        methods: ReplyMethods // { [*key*: *string*]: (...*args*: *any*[]) *=>* *void* } 
+    reply?: () => { 
+        state: ReplyState, // { [key: string]: any };
+        methods: ReplyMethods // { [key: string]: (...args: any[]) => void } 
     };
 }
 ```
@@ -121,7 +121,7 @@ type ScheduleStop = OneTimeListener | Scheduler | SustainedListener
 ```
 <br/>
 
-## `createTargetedHook(*config*)`
+## `createTargetedHook(config)`
 
 Creates a targeted hook. Emitters can target listeners using a target id.
 <br/>
@@ -142,14 +142,14 @@ const [emitter, listener] = createTargetedHook(config);
 // module A (service)
 
 const [castTablePopulated, _onTablePopulated] = createTargetedHook({
-	 hook: "table-populated",
-   targetID: $type as Doc, // define target type
+    hook: "table-populated",
+    targetID: $type as Doc, // define target type
 }) 
 export onTablePopulated = _onTablePopulated
 
 function tablePopulated(doc: Doc){
-	 // ...beep beep boop...
-   castTablePopulated(doc); // cast hook to this particular doc
+    // ...beep beep boop...
+    castTablePopulated(doc); // cast hook to this particular doc
 }
 ```
 
@@ -157,9 +157,9 @@ function tablePopulated(doc: Doc){
 // module B (consumer)
 
 function initFormatting(doc: Doc){
-	 onTablePopulated(doc, ()=>{   // only this doc's callback will run
-	 	  // do work
-   })
+    onTablePopulated(doc, ()=>{   // only this doc's callback will run
+        // do work
+    })
 }
 ```
 
@@ -174,13 +174,13 @@ type OneTimeTargetedListener = (target: TargetID, handler?: Handler, options?: L
 
 type Config = {
     hook?: Hook; // string; 
-		targetID: TargetID // any;
+    targetID: TargetID // any;
     data?: Data; // any;
     dataAsArg?: boolean;
     onceAsDefault?: boolean;
-    reply?: () *=>* { 
-        state: ReplyState, // { [*key*: *string*]: *any* };
-        methods: ReplyMethods // { [*key*: *string*]: (...*args*: *any*[]) *=>* *void* } 
+    reply?: () => { 
+        state: ReplyState, // { [key: string]: any };
+        methods: ReplyMethods // { [key: string]: (...args: any[]) => void } 
     };
 }
 ```
@@ -198,17 +198,17 @@ type Config = {
     // module A (service)
     
     const [castBeforePopulated, _beforePopulated] = createHook({
-    	 hook: "before-populated",
-       reply: () => {
-    			const state = { defaultPrevented: false }
-    			return {
-    		      state
-    					methods: { 
-                 preventDefault: () => { state.defaultPrevented = true; }
-              }
-    	    }
-       }
-    }) 
+        hook: "before-populated",
+        reply: () => {
+            const state = { defaultPrevented: false }
+            return {
+                state,
+                methods: { 
+                     preventDefault: () => { state.defaultPrevented = true; }
+                }
+            }
+        }
+    });
     export beforePopulated = _beforePopulated
     
     function tablePopulated(){
@@ -222,9 +222,9 @@ type Config = {
     // module B (consumer)
     
     function initFormatting(){
-    	  beforePopulated((context)=>{
-           context.preventDefault();  // communicate to the hook's source
-           // do better work...
+        beforePopulated((context)=>{
+            context.preventDefault();  // communicate to the hook's source
+            // do better work...
         })
     }
     ```
