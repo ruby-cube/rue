@@ -446,6 +446,8 @@ function workHard(item, index){
 
 [`$schedule(handler, options, config)`]()
 
+[`$subscribe(handler, options, config)`]()
+
 [`beginScene(sceneDef)`]() (Scene API)
 
 [`defineAutoCleanup(cleanupFn)`]() (Auto Cleanup API)
@@ -461,6 +463,8 @@ The functions provided by Pêcherie, Archer, Thread, and Paravue should cover mo
 <br/>
 
 ### `$listen(handler, options, config)`
+Sets up a listener. Depending on options and config, this could be a one-time listener or a sustained listener.
+
 ```tsx
 $listen(handler, options, config)
           |         |        |
@@ -479,16 +483,37 @@ type ListenerConfig = {
 <br/>
 
 ### `$schedule(handler, options, config)`
+Sets up a one-time listener.
+
 ```tsx
-$listen(handler, options, config)
-          |         |        |
-        Handler     |   ListenerConfig
-              ListenerOptions
+$schedule(handler, options, config)
+            |         |        |
+          Handler     |   SchedulerConfig
+               ListenerOptions
 ```
 
 ### Type Definitions
 ```tsx
 type SchedulerConfig = {
+    enroll: (handler) => void, 
+    remove: (handlerOrReturnVal) => void, 
+}
+```
+<br/>
+
+### `$subscribe(handler, options, config)`
+Sets up a sustained listener.
+
+```tsx
+$subscribe(handler, options, config)
+            |         |        |
+          Handler     |   SubscribeConfig
+               ListenerOptions
+```
+
+### Type Definitions
+```tsx
+type SubscribeConfig = {
     enroll: (handler) => void, 
     remove: (handlerOrReturnVal) => void, 
 }
