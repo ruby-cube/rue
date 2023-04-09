@@ -1,13 +1,18 @@
 {
-    "name": "@rue/thread",
-    "private": true,
-    "description": "",
-    "devDependencies": {
-      "@types/node": "^18.15.11",
-      "typescript": "^4.9.3",
-      "vite": "^4.2.0",
-      "vue": "^3.2.47"
-    },
-    "author": "Ruby Yi Wang",
-    "license": "MIT"
-  }
+  "name": "@rue/thread",
+  "private": true,
+  "description": "",
+  "dependencies": {
+    "@rue/planify": "workspace:*",
+    "@rue/utils": "workspace:*",
+    "setimmediate": "^1.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vue": "^3.2.47"
+  },
+  "author": "Ruby Yi Wang",
+  "license": "MIT"
+}

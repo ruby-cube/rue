@@ -1,5 +1,5 @@
 import { Callback } from "../../planify/planify";
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { createHook } from "../Hook";
 
 { //CASE: listener has been wrapped improperly, expect error

@@ -1,4 +1,4 @@
-import { MiscObj } from "@rue/utils";
+import { MiscObj } from "@rue/types";
 
 
 const completedChecks: Set<Function> | null = (__DEV__) ? new Set() : null;

@@ -1,4 +1,4 @@
-import { MiscObj, Mutable, MutableObject } from "./types";
+import { MiscObj, Mutable, MutableObject } from "@rue/types";
 
 export type KeyPath = string[];
 export type KeyPathString = string;

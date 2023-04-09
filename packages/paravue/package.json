@@ -2,9 +2,13 @@
     "name": "@rue/paravue",
     "private": true,
     "description": "",
-    "author": "Ruby Yi Wang",
-    "license": "MIT",
     "dependencies": {
-        "vue": "^3.2.47"
-    }
+        "vue": "^3.2.47",
+        "@rue/planify": "workspace:*"
+    },
+    "devDependencies": {
+        "@rue/types": "workspace:*"
+    },
+    "author": "Ruby Yi Wang",
+    "license": "MIT"
 }

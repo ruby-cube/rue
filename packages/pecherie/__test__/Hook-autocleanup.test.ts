@@ -9,7 +9,7 @@ import { enrollModelMaker } from "../../modos/Model";
 import { $Modo } from "../../modos/Modo.role";
 import { beginScene, Scene } from "../../planify/Scene";
 import { defineAutoCleanup } from "../../planify/scheduleAutoCleanup";
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { createHook, DevListener } from "../Hook";
 
 

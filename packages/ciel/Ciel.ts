@@ -1,4 +1,4 @@
-import { MiscObj } from '@rue/utils';
+import { MiscObj } from '@rue/types';
 import { App, InjectionKey } from "vue"
 import type { StateCapsule } from "./StateCapsule"
 import type { StateSlice } from "./StateSlice";

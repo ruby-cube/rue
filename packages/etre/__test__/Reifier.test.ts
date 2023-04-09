@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from "vitest";
-import { $type, Consolidate } from "../../utils/types";
+import { $type, Consolidate } from "../../types";
 import { Data, defineRole } from "../Role";
 import { $id, enrollModelMaker } from "../../modos/Model";
 import { __$initDepotModule, populateDepot } from "../../modos/depot";

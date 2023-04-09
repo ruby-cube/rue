@@ -1,5 +1,6 @@
 import { defineRole, Role, PrivateRole, enacts } from '@rue/etre';
-import { $type, Mutable } from '@rue/utils';
+import { $type } from '@rue/utils';
+import { Mutable } from '@rue/types';
 import { PodNode } from './PodNode.role';
 import * as ThisModule from "./PeapodPea.role"
 import { $PeaNode } from './PeaNode.role';

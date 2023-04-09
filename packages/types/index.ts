@@ -1,4 +1,3 @@
-import { ExtractPropTypes } from "vue";
 
 export type MiscObj = { [key: string | number | symbol]: any }
 
@@ -30,7 +29,7 @@ export type Public<T> = Omit<T, PrivateKeys<keyof T>>
 
 export type FunctionType<F extends (...args: any) => any> = (...args: Parameters<F>) => ReturnType<F>
 
-export type VPropsType<T> = Readonly<ExtractPropTypes<T>>
+
 
 // export type VPropsType<T> = Readonly<
 // LooseRequired<
@@ -73,13 +72,7 @@ export type Class = {
   new(...args: any[]): Object;
 };
 
-export function isClass(obj: any): obj is Class {
-  return 'prototype' in obj;
-}
 
-
-
-export const $type = 0 as unknown;
 
 
 /**

@@ -1,4 +1,5 @@
-import { getKeyPathValue, KeyPath, setKeyPath, toKeyPath, clone, $type, Cast, Class, Consolidate, isClass, MiscObj } from "@rue/utils";
+import { getKeyPathValue, KeyPath, setKeyPath, toKeyPath, clone } from "@rue/utils";
+import { Cast, Class, MiscObj } from "@rue/types";
 import { DataEntry, DatasetName, toDatasetName } from "./datasets";
 import { $Role, _DATA_MARKER_, _ID_, _INTERFACE_, _MARKER_, _PREREQS_, _Role } from "@rue/etre";
 import { Modo } from './Modo.role';

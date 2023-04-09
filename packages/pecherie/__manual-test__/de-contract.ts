@@ -1,4 +1,4 @@
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { createHook } from "../Hook";
 
 export const [castDidSomething, onDidSomething] = createHook({

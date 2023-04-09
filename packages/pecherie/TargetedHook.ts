@@ -1,6 +1,7 @@
 import { Callback, Callbacks, ListenerOptions, OneTimeTargetedListener, $listen, SustainedTargetedListener, initAutoCleanup, initSceneAutoCleanup, PendingCancelOp } from '@rue/planify';
 import { ContextData, HookConfig, ReturnOfCaster, runCallbacks, UseHookState } from './Hook';
-import { noop, Cast, MiscObj } from '@rue/utils';
+import { noop } from '@rue/utils';
+import { Cast, MiscObj } from '@rue/types';
 
 
 

@@ -1,4 +1,4 @@
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { IReactive } from "../../paravue/reactivity";
 import { $val, Data, defineRole, Interface, PrivateRole, Role } from "../../etre/Role";
 import { onComposed } from "../../etre/reifier";

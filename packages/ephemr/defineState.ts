@@ -1,5 +1,5 @@
 import { ScheduleStop } from '@rue/planify';
-import { MiscObj } from '@rue/utils';
+import { MiscObj } from '@rue/types';
 import { Precondition, StateRef, StateTransitions } from './State';
 
 

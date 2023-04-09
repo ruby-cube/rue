@@ -2,7 +2,7 @@
 //USAGE:
 
 import { defineMessage, send } from "../../archer/Archer"
-import { $type } from "../../utils/types"
+import { $type } from "../../types"
 import { doAction } from "../actionry"
 
 

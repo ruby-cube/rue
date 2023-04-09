@@ -1,4 +1,5 @@
-import { Cast, Class, isClass, MiscObj } from '@rue/utils';
+import {  isClass } from '@rue/utils';
+import { Cast, Class, MiscObj } from '@rue/types';
 
 import { $Role, _PREREQS_ } from "./Role";
 

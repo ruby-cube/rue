@@ -1,5 +1,5 @@
 import { isRef, onMounted, ref, Ref, watch } from "vue";
-import { MiscObj } from "@rue/utils";
+import { MiscObj } from "@rue/types";
 
 type Model = MiscObj
 

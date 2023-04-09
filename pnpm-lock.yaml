@@ -16,11 +16,20 @@ importers:
 
   packages/actionry:
     specifiers:
+      '@rue/paravue': workspace:*
+      '@rue/pecherie': workspace:*
+      '@rue/types': workspace:*
+      '@rue/utils': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
+    dependencies:
+      '@rue/paravue': link:../paravue
+      '@rue/pecherie': link:../pecherie
     devDependencies:
+      '@rue/types': link:../types
+      '@rue/utils': link:../utils
       '@types/node': 18.15.11
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
@@ -28,17 +37,43 @@ importers:
 
   packages/archer:
     specifiers:
+      '@rue/dev': workspace:*
+      '@rue/pecherie': workspace:*
+      '@rue/planify': workspace:*
+      '@rue/types': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
+    dependencies:
+      '@rue/planify': link:../planify
     devDependencies:
+      '@rue/dev': link:../dev
+      '@rue/pecherie': link:../pecherie
+      '@rue/types': link:../types
       '@types/node': 18.15.11
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
       vue: 3.2.47
 
   packages/ciel:
+    specifiers:
+      '@rue/types': workspace:*
+      '@rue/utils': workspace:*
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    dependencies:
+      '@rue/utils': link:../utils
+    devDependencies:
+      '@rue/types': link:../types
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
+  packages/dev:
     specifiers:
       '@types/node': ^18.15.11
       typescript: ^4.9.3
@@ -52,11 +87,24 @@ importers:
 
   packages/ephemr:
     specifiers:
+      '@rue/paravue': workspace:*
+      '@rue/pecherie': workspace:*
+      '@rue/planify': workspace:*
+      '@rue/thread': workspace:*
+      '@rue/types': workspace:*
+      '@rue/utils': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
+    dependencies:
+      '@rue/paravue': link:../paravue
+      '@rue/pecherie': link:../pecherie
+      '@rue/planify': link:../planify
+      '@rue/thread': link:../thread
     devDependencies:
+      '@rue/types': link:../types
+      '@rue/utils': link:../utils
       '@types/node': 18.15.11
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
@@ -64,17 +112,53 @@ importers:
 
   packages/etre:
     specifiers:
+      '@rue/pecherie': workspace:*
+      '@rue/types': workspace:*
+      '@rue/utils': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
+    dependencies:
+      '@rue/pecherie': link:../pecherie
+      '@rue/utils': link:../utils
     devDependencies:
+      '@rue/types': link:../types
       '@types/node': 18.15.11
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
       vue: 3.2.47
 
   packages/modos:
+    specifiers:
+      '@rue/actionry': workspace:*
+      '@rue/archer': workspace:*
+      '@rue/etre': workspace:*
+      '@rue/paravue': workspace:*
+      '@rue/pecherie': workspace:*
+      '@rue/planify': workspace:*
+      '@rue/types': workspace:*
+      '@rue/utils': workspace:*
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    dependencies:
+      '@rue/actionry': link:../actionry
+      '@rue/archer': link:../archer
+      '@rue/etre': link:../etre
+      '@rue/paravue': link:../paravue
+      '@rue/pecherie': link:../pecherie
+      '@rue/planify': link:../planify
+      '@rue/utils': link:../utils
+    devDependencies:
+      '@rue/types': link:../types
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
+  packages/nautic:
     specifiers:
       '@types/node': ^18.15.11
       typescript: ^4.9.3
@@ -88,17 +172,50 @@ importers:
 
   packages/paravue:
     specifiers:
+      '@rue/planify': workspace:*
+      '@rue/types': workspace:*
       vue: ^3.2.47
     dependencies:
+      '@rue/planify': link:../planify
       vue: 3.2.47
+    devDependencies:
+      '@rue/types': link:../types
 
   packages/pecherie:
     specifiers:
+      '@rue/dev': workspace:*
+      '@rue/planify': workspace:*
+      '@rue/types': workspace:*
+      '@rue/utils': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
+    dependencies:
+      '@rue/planify': link:../planify
+      '@rue/utils': link:../utils
     devDependencies:
+      '@rue/dev': link:../dev
+      '@rue/types': link:../types
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
+  packages/planify:
+    specifiers:
+      '@rue/dev': workspace:*
+      '@rue/pecherie': workspace:*
+      '@rue/types': workspace:*
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    dependencies:
+      '@rue/pecherie': link:../pecherie
+    devDependencies:
+      '@rue/dev': link:../dev
+      '@rue/types': link:../types
       '@types/node': 18.15.11
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
@@ -106,10 +223,31 @@ importers:
 
   packages/ruelle:
     specifiers:
+      '@rue/types': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
+    devDependencies:
+      '@rue/types': link:../types
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
+  packages/thread:
+    specifiers:
+      '@rue/planify': workspace:*
+      '@rue/utils': workspace:*
+      '@types/node': ^18.15.11
+      setimmediate: ^1.0.5
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    dependencies:
+      '@rue/planify': link:../planify
+      '@rue/utils': link:../utils
+      setimmediate: 1.0.5
     devDependencies:
       '@types/node': 18.15.11
       typescript: 4.9.5
@@ -129,13 +267,39 @@ importers:
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
 
+  packages/types:
+    specifiers:
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    devDependencies:
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+
   packages/utils:
     specifiers:
+      '@rue/types': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
     devDependencies:
+      '@rue/types': link:../types
+      '@types/node': 18.15.11
+      typescript: 4.9.5
+      vite: 4.2.1_@types+node@18.15.11
+      vue: 3.2.47
+
+  packages/voile:
+    specifiers:
+      '@rue/types': workspace:*
+      '@types/node': ^18.15.11
+      typescript: ^4.9.3
+      vite: ^4.2.0
+      vue: ^3.2.47
+    devDependencies:
+      '@rue/types': link:../types
       '@types/node': 18.15.11
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
@@ -754,6 +918,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /setimmediate/1.0.5:
+    resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
+    dev: false
 
   /siginfo/2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}

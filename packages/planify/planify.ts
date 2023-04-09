@@ -1,4 +1,4 @@
-import { Cast, MiscObj } from "@rue/utils";
+import { Cast, MiscObj } from "@rue/types";
 import { makeActiveListener } from "./ActiveListener";
 import { makePendingCancelOp } from "./PendingCancelOp";
 import { makePendingOp, PendingOp } from "./PendingOp";

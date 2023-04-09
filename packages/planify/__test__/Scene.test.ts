@@ -7,7 +7,7 @@ import { enrollModelMaker } from "../../modos/Model";
 import { $Modo } from "../../modos/Modo.role";
 import { createHook } from "../../pecherie/Hook";
 import { defineAutoCleanup } from "../../planify/scheduleAutoCleanup";
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { beginScene, UNATTACHED } from "../Scene";
 
 describe("Autocleanup of scenes", () => {

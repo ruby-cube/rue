@@ -1,5 +1,5 @@
 import { extend } from "@vue/shared";
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { keyCollisionCheck, KeyCollisionCheck, roleCollisionCheck } from "../../etre/reifier";
 import { $val, Data, defineRole, Role, _Role, Rekey, $Role, Core, Prereqs, _PREREQS_ } from "../../etre/Role";
 import { $v } from "../../../../OLD/x_preactive";

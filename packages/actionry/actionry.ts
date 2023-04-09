@@ -1,5 +1,6 @@
 //@-ts-nocheck
-import { $type, MiscObj } from '@rue/utils';
+import { $type } from '@rue/utils';
+import { MiscObj } from '@rue/types';
 import { createHook, createTargetedHook } from '@rue/pecherie';
 import { afterReactiveFlush } from '@rue/paravue';
 

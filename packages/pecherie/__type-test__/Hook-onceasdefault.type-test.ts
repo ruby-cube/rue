@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest"
 import { EqualTypes, typeTest } from "../../dev/type-test"
-import { $type } from "../../utils/types"
+import { $type } from "../../types"
 import { createHook } from "../Hook"
 import { PendingOp } from "../../planify/PendingOp"
 import { createTargetedHook } from "../TargetedHook"

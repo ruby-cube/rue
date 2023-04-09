@@ -1,6 +1,6 @@
 //@-ts-nocheck
-import { Cast } from '../../utils/types';
-import { $type, Consolidate } from "../../utils/types";
+import { Cast } from '../../types';
+import { $type, Consolidate } from "../../types";
 import { IReactive, reactive } from "../../paravue/reactivity";
 import { $clone, $id, enrollModelMaker, ModelData } from "../Model";
 import { Data, Role, defineRole, $val, $Role, _INTERFACE_, _IMPLEMENTS_ } from "../../etre/Role";

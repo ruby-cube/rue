@@ -1,4 +1,4 @@
-import { MiscObj } from '@rue/utils';
+import { MiscObj } from '@rue/types';
 import { _genId } from './depot';
 import { UID } from './types';
 

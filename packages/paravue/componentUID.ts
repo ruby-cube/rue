@@ -1,4 +1,4 @@
-import { MiscObj } from '@rue/utils';
+import { MiscObj } from '@rue/types';
 import { ComponentPublicInstance, computed, ComputedRef, getCurrentInstance } from 'vue';
 
 

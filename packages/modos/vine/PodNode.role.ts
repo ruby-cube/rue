@@ -1,5 +1,6 @@
-import { defineRole, Role, PrivateRole , enacts} from '@rue/etre';
-import { $type, Cast, Mutable } from '@rue/utils';
+import { defineRole, Role, PrivateRole, enacts } from '@rue/etre';
+import { $type, } from '@rue/utils';
+import { Cast } from '@rue/types';
 import { $Modo } from '../Modo.role';
 import { disposeOfModel, getModel, inTrash, onModelMade, reinstateModel } from '../depot';
 import { PeaNode } from './PeaNode.role';
@@ -42,7 +43,7 @@ function reinstatePeas(pod: PodNode) {
     console.log("Reinstating peas!!!!!", peas)
     if (peas) {
         for (const pea of peas) {
-            if (inTrash(pea))reinstateModel(pea); //main  ::depot
+            if (inTrash(pea)) reinstateModel(pea); //main  ::depot
         }
     }
 }

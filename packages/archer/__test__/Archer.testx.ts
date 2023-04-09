@@ -3,7 +3,7 @@
 // USAGE:
 
 import { Modo } from "../../modos/Modo.role";
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { defineMessage, heed } from "..";
 
 

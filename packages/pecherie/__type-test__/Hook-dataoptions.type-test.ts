@@ -1,7 +1,7 @@
 import { expectTypeOf } from "vitest"
 import { EqualTypes, typeTest } from "../../dev/type-test"
 import { ActiveListener } from "../../planify/planify"
-import { $type } from "../../utils/types"
+import { $type } from "../../types"
 import { createHook } from "../Hook"
 
 

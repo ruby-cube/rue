@@ -1,6 +1,6 @@
 import { beforeAll, beforeEach, describe, expect, test, vi } from "vitest"
 import { App, nextTick, onBeforeUnmount, watch } from "vue";
-import { $type } from "../../utils/types";
+import { $type } from "../../types";
 import { onUnmounted, reactive } from "../../paravue/reactivity";
 import { getModel, __$initDepotModule, isMakingModel, populateDepot } from "../depot";
 import { flatPeapod, PeaType } from "../revival/flatdata";

@@ -1,10 +1,10 @@
 import { computed, ComputedRef, nextTick, onMounted, Ref, ref } from 'vue';
-import { ExtensibleRef, set$, r$ } from '@rue/paravue';
+import { ExtensibleRef, set$, r$, isSettingUpComponent } from '@rue/paravue';
 import { createHook } from '@rue/pecherie';
 import { ScheduleStop, beginScene, Scene } from '@rue/planify';
 import { addPS } from '@rue/thread';
-import { $type, MiscObj } from '@rue/utils';
-import { isSettingUpComponent } from '@rue/paravue';
+import { $type } from '@rue/utils';
+import { MiscObj } from '@rue/types';
 
 type StateValue = string | null
 

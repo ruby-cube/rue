@@ -1,7 +1,7 @@
 
 /* PURE OPS */
 
-import { MiscObj } from "./types";
+import { MiscObj } from "@rue/types";
 
 export function getSpreadableMethods(object: Object) {
     const proto = Object.getPrototypeOf(object);

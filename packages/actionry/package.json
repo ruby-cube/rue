@@ -3,11 +3,12 @@
     "private": true,
     "description": "",
     "dependencies": {
-        "@rue/utils": "workspace:*",
         "@rue/pecherie": "workspace:*",
         "@rue/paravue": "workspace:*"
     },
     "devDependencies": {
+        "@rue/utils": "workspace:*",
+        "@rue/types": "workspace:*",
         "@types/node": "^18.15.11",
         "typescript": "^4.9.3",
         "vite": "^4.2.0",

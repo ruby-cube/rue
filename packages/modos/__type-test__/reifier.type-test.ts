@@ -1,4 +1,4 @@
-import { $type, Consolidate } from "../../utils/types";
+import { $type, Consolidate } from "../../types";
 import { IReactive, reactive } from "../../paravue/reactivity";
 import { ModelData } from "../Model";
 import { Data, defineRole, Role, PrivateRole } from "../../etre/Role";
