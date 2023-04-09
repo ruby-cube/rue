@@ -9,7 +9,7 @@
 
 ## Overview
 
-Archer is a system for sending and receiving targeted messages/commands across scopes. Whereas Pêcherie’s listeners collects callbacks to be run at a particular point in a process, Archer’s message senders request a *specific* callback to be run. 
+Archer is a system for sending and receiving targeted messages/commands across scopes. Whereas Pêcherie’s listeners collects handlers to be run at a particular point in a process, Archer’s message senders request a *specific* callback to be run. 
 
 </br>
 

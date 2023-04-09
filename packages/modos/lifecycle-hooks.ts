@@ -83,7 +83,7 @@ export function onDisposedOf<OPT extends ListenerOptions>(cb: Parameters<typeof 
 }
 if (__TEST__) {
     //@ts-ignore
-    onDisposedOf.callbacks = (model) => $onDisposedOf.targetMap.get(model);
+    onDisposedOf.handlers = (model) => $onDisposedOf.targetMap.get(model);
 }
 
 

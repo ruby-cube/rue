@@ -11,7 +11,7 @@ export type UseHookState = () => { state: { [key: string]: any }, methods: { [ke
 
 type CastHook<S extends ((data: any) => any) | (() => any)> = S;
 
-export type DevListener<L> = L & { callbacks: Callbacks }
+export type DevListener<L> = L & { handlers: Callbacks }
 
 export type ContextData<T> = T extends MiscObj ? T : { data: T };
 
@@ -32,33 +32,33 @@ export function createHook<
     const _config = config || {} as HookConfig<LIT, $DAT, USE>;
     const { hook, reply, onceAsDefault, dataAsArg } = _config;
     const _hook = hook || "[unnamed hook]" as const;
-    const callbacks = new Set() as Callbacks;
+    const handlers = new Set() as Callbacks;
 
-    function onHook(callback?: Callback, options?: ListenerOptions) {
-        if (callback == null) {
-            callback = noop;
+    function onHook(handler?: Callback, options?: ListenerOptions) {
+        if (handler == null) {
+            handler = noop;
             options = { once: true }
         }
         // if (hook === "scene-ended") {console.log("LISTEN: Auto Cleanup scheduled"); console.trace()}
-        return $listen(callback, options, {
-            enroll: (callback) => { //TODO: create some sort of safeguard ... a test? to make sure enroll function properly registers "once"
-                callbacks.add(callback)
+        return $listen(handler, options, {
+            enroll: (handler) => { //TODO: create some sort of safeguard ... a test? to make sure enroll function properly registers "once"
+                handlers.add(handler)
             },
-            remove: (callback) => {
-                callbacks.delete(callback)
+            remove: (handler) => {
+                handlers.delete(handler)
             },
             onceAsDefault
         })
     }
 
     if (__TEST__) {
-        onHook.callbacks = callbacks
+        onHook.handlers = handlers
     }
 
     const useHookState = reply || (() => { return { state: {}, methods: {} }; });
 
     function castHook(data?: $DAT) {
-        return runCallbacks(_hook, callbacks, data, dataAsArg, useHookState, reply) as ReturnOfCaster<USE>
+        return runHandlers(_hook, handlers, data, dataAsArg, useHookState, reply) as ReturnOfCaster<USE>
     }
 
     return [
@@ -68,11 +68,11 @@ export function createHook<
 }
 
 
-export function runCallbacks(hook: string, callbacks: Callbacks | undefined, data: MiscObj | undefined, dataAsArg: boolean | undefined, useHookState: UseHookState, reply: UseHookState | undefined) {
+export function runHandlers(hook: string, handlers: Callbacks | undefined, data: MiscObj | undefined, dataAsArg: boolean | undefined, useHookState: UseHookState, reply: UseHookState | undefined) {
     if (__DEV__) performanceCheck.start(hook);
     const { state, methods } = useHookState();
 
-    if (callbacks == null || callbacks.size == 0) {
+    if (handlers == null || handlers.size == 0) {
         if (__DEV__) performanceCheck.end();
         return state;
     }
@@ -84,7 +84,7 @@ export function runCallbacks(hook: string, callbacks: Callbacks | undefined, dat
         ...methods
     } : { hook, data, ...methods }
 
-    for (const cb of callbacks) {
+    for (const cb of handlers) {
         if ("isRemover" in cb) cb();
         else cb(arg, __DEV__ ? { hook } : null);
     }

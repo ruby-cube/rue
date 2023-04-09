@@ -6,7 +6,7 @@ import { $lifetime, $tilStop, Callback } from "../../planify/planify";
 
 
 
-describe("one time callbacks are run only once", () => {
+describe("one time handlers are run only once", () => {
 
     test("CASE: onceAsDefault: true", () => {
         const [castTestCase, onTestCase] = createHook({
@@ -28,7 +28,7 @@ describe("one time callbacks are run only once", () => {
     });
 
 
-    test("CASE: onceAsDefault: true; multiple callbacks", () => {
+    test("CASE: onceAsDefault: true; multiple handlers", () => {
         const [castTestCase, onTestCase] = createHook({
             hook: "test-hook",
             data: $type as {
@@ -81,7 +81,7 @@ describe("one time callbacks are run only once", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         onTestCase(cb, { unlessCanceled: onEnd });
 
@@ -103,7 +103,7 @@ describe("one time callbacks are run only once", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         onTestCase(cb, { once: true });
 
@@ -129,7 +129,7 @@ describe("one time callbacks are run only once", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         onTestCase(cb, { unlessCanceled: onEnd });
 
@@ -146,7 +146,7 @@ describe("one time callbacks are run only once", () => {
 
 
 
-describe("one time callbacks can be canceled", () => {
+describe("one time handlers can be canceled", () => {
 
 
     test("CASE: options {unlessCanceled: ScheduleCancel}", () => {
@@ -161,9 +161,9 @@ describe("one time callbacks can be canceled", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
 
         onTestCase(cb, { unlessCanceled: onEnd });
         castEnd()
@@ -185,7 +185,7 @@ describe("one time callbacks can be canceled", () => {
 
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         const pendingOp = onTestCase(cb, { once: true });
 
@@ -207,7 +207,7 @@ describe("one time callbacks can be canceled", () => {
 
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         const pendingOp = onTestCase(cb);
 
@@ -223,7 +223,7 @@ describe("one time callbacks can be canceled", () => {
 
 
 
-describe("Canceler will be cleaned up if one time callback is run", () => {
+describe("Canceler will be cleaned up if one time handler is run", () => {
 
 
     test("CASE: options {unlessCanceled: ScheduleCancel}", () => {
@@ -238,11 +238,11 @@ describe("Canceler will be cleaned up if one time callback is run", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
 
         onTestCase(cb, { unlessCanceled: onEnd });
         castEnd();
-        castTestCase({ foo: "A" }); // callback called, endCallbacks.size === 0
+        castTestCase({ foo: "A" }); // handler called, endCallbacks.size === 0
         expect(endCallbacks.size).toBe(0); // ie. cancel function has been cleaned up
 
     });
@@ -262,11 +262,11 @@ describe("Canceler will be cleaned up if one time callback is run", () => {
     //     }
     //     const cb = vi.fn(() => { })
     //     //@ts-expect-error
-    //     const endCallbacks = onEnd.callbacks
+    //     const endCallbacks = onEnd.handlers
 
     //     onTestCase(cb, { unlessCanceled: onWrappedEnd });
     //     castEnd();
-    //     castTestCase({ foo: "A" }); // callback called, endCallbacks.size === 0
+    //     castTestCase({ foo: "A" }); // handler called, endCallbacks.size === 0
     //     expect(endCallbacks.size).toBe(0); // ie. cancel function has been cleaned up
 
     // });
@@ -285,11 +285,11 @@ describe("Canceler will be cleaned up if one time callback is run", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
 
         onTestCase(cb, { unlessCanceled: onEnd });
         castEnd();
-        castTestCase({ foo: "A" }); // callback called, endCallbacks.size === 0
+        castTestCase({ foo: "A" }); // handler called, endCallbacks.size === 0
         expect(endCallbacks.size).toBe(0); // ie. cancel function has been cleaned up
 
     });
@@ -311,9 +311,9 @@ describe("sustained listeners run until stopped", () => {
         const cb = vi.fn(() => { })
         onTestCase(cb, { until: onEnd });
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         castTestCase();
         castTestCase();
@@ -335,7 +335,7 @@ describe("sustained listeners run until stopped", () => {
         })
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks;
+        const testCallbacks = onTestCase.handlers;
 
         const listener = onTestCase(cb, { $tilStop });
 
@@ -352,7 +352,7 @@ describe("sustained listeners run until stopped", () => {
     });
 
 
-    test("CASE: auto cleanup, multiple callbacks", () => new Promise((done) => {
+    test("CASE: auto cleanup, multiple handlers", () => new Promise((done) => {
         const [castTestUnmounted, onTestUnmounted] = createHook({
             hook: "test-unmounted-hook",
             // onceAsDefault: true,
@@ -370,9 +370,9 @@ describe("sustained listeners run until stopped", () => {
         const cb = vi.fn(() => { })
         const cbB = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
         //@ts-expect-error
-        const unmountedCallbacks = onTestUnmounted.callbacks
+        const unmountedCallbacks = onTestUnmounted.handlers
 
         settingUp = true;
         onTestCase(cb);
@@ -413,7 +413,7 @@ describe("sustained listeners run until stopped", () => {
 
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         settingUp = true;
         onTestCase(cb);
@@ -461,7 +461,7 @@ describe("options should override default", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         onTestCase(cb, { until: onEnd });
 
@@ -497,7 +497,7 @@ describe("options should override default", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const testCallbacks = onTestCase.callbacks
+        const testCallbacks = onTestCase.handlers
 
         const listener = onTestCase(cb, { $tilStop });
 

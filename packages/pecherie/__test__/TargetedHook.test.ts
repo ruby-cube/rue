@@ -1,13 +1,13 @@
 import { describe, test, expect, vi } from "vitest";
-import { $type } from "../../types";
 import { createHook } from "../Hook";
 import { defineAutoCleanup } from "../../planify/scheduleAutoCleanup";
 import { $lifetime, $tilStop } from "../../planify/planify";
 import { createTargetedHook } from "../TargetedHook";
+import { $type } from "@rue/utils";
 
 
 
-describe("one time callbacks are run only once", () => {
+describe("one time handlers are run only once", () => {
 
     test("CASE: onceAsDefault: true", () => {
         const [castTestCase, onTestCase] = createTargetedHook({
@@ -125,7 +125,7 @@ describe("one time callbacks are run only once", () => {
 
 
 
-describe("one time callbacks can be canceled", () => {
+describe("one time handlers can be canceled", () => {
 
 
     test("CASE: options {unlessCanceled: ScheduleCancel}", () => {
@@ -144,7 +144,7 @@ describe("one time callbacks can be canceled", () => {
         //@ts-expect-error
         const testCallbacks = onTestCase.targetMap.get(model)
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
         castEnd()
         castTestCase(model, { foo: "A" })
         expect(cb).toHaveBeenCalledTimes(0);
@@ -202,7 +202,7 @@ describe("one time callbacks can be canceled", () => {
 
 
 
-describe("Canceler will be cleaned up if one time callback is run", () => {
+describe("Canceler will be cleaned up if one time handler is run", () => {
 
 
     test("CASE: options {unlessCanceled: ScheduleCancel}", () => {
@@ -217,11 +217,11 @@ describe("Canceler will be cleaned up if one time callback is run", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
         const model = {};
         onTestCase(model, cb, { unlessCanceled: onEnd });
         castEnd();
-        castTestCase(model, { foo: "A" }); // callback called, endCallbacks.size === 0
+        castTestCase(model, { foo: "A" }); // handler called, endCallbacks.size === 0
         expect(endCallbacks.size).toBe(0); // ie. cancel function has been cleaned up
 
     });
@@ -240,11 +240,11 @@ describe("Canceler will be cleaned up if one time callback is run", () => {
         });
         const cb = vi.fn(() => { })
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
         const model = {};
         onTestCase(model, cb, { unlessCanceled: onEnd });
         castEnd();
-        castTestCase(model, { foo: "A" }); // callback called, endCallbacks.size === 0
+        castTestCase(model, { foo: "A" }); // handler called, endCallbacks.size === 0
         expect(endCallbacks.size).toBe(0); // ie. cancel function has been cleaned up
 
     });
@@ -267,7 +267,7 @@ describe("sustained listeners run until stopped", () => {
         const model = {};
         onTestCase(model, cb, { until: onEnd });
         //@ts-expect-error
-        const endCallbacks = onEnd.callbacks
+        const endCallbacks = onEnd.handlers
         //@ts-expect-error
         const testCallbacks = onTestCase.targetMap.get(model)
 
@@ -308,7 +308,7 @@ describe("sustained listeners run until stopped", () => {
     });
 
 
-    test("CASE: auto cleanup (cleans up both targetmap and callbacks set", () => {
+    test("CASE: auto cleanup (cleans up both targetmap and handlers set", () => {
         const [castTestUnmounted, onTestUnmounted] = createHook({
             hook: "test-unmounted-hook",
         });
@@ -328,7 +328,7 @@ describe("sustained listeners run until stopped", () => {
         onTestCase(model, cb);
         settingUp = false;
         //@ts-ignore
-        const unmountedCallbacks = onTestUnmounted.callbacks
+        const unmountedCallbacks = onTestUnmounted.handlers
         //@ts-ignore
         const testCallbacks = onTestCase.targetMap.get(model)
         //@ts-ignore
@@ -349,7 +349,7 @@ describe("sustained listeners run until stopped", () => {
         expect(unmountedCallbacks.size).toBe(0);
     });
 
-    // test.only("CASE: auto cleanup registers cleanup of targetMap and callbacks set", () => {
+    // test.only("CASE: auto cleanup registers cleanup of targetMap and handlers set", () => {
     //     defineAutoCleanup((cleanup) => {
     //         console.log("sched cleanup to TestUnmounted", cleanup.toString())
     //         onTestUnmounted(cleanup);
@@ -366,7 +366,7 @@ describe("sustained listeners run until stopped", () => {
     //     const model = {};
     //     onTestCase(model, cb);
     //     //@ts-expect-error
-    //     const unmountedCallbacks = onTestUnmounted.callbacks
+    //     const unmountedCallbacks = onTestUnmounted.handlers
     //     //@ts-expect-error
     //     const testCallbacks = onTestCase.targetMap.get(model)
     //     //@ts-expect-error

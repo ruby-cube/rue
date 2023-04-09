@@ -76,7 +76,7 @@ describe("return types of createHook's caster and listener", () => {
 
 
 
-describe("arg of callback", () => {
+describe("arg of handler", () => {
 
     test("CASE: data object", () => {
         const [castTestCase, onTestCase] = createHook({

@@ -15,7 +15,7 @@ describe.skip("memory leak warnings and safeguards", () => {
         const cb = vi.fn(() => { })
         onTestCase(cb);
 
-        //NOTE: Expect console to log appropriate warning: "This listener doesn't have a callback removal strategy..."
+        //NOTE: Expect console to log appropriate warning: "This listener doesn't have a handler removal strategy..."
     });
     
 });
@@ -34,7 +34,7 @@ describe.skip("conflicting options should warn", () => {
         onTestCase(cb, {once: true, sustain: true});
     });
     
-    //NOTE: Expect console to log appropriate warning: "Hook has conflicting options. Choose only one callback removal strategy."
+    //NOTE: Expect console to log appropriate warning: "Hook has conflicting options. Choose only one handler removal strategy."
 })
 
 describe.skip("out-of-scope Modos lifecycle hooks should warn", () => {

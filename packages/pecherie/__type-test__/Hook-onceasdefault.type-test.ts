@@ -1,10 +1,10 @@
 import { expectTypeOf } from "vitest"
 import { EqualTypes, typeTest } from "../../dev/type-test"
-import { $type } from "../../types"
 import { createHook } from "../Hook"
 import { PendingOp } from "../../planify/PendingOp"
 import { createTargetedHook } from "../TargetedHook"
 import { $lifetime, $tilStop, ActiveListener } from "../../planify/planify"
+import { $type } from "@rue/utils"
 
 
 {/* CASE: Config with... once as default. No listener options */

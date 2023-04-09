@@ -108,10 +108,10 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
 
         expect(cb).toHaveBeenCalledTimes(1);
 
-        const callbacks = (<DevListener<typeof onSomethingEnded>>onSomethingEnded).callbacks
-        expect(callbacks.size).toBe(0);
+        const handlers = (<DevListener<typeof onSomethingEnded>>onSomethingEnded).handlers
+        expect(handlers.size).toBe(0);
 
-        const autoCleanupCallbacks = (<DevListener<typeof onTestUnmounted>>onTestUnmounted).callbacks
+        const autoCleanupCallbacks = (<DevListener<typeof onTestUnmounted>>onTestUnmounted).handlers
         expect(autoCleanupCallbacks.size).toBe(0);
     })
 
@@ -137,8 +137,8 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
         });
 
         const cb = vi.fn(() => { })
-        const callbacks = (<DevListener<typeof onSomethingEnded>>onSomethingEnded).callbacks
-        const autoCleanupCallbacks = (<DevListener<typeof onTestUnmounted>>onTestUnmounted).callbacks
+        const handlers = (<DevListener<typeof onSomethingEnded>>onSomethingEnded).handlers
+        const autoCleanupCallbacks = (<DevListener<typeof onTestUnmounted>>onTestUnmounted).handlers
 
         settingUp = true;
         onTestCase(cb, { until: onSomethingEnded }) // modo auto cleanup
@@ -152,7 +152,7 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
 
         expect(cb).toHaveBeenCalledTimes(1);
 
-        expect(callbacks.size).toBe(0);
+        expect(handlers.size).toBe(0);
         expect(autoCleanupCallbacks.size).toBe(0);
 
     })
@@ -173,9 +173,9 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
         });
 
         const cb = vi.fn(() => { })
-        let sceneCallbacks: DevListener<Scene["ended"]>["callbacks"];
+        let sceneCallbacks: DevListener<Scene["ended"]>["handlers"];
         beginScene((scene) => {
-            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).callbacks;
+            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).handlers;
             onTestCase(cb, { until: onSomethingEnded }) // modo auto cleanup
 
             onMouseUp(() => {
@@ -192,8 +192,8 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
 
         expect(cb).toHaveBeenCalledTimes(1);
 
-        const callbacks = (<DevListener<typeof onSomethingEnded>>onSomethingEnded).callbacks
-        expect(callbacks.size).toBe(0);
+        const handlers = (<DevListener<typeof onSomethingEnded>>onSomethingEnded).handlers
+        expect(handlers.size).toBe(0);
         //@ts-ignore
         expect(sceneCallbacks.size).toBe(0);
     })
@@ -214,9 +214,9 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
         });
 
         const cb = vi.fn(() => { })
-        let sceneCallbacks: DevListener<Scene["ended"]>["callbacks"];
+        let sceneCallbacks: DevListener<Scene["ended"]>["handlers"];
         beginScene((scene) => {
-            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).callbacks;
+            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).handlers;
             onTestCase(cb, { until: onSomethingEnded }) // modo auto cleanup
 
             onMouseUp(() => {
@@ -262,10 +262,10 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
 
         const cb = vi.fn(() => { })
 
-        let sceneCallbacks: DevListener<Scene["ended"]>["callbacks"];
+        let sceneCallbacks: DevListener<Scene["ended"]>["handlers"];
         settingUp = true;
         beginScene((scene) => {
-            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).callbacks;
+            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).handlers;
             onTestCase(cb) // modo auto cleanup
         })
         settingUp = false;
@@ -305,12 +305,12 @@ describe("cleanup functions are cleaned up if a different cleanup strategy execu
             hook: "test-hook",
         });
         const cb = vi.fn(() => { })
-        const autoCleanupCallbacks = (<DevListener<typeof onTestUnmounted>>onTestUnmounted).callbacks
-        let sceneCallbacks: DevListener<Scene["ended"]>["callbacks"];
+        const autoCleanupCallbacks = (<DevListener<typeof onTestUnmounted>>onTestUnmounted).handlers
+        let sceneCallbacks: DevListener<Scene["ended"]>["handlers"];
 
         settingUp = true;
         beginScene((scene) => {
-            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).callbacks;
+            sceneCallbacks = (<DevListener<Scene["ended"]>>scene.ended).handlers;
             onTestCase(cb) // modo auto cleanup
             onSceneEnder(() => {
                 scene.end();

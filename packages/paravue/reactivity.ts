@@ -14,10 +14,10 @@ export function onChange<
     T extends Parameters<typeof watch>[0],
     CB extends Parameters<typeof watch>[1],
     O extends ListenerOptions & WatchOptions,
->(target: T, callback: CB, options?: O) {
-    return $listen(callback, options, {
-        enroll(callback) {
-            return watch(target, callback, options);
+>(target: T, handler: CB, options?: O) {
+    return $listen(handler, options, {
+        enroll(handler) {
+            return watch(target, handler, options);
         },
         remove(unwatch) {
             unwatch();
@@ -48,27 +48,27 @@ export function compute<T>(getter: () => T, options?: { until: (stop: () => void
 }
 
 const componentMap = new WeakMap();
-export function onUnmounted(callback: Callback, options?: ListenerOptions) {
+export function onUnmounted(handler: Callback, options?: ListenerOptions) {
     const currentInstance = getCurrentInstance();
     if (!currentInstance) throw new Error("onUnmounted must be called from within component setup function")
     const existingCallbacks = componentMap.get(currentInstance);
-    const callbacks = existingCallbacks ? existingCallbacks : new Set();
+    const handlers = existingCallbacks ? existingCallbacks : new Set();
     if (!existingCallbacks) {
-        componentMap.set(currentInstance, callbacks)
+        componentMap.set(currentInstance, handlers)
         onBeforeUnmount(() => {
             _onUnmounted(() => {
-                for (const cb of callbacks) {
+                for (const cb of handlers) {
                     cb()
                 }
             })
         })
     }
-    return $listen(callback, options, {
-        enroll(callback) {
-            callbacks.add(callback);
+    return $listen(handler, options, {
+        enroll(handler) {
+            handlers.add(handler);
         },
-        remove(callback) {
-            callbacks.delete(callback)
+        remove(handler) {
+            handlers.delete(handler)
         },
         onceAsDefault: true
     })

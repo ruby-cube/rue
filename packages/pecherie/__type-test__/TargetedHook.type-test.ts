@@ -1,8 +1,9 @@
+import { $type } from "@rue/utils";
 import { EqualTypes, typeTest } from "../../dev/type-test";
 import { Callback, OneTimeTargetedListener } from "../../planify/planify";
-import { $type, MiscObj } from "../../types";
 import { createHook } from "../Hook"
 import { createTargetedHook } from "../TargetedHook"
+import { MiscObj } from "@rue/types";
 
 {/* CASE: no targetIdType */
 

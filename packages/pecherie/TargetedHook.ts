@@ -1,5 +1,5 @@
 import { Callback, Callbacks, ListenerOptions, OneTimeTargetedListener, $listen, SustainedTargetedListener, initAutoCleanup, initSceneAutoCleanup, PendingCancelOp } from '@rue/planify';
-import { ContextData, HookConfig, ReturnOfCaster, runCallbacks, UseHookState } from './Hook';
+import { ContextData, HookConfig, ReturnOfCaster, runHandlers, UseHookState } from './Hook';
 import { noop } from '@rue/utils';
 import { Cast, MiscObj } from '@rue/types';
 
@@ -27,17 +27,17 @@ export function createTargetedHook<
 
     const targetMap = new Map() as Map<any, Callbacks>;
 
-    function onHook(target: $TGT, callback?: Callback, options?: ListenerOptions) {
-        if (callback == null) {
-            callback = noop;
+    function onHook(target: $TGT, handler?: Callback, options?: ListenerOptions) {
+        if (handler == null) {
+            handler = noop;
             options = { once: true };
         }
         const existingCallbacks = targetMap.get(target);
-        const callbacks = existingCallbacks ? existingCallbacks : new Set() as Callbacks;
+        const handlers = existingCallbacks ? existingCallbacks : new Set() as Callbacks;
         if (!existingCallbacks) {
             let pendingAutoCleanup: PendingCancelOp | void;
             let pendingSceneCleanup: PendingCancelOp | void;
-            targetMap.set(target, callbacks);
+            targetMap.set(target, handlers);
             const cleanup = () => {
                 targetMap.delete(target);
                 if (pendingAutoCleanup) pendingAutoCleanup.cancel();
@@ -47,12 +47,12 @@ export function createTargetedHook<
             pendingAutoCleanup = initAutoCleanup(cleanup)
             pendingSceneCleanup = initSceneAutoCleanup(cleanup)
         }
-        return $listen(callback, options, {
+        return $listen(handler, options, {
             enroll: (_callback) => {
-                callbacks.add(_callback);
+                handlers.add(_callback);
             },
             remove: (_callback) => {
-                callbacks.delete(_callback);
+                handlers.delete(_callback);
             },
             onceAsDefault
         })
@@ -64,8 +64,8 @@ export function createTargetedHook<
 
     function castHook(target: $TGT, data?: $DAT) {
         if (hook === "action-complete") console.log("hook", _hook)
-        const callbacks = targetMap.get(target);
-        runCallbacks(_hook, callbacks, data, dataAsArg, useHookState, reply)
+        const handlers = targetMap.get(target);
+        runHandlers(_hook, handlers, data, dataAsArg, useHookState, reply)
     }
 
     return [
