@@ -20,7 +20,7 @@ For rare use cases, where maybe you want to pass `watch` as a cleanup scheduler 
 
 <br/>
 
-## `onChange(accessor, handler, options)`
+## `onChange(accessor, handler, options?)`
 
 A planified version of `watch`. `onChange` differs from the `watch` in two ways: 
 
@@ -36,7 +36,7 @@ onChange(() => item.bullet, (value) => {
 ```
 <br/>
 
-## `compute(computation, options)`
+## `compute(computation, options?)`
 
 A planified version of `computed`.  `compute` differs from `computed` simply in that it can take in an `until` option configuration.
 
