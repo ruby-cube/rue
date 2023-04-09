@@ -1,6 +1,6 @@
 //@-ts-nocheck
 import { PerformanceCheck, usePerformanceCheck } from "@rue/dev";
-import { MiscObj } from '@rue/utils';
+import { Cast, MiscObj } from '@rue/utils';
 import { Callback, CallbackRemover, ListenerOptions, $listen, SustainedListenerReturn, MaybeBadScheduler, OneTimeListenerReturn } from '@rue/planify';
 import { ContextData, HookConfig, ReturnOfCaster, UseHookState } from '@rue/pecherie';
 
@@ -82,7 +82,8 @@ export function heed<
     const { onceAsDefault } = MESSAGE;
     const callbackMap = messageMap.get(MESSAGE);
     if (callbackMap == null) throw new Error("Cannot find callbackMap") //TODO: write a more helpful error message
-    return $listen(callback, options, {
+
+    return <Cast>$listen(callback, options, {
         enroll: (callback) => {
             callbackMap.set(id, callback)
         },
@@ -90,7 +91,7 @@ export function heed<
             callbackMap.delete(id)
         },
         onceAsDefault
-    }) as HeedReturn<MSG, CB, OPT>;
+    }) as HeedReturn<MSG, CB, OPT>
 }
 
 

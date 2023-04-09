@@ -26,7 +26,6 @@ export function createTargetedHook<
 
     const targetMap = new Map() as Map<any, Callbacks>;
 
-
     function onHook(target: $TGT, callback?: Callback, options?: ListenerOptions) {
         if (callback == null) {
             callback = noop;

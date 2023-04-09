@@ -1,10 +1,8 @@
-import { types } from "util"
-
 export { beginScene } from "./Scene"
-export type * from "./Scene"
-export { $listen, $schedule, $lifetime, $tilStop } from "./planify"
+export { $listen, $schedule, $subscribe, $lifetime, $tilStop, initAutoCleanup, initSceneAutoCleanup } from "./planify"
 export { defineAutoCleanup } from "./scheduleAutoCleanup"
 export { genTargetID } from "./targetID"
+export type * from "./Scene"
 export type * from "./planify"
 export type * from "./dev-utils"
 export type * from "./PendingOp"

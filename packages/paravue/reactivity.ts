@@ -1,6 +1,5 @@
 import { computed, ComputedRef, DebuggerOptions, effectScope, onUnmounted as _onUnmounted, inject, isReactive, isRef, nextTick, PropType, Ref, ref, ShallowReactive, shallowReactive, toRaw, watch, WatchOptions, WatchStopHandle, onBeforeUnmount, getCurrentInstance, ComponentInternalInstance } from "vue";
-import { makeActiveListener } from "../planify/ActiveListener";
-import { Callback, ListenerOptions, $listen} from "@rue/planify";
+import { Callback, ListenerOptions, $listen, $subscribe} from "@rue/planify";
 import { isSettingUpComponent } from "./component";
 
 export const reactive = shallowReactive as <T extends object>(target: T) => Reactive<T>;
@@ -31,17 +30,13 @@ export function compute<T>(getter: () => T, options?: { until: (stop: () => void
         let computedRef: ComputedRef<T>;
         const scope = effectScope(true);
         scope.run(() => {
-
-            makeActiveListener({
-                callback: getter,
+            $subscribe(getter, options, {
                 enroll: (getter) => {
                     if (__DEV__) computedRef = computed(getter, options); //assumes `run` runs synchronously. TODO: check if this is true
                     else computedRef = computed(getter); //assumes `run` runs synchronously. TODO: check if this is true
                 },
                 remove: () => scope.stop(),
-                options
             })
-
         })
         return computedRef!;
     }

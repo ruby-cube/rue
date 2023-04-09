@@ -81,14 +81,14 @@ export function $listen<
     CB extends Callback,
     RET,
     ARG extends RET extends void ? CB : RET,
-    ONCE extends true | undefined,
+    ONCE extends {onceAsDefault?: true},
     OPT extends ListenerOptions | undefined,
     C extends MaybeCB,
     MaybeCB extends MaybeBadScheduler<OPT, CB>,
 >(callback: CB, options: OPT, config: {
     enroll: (callback: Callback) => RET,
     remove: (cbOrReturnVal: ARG) => void
-} & { onceAsDefault?: ONCE }): ONCE extends true ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB> {
+} & ONCE): ONCE extends {onceAsDefault: true} ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB> {
 
     const { enroll, remove, onceAsDefault } = config;
     let once: boolean | undefined = "once" in callback && callback.once === true || false;
@@ -146,7 +146,7 @@ export function $listen<
 }
 
 
-type $ListenerReturn<ONCE, CB extends Callback, OPT, C extends MaybeCB, MaybeCB extends MaybeBadScheduler<OPT, CB>> = ONCE extends true ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB>
+type $ListenerReturn<ONCE, CB extends Callback, OPT, C extends MaybeCB, MaybeCB extends MaybeBadScheduler<OPT, CB>> = ONCE extends {onceAsDefault: true} ? OneTimeListenerReturn<CB, OPT, C, MaybeCB> : SustainedListenerReturn<CB, OPT, C, MaybeCB>
 
 
 export type SchedulerOptions = {
@@ -224,3 +224,34 @@ export function initSceneAutoCleanup(stop: CallbackRemover<void>) {
     return success;
 }
 
+
+
+export function $subscribe<
+    CB extends Callback,
+    RET,
+    ARG extends RET extends void ? CB : RET,
+    OPT extends ListenerOptions | undefined,
+    C extends MaybeCB,
+    MaybeCB extends MaybeBadScheduler<OPT, CB>,
+>(callback: CB, options: OPT, config: {
+    enroll: (callback: Callback) => RET,
+    remove: (cbOrReturnVal: ARG) => void
+}): SustainedListenerReturn<CB, OPT, C, MaybeCB> {
+
+    const { enroll, remove } = config;
+
+    if (isRemover(callback)) {
+        return makePendingCancelOp({
+            callback,
+            enroll,
+            remove
+        }) as SustainedListenerReturn<CB, OPT, C, MaybeCB>
+    }
+
+    return makeActiveListener({
+        callback,
+        enroll,
+        remove,
+        options
+    }) as SustainedListenerReturn<CB, OPT, C, MaybeCB>
+}

@@ -4,7 +4,7 @@
 
 import { Modo } from "../../modos/Modo.role";
 import { $type } from "../../utils/types";
-import { defineMessage } from "..";
+import { defineMessage, heed } from "..";
 
 
 const ACTIVATE_SPOTLIGHT = defineMessage({
@@ -13,7 +13,7 @@ const ACTIVATE_SPOTLIGHT = defineMessage({
     // returnType: $type as boolean,
     data: {
         snow: "hei"
-    }
+    },
 })
 
 
@@ -30,16 +30,16 @@ const ACTIVATE_SPOTLIGHT = defineMessage({
 // })
 
 
-// const item = $type as Modo;
+const item = $type as Modo;
 
 
-// send(ACTIVATE_SPOTLIGHT, { to: item }, { snow: "ljk" })
+send(ACTIVATE_SPOTLIGHT, { to: item }, { snow: "ljk" })
 
-// const activateSpotlightListener =
-//     heed(ACTIVATE_SPOTLIGHT, item, (ctx) => {
-//         ctx.snow
-//         return "sdkjf"
-//     }, { once: true })
+const activateSpotlightListener =
+    heed(ACTIVATE_SPOTLIGHT, item, (ctx) => {
+        ctx.snow
+        return "sdkjf"
+    }, { once: true })
 
 
 
