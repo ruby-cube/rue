@@ -1,4 +1,4 @@
-# Paravue
+# Paravue 🌴
 
 ### Overview
 

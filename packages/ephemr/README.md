@@ -1,4 +1,4 @@
-# Éphémr
+# Éphémr 🥀
 
 > “Mais qu'est-ce que signifie ‘éphémère’?” 
 — le petit prince
