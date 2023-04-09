@@ -2,12 +2,15 @@
 
 <aside>
 ⚠️ Experimental: Archer is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
-
 </aside>
+</br>
+</br>
 
 ## Overview
 
 Archer is a system for sending and receiving targeted messages/commands across scopes. Whereas Pêcherie’s listeners collects callbacks to be run at a particular point in a process, Archer’s message senders request a *specific* callback to be run. 
+
+</br>
 
 ## Table of Contents
 
@@ -15,14 +18,17 @@ Archer is a system for sending and receiving targeted messages/commands across s
 - Basic Usage
 - Use Case
 - Targeted Listening
+</br>
 
-### Archer API
+## Archer API
 
 `defineMessage(config)` 
 
 `send(MESSAGE, {to: targetID }, data)` 
 
-`heed(MESSAGE, targetID, callback)` 
+`heed(MESSAGE, targetID, callback)`
+
+</br>
 
 ## `defineMessage(config)`
 
@@ -53,6 +59,8 @@ type MessageConfig = Config;
 
 See Hook Configuration for info on configuration values.
 
+</br>
+
 ## `send(MESSAGE, {to: targetID }, data)`
 
 ### Syntax
@@ -70,6 +78,7 @@ type Reply = ReplyState | void;
 type TargetID = any;
 type Data = any;
 ```
+</br>
 
 ## `heed(MESSAGE, targetID, handler)`
 
@@ -89,6 +98,7 @@ MessageConfig  TargetID  Handler
 type TargetID = any;
 type Handler = (data: Data) => any;
 ```
+</br>
 
 ## Basic Usage
 
@@ -110,6 +120,7 @@ heed(HIDE_ITEM, item, () => {
 	 // mutate local state to hide the item
 });
 ```
+</br>
 
 ## Use Case
 
@@ -177,6 +188,7 @@ heed(HIDE_ITEM, item, (data) => {
 }
 
 ```
+</br>
 
 ## Targeted Listening
 
