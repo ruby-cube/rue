@@ -31,7 +31,7 @@ The planified schedulers return a `ScheduledOp`, which is essentially a cancella
 `onTimeout(delay, callback, options?)`
 
 
-##`addPS(callback)` 
+## `addPS(callback)` 
 
 an alias for `queueMicrotask` from browser API. Here, microtasks are conceptualized as postscripts to event loop tasks.
 
@@ -44,8 +44,9 @@ addPS(() => {
     // and before the next event loop task
 });
 ```
+<br/>
 
-##`queueTask(callback, options?)`
+## `queueTask(callback, options?)`
 
 planified `setImmediate` (as implemented by https://github.com/yuzujs/setImmediate). It essentially queues a task in the event loop’s task queue.
 
@@ -58,8 +59,9 @@ queueTask(() => {
     // (unless canceled by the action-completed hook)
 }, { unlessCanceled: onActionCompleted });
 ```
+<br/>
 
-##`beforeScreenPaint(callback, options?)`
+## `beforeScreenPaint(callback, options?)`
 
 planified `requestAnimationFrame`, which schedules code to run before the next screen paint.
 
@@ -71,8 +73,9 @@ beforeScreenPaint(() => {
     // and before the next screen paint
 });
 ```
+<br/>
 
-##`onTimeout(delay, callback, options?)`
+## `onTimeout(delay, callback, options?)`
 
 planified `setTimeout`
 
