@@ -251,7 +251,7 @@ const createFrogPrince = $FrogPrince.reifier((data) => {
         $Frog,
         $Prince
     // VSCode: control+space for intellisense to show other required roles: $Character
-	}
+    }
 });
 ```
 </br>
