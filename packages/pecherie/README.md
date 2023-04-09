@@ -41,38 +41,28 @@ Creates an un-targeted hook.
 ### **Syntax**
 
 ```tsx
-const HOOK = createHook(config);
-       |                   |
-      Hook           OptionalConfig
+const [emitter, listener] = createHook(config);
+          |         |                    |
+      CastHook      |               OptionalConfig
+                    |
+            SustainedListener | OneTimeListener
 ```
 
 ### Basic Usage
 
 ```jsx
 // module A (service)
-
-export const POPULATED = createHook({
+const [castPopulated, _onPopulated] = createHook({
     hook: "populated",
     data: $type as { dataset: Data[]}, // enables type hints
 }) 
 
+export onPopulated = _onPopulated // 'planified' listener
+
 function populateTable(dataset: Data[]){
     // ...beep beep boop...
-    cast(POPULATED, { dataset }); // emitter
+    castPopulated({ dataset }); // emitter
 }
-```
-
-```jsx
-// module B (consumer)
-const onPopulated = useHook(POPULATED) // 'planified' listener
-
-function initFormatting(){
-    onPopulated((data)=>{
-        data // type hint: { dataset: Data[] }
-        // do work
-    })
-}
-
 ```
 
 ### Type Definitions
