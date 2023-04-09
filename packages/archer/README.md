@@ -50,7 +50,7 @@ type Config = {
     onceAsDefault?: true, 
     dataAsArg?: true;
     reply?: () => { 
-        state: ReplyState, // *{ [key: string]: any };*
+        state: ReplyState, // { [key: string]: any };
         methods: ReplyMethods // { [key: string]: (...args: any[]) => void } 
     };
 }

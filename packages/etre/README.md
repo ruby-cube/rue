@@ -2,7 +2,9 @@
 
 ## Overview
 
-Composition over inheritance, they say. How about both? This is an exploration into creating a system of composition that retains elements of inheritance. 
+Composition over inheritance, they say. How about both? This is an exploration into creating a system of composition that retains elements of inheritance.
+
+</br>
 
 ## Concepts: Abstract Roles & Prereqs
 
@@ -11,6 +13,8 @@ In this system, composition and inheritance is achieved through the concepts of 
 This differs from traditional inheritance in that a role can have many prereqs whereas a class can extend only one other class, and it differs from composition through dependency injection in that prereqs cannot be redundant. With dependency injection, if a class A is composed of class B and C, which both inherit class D, class D’s constructor will run twice in order to instantiate class A. In the Etre system, prereqs are collected into a set at the time of creating the reifier function, ensuring non-redudancy. 
 
 The system also allows for re-keying in the event of name collisions and implementing interfaces.
+
+</br>
 
 ## Basic Usage
 
@@ -75,6 +79,7 @@ frogPrince.isValiantAndDaring(); // true
 frogPrince.sing();
 frogPrince.name; // "Sir Robin the Brave"
 ```
+</br>
 
 ## Non-redundant Inheritance
 
@@ -133,6 +138,7 @@ const createFrogPrince = $FrogPrince.reifier();
 
 const sirRobin = createFrogPrince(); // logs "setup" once
 ```
+</br>
 
 ### Auto-compose vs Manual Compose
 
@@ -207,6 +213,7 @@ const createFrogPrince = $FrogPrince.reifier((data) => {
 
 const sirRobin = createFrogPrince(data);
 ```
+</br>
 
 ## Typescript hints and the `__dev__` parameter
 
@@ -229,6 +236,7 @@ const createFrogPrince = $FrogPrince.reifier((data) => {
 		// VSCode: control+space for intellisense to show other required roles: $Character
 });
 ```
+</br>
 
 ## Rekey-ing
 
@@ -266,6 +274,7 @@ if (__DEV__){
     roleCollisionCheck($FrogPrince);
 }
 ```
+</br>
 
 ## Interfaces
 
@@ -287,6 +296,7 @@ const $Frog = defineRole({
     }
 })
 ```
+</br>
 
 ## Type-checking
 
