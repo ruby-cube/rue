@@ -21,6 +21,8 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 
 ## Thread API
 
+Planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
+
 `addPS(callback)` 
 
 `queueTask(callback, options?)`
@@ -28,8 +30,6 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 `beforeScreenPaint(callback, options?)`
 
 `onTimeout(delay, callback, options?)`
-
-Planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
 <br/>
 
@@ -104,7 +104,7 @@ const onMouseDown = useEventListener("mousedown");
 
 onMouseDown(element, (event) => {
     // handle mouse down
-})
+});
 ```
 <br/>
 
@@ -115,14 +115,14 @@ People often name event handlers using the prefix “on-” followed by the even
 ```jsx
 // handler
 function reMouseDown(event) {
-		// handle mouse down...
+	// handle mouse down...
     // if this case, do this
     // if that case, do that
 
     // listener
-		onMouseUp(document, () => {
+	onMouseUp(document, () => {
        // handle mouse up
-    }, { once: true } )
+    }, { once: true });
 }
 ```
 
