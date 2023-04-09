@@ -3,8 +3,8 @@
 
 <aside>
 ⚠️ <b>Experimental:</b> Planify is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
-
 </aside>
+
 <br/>
 <br/>
 
@@ -19,7 +19,7 @@ Performance is another potential concern when it comes to event-driven architect
 This project is the result of an exploration into how an event system might include a developer-friendly cleanup interface for better memory leak prevention as well as a method of targeted listening for better performance. 
 
 Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as Thread, Pêcherie, and Archer. 
-<br/>
+
 <br/>
 
 ## Table of Contents
@@ -84,7 +84,7 @@ These Rue libraries handle the corresponding type of event emission:
 - **Archer**: messages/commands
 
 The example listeners in this README (usually prefixed with "on" or "before") represent listeners created via one of the above libraries.
-<br/>
+
 <br/>
 
 ### One-time listener vs Sustained listener
@@ -120,7 +120,7 @@ const result = await pendingOp;
 ```
 
 Note: The `cancel` method will not survive a `.then` chain. This is by design. Since the return of a `.then` chain is too easily mistaken for the return of the first call rather than the last call of the chain, it is preferred to save the `PendingOp` to a variable before chaining or awaiting if you need to call the cancel method.
-<br/>
+
 <br/>
 
 ### Listener Morphing
@@ -147,13 +147,13 @@ onTextInserted(() => {   // one-time listener
 ```
 
 Listeners can also morph from their default depending on the usage context. For example, if a listener is being passed into another listener as a cleanup scheduler as is the case with `onActionCanceled` above, it will behave as a one-time listener even if it is a `SustainedListener`.
-<br/>
+
 <br/>
 
 ### Schedulers
 
 Schedulers are one-time listeners that cannot be converted into a sustained listeners. These are typically functions that queue a task to the main thread such as: `queueTask`, `beforeScreenPaint` (planified `requestAnimationFrame`), and `onTimeout` (planified `setTimeout`). See Thread for more on existing schedulers.
-<br/>
+
 <br/>
 
 ### Synchronous vs Asynchronous Handling
@@ -367,7 +367,7 @@ Planify provides four main cleanup strategies:
 ### Memory Leak Warnings
 
 Unless the developer is impeccably conscientious about cleanup, memory leaks will inevitably creep into your system when using event listeners. As an additional guard against memory leaks, Planify will log a warning during development if it does not detect a cleanup strategy in place for a listener. 
-<br/>
+
 <br/>
 
 ## Targeted Listeners
@@ -453,13 +453,13 @@ function workHard(item, index){
 [`defineAutoCleanup(cleanupFn)`]() (Auto Cleanup API)
 
 [`genTargetID(config)`]() (Target ID API)
-<br/>
+
 <br/>
 
 ## Planify API
 
 The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen` and `$schedule` functions to acheive this.
-<br/>
+
 <br/>
 
 ### `$listen(handler, options, config)`
@@ -596,7 +596,7 @@ OPT extends ListenerOptions
 ## Planned Features
 
 Event-driven code is notoriously difficult to debug. Additional support for easing the debugging experience is in the works.
-<br/>
+
 <br/>
 
 ## Known Issues
