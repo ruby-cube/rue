@@ -106,7 +106,7 @@ type Handler = (data: Data) => any;
 
 // define the message in a shared dependency or in the emitter module
 const HIDE_ITEM = defineMessage({
-		message: "hide-item",
+    message: "hide-item",
     targetID: $type as Object 
 });
 
@@ -117,7 +117,7 @@ send(HIDE_ITEM, { to: item });
 ```tsx
 // listener module
 heed(HIDE_ITEM, item, () => {
-	 // mutate local state to hide the item
+    // mutate local state to hide the item
 });
 ```
 </br>
@@ -134,7 +134,7 @@ function hideItem() {
 }
 
 function reButtonClick() {
-		// do some other work
+    // do some other work
     hideItem();
 }
 ```
@@ -158,7 +158,7 @@ However, this can be complicated if the event handler that calls `hideItems` is 
 // (or pass HIDE_ITEM to components via dependency injection)
 
 const HIDE_ITEM = defineMessage({
-		message: "hide-item",
+    message: "hide-item",
     targetID: $type as Object,
     data: $type as { fade: boolean },
     dataAsArg: true
@@ -169,14 +169,14 @@ const HIDE_ITEM = defineMessage({
 // component A
 
 // script
-	function hideItems(){
-     for (const item of items) {
-				send(HIDE_ITEM, { to: item }, { fade: true })
-     }
-  }
+function hideItems(){
+    for (const item of items) {
+        send(HIDE_ITEM, { to: item }, { fade: true })
+    }
+}
 
 // template
-	<div @click="hideItems">CLICK ME</div>
+<div @click="hideItems">CLICK ME</div>
 
 ```
 

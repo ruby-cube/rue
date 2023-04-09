@@ -31,7 +31,7 @@ A planified version of `watch`. `onChange` differs from the `watch` in two ways:
 
 ```jsx
 onChange(() => item.bullet, (value) => {
-		// do stuff
+        // do stuff
 }, { until: docClosed })
 ```
 <br/>
@@ -44,7 +44,7 @@ A planified version of `computed`.  `compute` differs from `computed` simply in 
 
 ```tsx
 const fullName = compute(() => firstName.value + " " + lastName.value, { 
-		until: sessionDone 
+        until: sessionDone 
 })
 ```
 <br/>
@@ -60,28 +60,28 @@ import { beginScene } from "@rue/planify"
 
 function initDrag(event){
     const el = event.target
-	  beginScene((dragging) => {
+      beginScene((dragging) => {
 
-		    const x = ref(0);
+            const x = ref(0);
         const y = ref(0);
-			  const position = compute(() => `${x.value}, ${y.value}`);
+              const position = compute(() => `${x.value}, ${y.value}`);
 
-	      onMouseEnter(el, () => {
-		        // do work
-	      });
+          onMouseEnter(el, () => {
+                // do work
+          });
  
         onMouseLeave(el, () => {
-	 	        // do work
-	      });
+                 // do work
+          });
 
-    	  onMouseMove(document, () => {
-		        // do work
-	      });
+          onMouseMove(document, () => {
+                // do work
+          });
 
-    	  onMouseUp(document, () => {
-		        // do work
-		        dragging.end()  // stops all listeners registered during scene
-	      })
+          onMouseUp(document, () => {
+                // do work
+                dragging.end()  // stops all listeners registered during scene
+          })
     });
 }
 ```

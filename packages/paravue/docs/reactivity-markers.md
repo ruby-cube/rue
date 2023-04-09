@@ -43,7 +43,7 @@ const fullName = computed(() => r$(firstName) + " " + r$(lastName));
 
 // nr: "non-reactive" reads
 if (nr(firstName).startsWith("K")) {
-	// do this
+    // do this
 }
 
 
