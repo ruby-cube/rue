@@ -20,7 +20,6 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 <br/>
 
 ## Thread API
-The planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
 `addPS(callback)` 
 
@@ -29,6 +28,8 @@ The planified schedulers return a `ScheduledOp`, which is essentially a cancella
 `beforeScreenPaint(callback, options?)`
 
 `onTimeout(delay, callback, options?)`
+
+Planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
 <br/>
 
