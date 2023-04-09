@@ -14,6 +14,22 @@ This library eliminates the need for writing `.value` while providing visual mar
 
 <br/>
 
+## The API
+
+`r$(ref)`
+
+`nr(ref)`
+
+`set$(ref, value)`
+
+`v$(reactive.prop)`
+
+`nv(reactive.prop)`
+
+`set$: reactive.prop = value`
+
+<br/>
+
 ## Reactivity Markers for Refs
 
 ```tsx
