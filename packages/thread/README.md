@@ -6,35 +6,42 @@
 <br/>
 <br/>
 
-### Overview
+## Overview
 
 Thread provides planified versions of schedulers and event listeners from Web APIs.
 
 <br/>
 
-### Thread API
+## Table of Contents
+
+- Thread API
+- Event Listeners API
+- Naming Conventions
+<br/>
+
+## Thread API
 
 `addPS(callback)` 
-
+<br/>
 an alias for `queueMicrotask` from browser API. Here, microtasks are conceptualized as postscripts to event loop tasks.
 
 `queueTask(callback, options?)`
-
+<br/>
 planified `setImmediate` from as implemented by https://github.com/yuzujs/setImmediate. It essentially queues a task in the event loop’s task queue.
 
 `beforeScreenPaint(callback, options?)`
-
+<br/>
 planified `requestAnimationFrame`, which schedules code to run before the next screen paint.
 
 `onTimeout(delay, callback, options?)`
-
+<br/>
 planified `setTimeout`
 
 The planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
 <br/>
 
-### Example Usage
+### Usage
 
 ```jsx
 addPS(() => {
@@ -60,7 +67,7 @@ onTimeout(500, () => {
 ```
 <br/>
 
-### Event Listeners API
+## Event Listeners API
 
 The Event Listeners API provides planified browser event listeners with the `useEventListener` function. `useEventListener` returns the requested event listener if it already exists in the app, otherwise, it creates the listener and stores it for future access to avoid redundant instances.
 
@@ -77,7 +84,7 @@ onMouseDown(element, (event) => {
 ```
 <br/>
 
-### Naming Conventions
+## Naming Conventions
 
 People often name event handlers using the prefix “on-” followed by the event name, e.g. `onMouseUp`, as a concise alternative to the prefix “handle-”. When using Planify listeners, it’s helpful to distinguish handlers from listeners with a different naming convention for better clarity. In my own codebase, I use the prefix “re-”, as in “regarding” or “replying to” or “RE: Your email”, e.g. `reMouseUp`. 
 
