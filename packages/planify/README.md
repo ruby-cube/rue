@@ -465,14 +465,15 @@ The functions provided by Pêcherie, Archer, Thread, and Paravue should cover mo
 ### `$listen(handler, options, config)`
 Sets up a listener. Depending on options and config, this could be a one-time listener or a sustained listener.
 
+#### Syntax
 ```tsx
-$listen(handler, options, config)
-          |         |        |
-        Handler     |   ListenerConfig
-              ListenerOptions
+const activeListener = $listen(handler, options, config)
+        |                        |         |        |
+ PendingOp | ActiveListener   Handler      |   ListenerConfig
+                                     ListenerOptions
 ```
 
-### Type Definitions
+#### Type Definitions
 ```tsx
 type ListenerConfig = {
     enroll: (handler) => void, 
@@ -485,38 +486,44 @@ type ListenerConfig = {
 ### `$schedule(handler, options, config)`
 Sets up a one-time listener.
 
+#### Syntax
 ```tsx
-$schedule(handler, options, config)
-            |         |        |
-          Handler     |   SchedulerConfig
-               ListenerOptions
+const pendingOp = $schedule(handler, options, config)
+           |                  |         |        |
+      PendingOp            Handler      |   SchedulerConfig
+                                  ListenerOptions
 ```
 
-### Type Definitions
+#### Type Definitions
 ```tsx
 type SchedulerConfig = {
     enroll: (handler) => void, 
     remove: (handlerOrReturnVal) => void, 
 }
+
+type PendingOp = Promise<ReturnType<Handler>> & { cancel: () => void }
 ```
 <br/>
 
 ### `$subscribe(handler, options, config)`
 Sets up a sustained listener.
 
+#### Syntax
 ```tsx
-$subscribe(handler, options, config)
-            |         |        |
-          Handler     |   SubscribeConfig
-               ListenerOptions
+const activeListener = $subscribe(handler, options, config)
+           |                        |         |        |
+        ActiveListener            Handler     |   SubscribeConfig
+                                       ListenerOptions
 ```
 
-### Type Definitions
+#### Type Definitions
 ```tsx
 type SubscribeConfig = {
     enroll: (handler) => void, 
     remove: (handlerOrReturnVal) => void, 
 }
+
+type ActiveListener = { stop: () => void }
 ```
 <br/>
 
