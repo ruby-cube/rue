@@ -86,7 +86,7 @@ planified `setTimeout`
 ```jsx
 onTimeout(500, () => {
     // code that will run after 500ms
-})
+});
 ```
 
 <br/>
@@ -99,10 +99,10 @@ The Event Listeners API provides planified browser event listeners with the `use
 
 ### Usage
 
-```jsx
+```js
 const onMouseDown = useEventListener("mousedown");
 
-onMouseDown(element, (event) => {
+onMouseDown(element, () => {
     // handle mouse down
 });
 ```
