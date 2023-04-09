@@ -176,9 +176,9 @@ The Quill docs and codebase opened my eyes to how beautiful and poetic an open s
 
 ## Jiufen
 
-A complex codebase, with all the paths of communication and connections between components, can sometimes be like wandering the maze-like lantern-lined walkways and underground tunnels of [Jiufen](https://www.nationalgeographic.com/travel/article/exploring-the-magic-of-taiwans-spirited-away-city). 
+A complex codebase, with its myriad paths of connection, is perhaps like wandering the labyrinthine lantern-lined walkways and underground tunnels of [Jiufen](https://www.nationalgeographic.com/travel/article/exploring-the-magic-of-taiwans-spirited-away-city). 
 
-Confusing and chaotic yet magical and wondrous.
+Confusing and chaotic, astonishing and magical.
 
 <br/>
 <br/>
