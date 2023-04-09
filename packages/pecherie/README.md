@@ -1,4 +1,4 @@
-# Pêcherie
+# Pêcherie 🐟
 
 <aside>
 ⚠️ <b>Experimental</b>: Pêcherie is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
