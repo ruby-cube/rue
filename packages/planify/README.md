@@ -52,7 +52,7 @@ In browser and Node.js API, the word “listener” refers to the callback funct
 
 onMouseDown(document, () => {}, { until: onDestroyed })
     |           |          |             |   
-targeted     target     handler       options
+targeted     target     callback       options
 listener
 ```
 
@@ -61,7 +61,7 @@ listener
 
 onTablePopulated((context) => { context.dataset })
     |                        |
-listener                  handler
+listener                  callback
 
 castTablePopulated({ dataset });
   |                 |
@@ -69,17 +69,18 @@ emitter     context, data, or event object
 ```
 <br/>
 
-### Event vs Hook vs Message
+### Event vs Hook vs Message vs Scheduling
 
-I use “emit” and “event” as general terms that encompass three distinct types of event emissions:
+Planify supports four distinct categories of asynchronous progamming:
 
-- emitting user events
-- casting application/process hooks
-- sending messages/commands
+- user events
+- application events & process hooks
+- messages/commands
+- scheduling callbacks
 
-These Rue libraries handle the corresponding type of event emission:
-- **Thread**: user events
-- **Pêcherie**: application/process hooks
+These Rue libraries address the corresponding categories:
+- **Thread**: user events & scheduling callbacks
+- **Pêcherie**: application events & process hooks
 - **Archer**: messages/commands
 
 The example listeners in this README (usually prefixed with "on" or "before") represent listeners created via one of the above libraries.
