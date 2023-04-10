@@ -23,7 +23,7 @@ Composition over inheritance, they say. How about both? Être is an exploration 
 
 ## Table of Contents
 
-- [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/etre#concepts-abstract-roles--prereqs)
+- [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/etre#concepts-roles--prereqs)
 - [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
 - [Non-redundant Inheritance](https://github.com/ruby-cube/rue/tree/main/packages/etre#non-redundant-inheritance)
 - [Auto-compose vs Manual Compose](https://github.com/ruby-cube/rue/tree/main/packages/etre#auto-compose-vs-manual-compose)
@@ -35,13 +35,13 @@ Composition over inheritance, they say. How about both? Être is an exploration 
 
 ## Concepts: Roles & Prereqs
 
-In this system, composition and inheritance is achieved through the concepts of roles and prereqs. An role can have other roles as prereqs. The instantiated role will possess all the properties and methods of the role as well as all the properties and methods of its prereqs and its prereqs’ prereqs… all the way up the lines of inheritance.
+In this system, composition and inheritance is achieved through the concepts of roles and prereqs. A role can have other roles as prereqs. The instantiated role will possess all the properties and methods of the role as well as all the properties and methods of its prereqs and its prereqs’ prereqs… all the way up the lines of inheritance.
 
-This differs from traditional inheritance in that a role can have many prereqs whereas a class can extend only one other class. It differs from traditional composition through dependency injection in that prereqs cannot be redundant. With dependency injection, if a class A is composed of class B and C, which both inherit class D, class D’s constructor will run twice in order to instantiate class A. In the Être system, prereqs are collected at the time of creating the instantiator function, ensuring non-redudancy.
+This differs from traditional inheritance in that a role can have many prereqs whereas a class can extend only one other class. It differs from traditional composition through dependency injection in that prereqs cannot be redundant. With dependency injection, if a class A is composed of class B and C, which both inherit class D, class D’s constructor will run twice in order to instantiate class A. In the Être system, prereqs are collected into a set at the time of creating the instantiator function, ensuring non-redundancy.
 
-The instantiator function is obtained by calling the `reifier` method of an abstract role.
+The instantiator function is obtained by calling the `reifier` method of a role.
 
-The system also allows for re-keying in the event of key collisions and implementing interfaces.
+The system also allows for re-keying (in case of key collisions) and implementing interfaces.
 
 </br>
 
@@ -50,7 +50,7 @@ The system also allows for re-keying in the event of key collisions and implemen
 `defineRole` takes in a config object that resembles a class definition, with a `$construct` function and methods.
 
 ```jsx
-// abstract role A
+// role A
 export const $Frog = defineRole({
     $construct(data) {
         return {
@@ -62,7 +62,7 @@ export const $Frog = defineRole({
 ```
 
 ```jsx
-// abstract role B
+// role B
 export const $Prince = defineRole({
     $construct(data) {
         return {
@@ -76,7 +76,7 @@ export const $Prince = defineRole({
 ```
 
 ```jsx
-// abstract role C (composed of role A and role B)
+// role C (composed of role A and role B)
 export const $FrogPrince = defineRole({
     prereqs: {
         $Frog,
@@ -307,7 +307,7 @@ if (__DEV__){
 
 ## Interfaces
 
-When defining a role, the config’s interface property defines an interface that any must be implemented either by one of the roles that inherits that role or by the manual compose function.
+When defining a role, the config’s interface property defines an interface that must be implemented either by one of the roles that inherits that role or by the manual compose function.
 
 ```tsx
 type ICharacter = {
@@ -329,7 +329,7 @@ const $Frog = defineRole({
 
 ## Type-checking
 
-Objects can be type-checked via the `enacts` function, which takes in an abstract role as the first argument and the object being type-checked as the second argument and returns a boolean.
+Objects can be type-checked via the `enacts` function, which takes in a role as the first argument and the object being type-checked as the second argument and returns a boolean.
 
 ```jsx
 const isFrog = enacts($Frog, character);
