@@ -56,7 +56,7 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 
 ***Data Management***
 
-[**🪴 Être**](https://www.notion.so/tre-61fe158b3d6a4b0991e6f3fabd61f716)
+[**🪴 Être**](https://github.com/ruby-cube/rue/tree/main/packages/etre#goto-src)
 <br/>A system of composition for rich data models
 
 **🔔 Modos**
