@@ -26,8 +26,8 @@ Pêcherie is based on the Planify event system. See Planify for an overview of f
 ## Table of Contents
 
 - [Pêcherie API](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#p-cherie-api)
-    - [`createHook`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#createhook)
-    - [`createTargetedHook`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#createtargetedhook)
+    - [`createHook`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#createhookconfig)
+    - [`createTargetedHook`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#createtargetedhookconfig)
 - [Hook Configuration](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#hook-configuration)
 - [TargetIDs](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#targetids)
 
