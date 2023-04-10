@@ -31,24 +31,24 @@ Since Planify represents the overarching event system, this README presents more
 
 ## Table of Contents
 
-- [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-    - [Event vs Hook vs Message vs Scheduling]()
-    - [One-time Listener vs Sustained Listener](https://www.notion.so/Overkill-Check-Jan-8-99b852805af84c12aa64779bad3b0a40)
-    - [Listener Morphing](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-    - [Schedulers](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-    - [Synchronous vs Asynchronous Handling]()
-- [Memory Leak Prevention](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-    - [Cleanup Strategies](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-        - [Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-        - [Options argument](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-        - [Stop/Cancel](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-        - [Scene Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-    - [Memory Leak Warnings](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+- [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/planify#concepts)
+    - [Event vs Hook vs Message vs Scheduling](https://github.com/ruby-cube/rue/tree/main/packages/planify#event-vs-hook-vs-message-vs-scheduling)
+    - [One-time Listener vs Sustained Listener](https://github.com/ruby-cube/rue/tree/main/packages/planify#one-time-listener-vs-sustained-listener)
+    - [Listener Morphing](https://github.com/ruby-cube/rue/tree/main/packages/planify#listener-morphing)
+    - [Schedulers](https://github.com/ruby-cube/rue/tree/main/packages/planify#schedulers)
+    - [Synchronous vs Asynchronous Handling](https://github.com/ruby-cube/rue/tree/main/packages/planify#synchronous-vs-asynchronous-handling)
+- [Memory Leak Prevention](https://github.com/ruby-cube/rue/tree/main/packages/planify#memory-leak-prevention)
+    - [Cleanup Strategies](https://github.com/ruby-cube/rue/tree/main/packages/planify#cleanup-strategies)
+        - [Auto-cleanup](https://github.com/ruby-cube/rue/tree/main/packages/planify#auto-cleanup)
+        - [Options argument](https://github.com/ruby-cube/rue/tree/main/packages/planify#options-argument)
+        - [Stop/Cancel](https://github.com/ruby-cube/rue/tree/main/packages/planify#stop--cancel)
+        - [Scene Auto-cleanup](https://github.com/ruby-cube/rue/tree/main/packages/planify#scene-auto-cleanup)
+    - [Memory Leak Warnings](https://github.com/ruby-cube/rue/tree/main/packages/planify#memory-leak-warnings)
 - [Targeted Listeners](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners)
-- [The APIs]()
-- [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-- [Planned Features]()
-- [Known Issues]()
+- [The APIs](https://github.com/ruby-cube/rue/tree/main/packages/planify#the-apis)
+- [Planify API](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-api)
+- [Planned Features](https://github.com/ruby-cube/rue/tree/main/packages/planify#planned-features)
+- [Known Issues](https://github.com/ruby-cube/rue/tree/main/packages/planify#known-issues)
 <br/>
 
 ## Concepts
@@ -166,7 +166,7 @@ Schedulers are one-time listeners that cannot be converted into a sustained list
 
 ### Synchronous vs Asynchronous Handling
 
-Handlers are called synchronously at the time of event emission. This allows for “before event” hooks as well as the possibility of handlers communicating back to the source of the event (see [`reply`](https://www.notion.so/P-cherie-acfd28a3d5e94c099603107bd32af191)). 
+Handlers are called synchronously at the time of event emission. This allows for “before event” hooks as well as the possibility of handlers communicating back to the source of the event (see [`reply`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#hook-configuration)). 
 
 If asynchronous handling is needed, the developer can call an async scheduler or one-time listener from within the handler. In the example below, the synchonous handler calls the `addPS` scheduler (an alias for `queueMicrotask`) for asynchronous handling.
 

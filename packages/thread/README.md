@@ -23,9 +23,9 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 
 ## Table of Contents
 
-- Thread API
-- Event Listeners API
-- Naming Conventions
+- [Thread API](https://github.com/ruby-cube/rue/tree/main/packages/thread#thread-api)
+- [Event Listeners API](https://github.com/ruby-cube/rue/tree/main/packages/thread#event-listeners-api)
+- [Naming Conventions](https://github.com/ruby-cube/rue/tree/main/packages/thread#naming-conventions)
 <br/>
 
 ## Thread API

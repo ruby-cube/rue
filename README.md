@@ -13,7 +13,7 @@
 
 ## Overview
 
-Rue.js is a collection of tools I created for myself in the process of building a fairly complex app. The tools aim to support maintainability and extensibility as an app becomes more complex and thus more prone to scattered logic and tight coupling of unrelated modules. 
+Rue.js is a collection of tools I created for myself in the process of building a fairly complex app. The Typescript-enhanced tools aim to support maintainability and extensibility as an app becomes more complex and thus more prone to scattered logic and tight coupling of unrelated modules. 
 
 The repo contains the following categories of tools: Event-driven programming, data management, control flow, and Vue reactivity. (Note that since Vue’s reactivity system is decoupled from the Vue component framework, the tools in this category can be used outside of Vue components)
 
