@@ -1,5 +1,5 @@
 #### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/archer)
-[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; thread  &nbsp;&nbsp;|&nbsp; &nbsp; pecherie  &nbsp;&nbsp;|&nbsp; &nbsp; [archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src)
+[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; thread  &nbsp;&nbsp;|&nbsp; &nbsp; pecherie  &nbsp;&nbsp;|&nbsp; &nbsp; **archer**
 # Archer 🏹
 
 <aside>
