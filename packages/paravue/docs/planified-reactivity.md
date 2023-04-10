@@ -23,9 +23,9 @@ For rare use cases, where maybe you want to pass `watch` as a cleanup scheduler 
 
 ## The API
 
-`onChange(accessor, handler, options)`
+[`onChange(accessor, handler, options)`](https://github.com/ruby-cube/rue/blob/main/packages/paravue/docs/planified-reactivity.md#onchangeaccessor-handler-options)
 
-`compute(computation, options)`
+[`compute(computation, options)`](https://github.com/ruby-cube/rue/blob/main/packages/paravue/docs/planified-reactivity.md#compute-computation-options)
 
 <br/>
 
