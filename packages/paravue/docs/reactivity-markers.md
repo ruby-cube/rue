@@ -25,15 +25,15 @@ This library eliminates the need for writing `.value` while providing visual mar
 
 ## The API
 
-[Reactivity Markers for Refs](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md#reactivity-markers-for-refs)
+**for refs:**
 
 `r$(ref)`
 
 `nr(ref)`
 
 `set$(ref, value)`
-
-[Reactivity Markers for Reactives](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md#reactivity-markers-for-reactives)
+<br/>
+**for reactives:**
 
 `v$(reactive.prop)`
 
