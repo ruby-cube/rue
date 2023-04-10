@@ -18,7 +18,7 @@ Performance is another potential concern when it comes to event-driven architect
 
 This project is the result of an exploration into how an event system might include a developer-friendly cleanup interface for better memory leak prevention as well as a method of targeted listening for better performance. 
 
-Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as Thread, Pêcherie, and Archer. 
+Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), Pêcherie, and Archer. 
 
 <br/>
 
@@ -160,7 +160,7 @@ Listeners can also morph from their default depending on the usage context. For 
 
 ### Schedulers
 
-Schedulers are one-time listeners that cannot be converted into a sustained listeners. These are typically functions that queue a task to the main thread such as: `queueTask`, `beforeScreenPaint` (planified `requestAnimationFrame`), and `onTimeout` (planified `setTimeout`). See Thread for more on existing schedulers.
+Schedulers are one-time listeners that cannot be converted into a sustained listeners. These are typically functions that queue a task to the main thread such as: `queueTask`, `beforeScreenPaint` (planified `requestAnimationFrame`), and `onTimeout` (planified `setTimeout`). See [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src) for more on existing schedulers.
 
 <br/>
 
@@ -466,7 +466,7 @@ function workHard(item, index){
 
 ## Planify API
 
-The functions provided by Pêcherie, Archer, Thread, and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen` and `$schedule` functions to acheive this.
+The functions provided by Pêcherie, Archer, [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen` and `$schedule` functions to acheive this.
 
 <br/>
 
