@@ -640,6 +640,6 @@ Event-driven code is notoriously difficult to debug. Additional support for easi
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
