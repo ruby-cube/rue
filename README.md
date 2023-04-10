@@ -28,7 +28,7 @@ The repo contains the following categories of tools: Event-driven programming, d
 
 ***Event-driven Programming***
 
-[**🪶 Planify**](https://github.com/ruby-cube/rue/tree/main/packages/planify)
+[**🪶 Planify**](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
 <br/>
 The core dependency for the other tools in this category. Designed to make asynchronous, event-driven programming more readable and less prone to memory leaks.
 
@@ -175,6 +175,6 @@ A complex codebase, with its myriad paths of connection, is perhaps like wanderi
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-#planify-)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

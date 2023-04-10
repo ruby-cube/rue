@@ -1,4 +1,4 @@
-[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify)  &nbsp;&nbsp;|&nbsp; &nbsp; thread  &nbsp;&nbsp;|&nbsp; &nbsp; pecherie  &nbsp;&nbsp;|&nbsp; &nbsp; archer
+[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)  &nbsp;&nbsp;|&nbsp; &nbsp; thread  &nbsp;&nbsp;|&nbsp; &nbsp; pecherie  &nbsp;&nbsp;|&nbsp; &nbsp; archer
 # Pêcherie 🐟
 
 <aside>
@@ -233,6 +233,6 @@ The targetID can be any type so long as the emitter module and listener module a
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-#planify-)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
