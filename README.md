@@ -157,13 +157,13 @@ Send a note to ruby.yiong@gmail.com. I would especially love to connect with som
 
 ## Inspiration
 
-**Vue.js**
+[**Vue.js**](https://vuejs.org/)
 
 I am heavily influenced and greatly inspired by Vue and its brilliant, elegant, and intuitive design, especially Vue 3’s Composition API. Vue is also how I was introduced to the concept of emitting events and lifecycle hooks. It was such a fascinating concept to me that I began exploring ways to emit my own hooks outside of the Vue framework, which led to the various event systems in this repo.
 
 <br>
 
-**Quill**
+[**Quill**](https://quilljs.com/)
 
 The Quill docs and codebase opened my eyes to how beautiful and poetic an open source codebase can be without compromising the end product. I previously felt I had to suppressed the urge to write poetic code. Quill helped me realize that as long as it doesn’t impede clarity and I’m working on my own project… why not? :)
 
