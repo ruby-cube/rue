@@ -461,17 +461,17 @@ function workHard(item, index){
 
 ## The APIs
 
-[`$listen(handler, options, config)`]()
+[`$listen(handler, options, config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#listenhandler-options-config)
 
-[`$schedule(handler, options, config)`]()
+[`$schedule(handler, options, config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#schedulehandler-options-config)
 
-[`$subscribe(handler, options, config)`]()
+[`$subscribe(handler, options, config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#subscribehandler-options-config)
 
-[`beginScene(sceneDef)`]() (Scene API)
+[`beginScene(sceneDef)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#scene-auto-cleanup) (Scene API)
 
-[`defineAutoCleanup(cleanupFn)`]() (Auto Cleanup API)
+[`defineAutoCleanup(cleanupFn)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#auto-cleanup) (Auto Cleanup API)
 
-[`genTargetID(config)`]() (Target ID API)
+[`genTargetID(config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners) (Target ID API)
 
 <br/>
 

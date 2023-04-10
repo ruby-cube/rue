@@ -31,11 +31,11 @@ Archer is a system for sending and receiving targeted messages/commands across s
 
 ## Archer API
 
-`defineMessage(config)` 
+[`defineMessage(config)`](https://github.com/ruby-cube/rue/tree/main/packages/archer#definemessageconfig) 
 
-`send(MESSAGE, {to: targetID }, data)` 
+[`send(MESSAGE, {to: targetID }, data)`](https://github.com/ruby-cube/rue/tree/main/packages/archer#sendmessage-to-targetid--data)
 
-`heed(MESSAGE, targetID, callback)`
+[`heed(MESSAGE, targetID, callback)`](https://github.com/ruby-cube/rue/tree/main/packages/archer#heedmessage-targetid-handler)
 
 </br>
 
