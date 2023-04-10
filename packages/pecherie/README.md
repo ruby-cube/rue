@@ -12,7 +12,7 @@
 
 Pêcherie is an exploration into how to make asynchronous and event-driven programming more developer-friendly. It exposes an API that creates custom events, targeted and un-targeted.
 
-Pêcherie is based on the Planify event system. See Planify for an overview of foundational concepts as well as examples and explanations of one-time listeners vs sustained listeners, preventing memory leaks, and targeted listeners.
+Pêcherie is based on the Planify event system. See [Planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src) for an overview of foundational concepts as well as examples and explanations of one-time listeners vs sustained listeners, preventing memory leaks, and targeted listeners.
 
 <br/>
 
