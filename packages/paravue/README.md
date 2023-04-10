@@ -31,6 +31,10 @@ Make reactivity explicit for both refs and reactives.  Eliminates `.value` for r
 <br/>
 Planified versions of Vue’s `watch` and `computed`
 
+Component Utils
+<br/>
+Planified version of Vue's `onUnmounted` and a simple `isSettingUpComponent` function for checking whether a function is invoked during component setup.
+
 <br/>
 <br/>
 
