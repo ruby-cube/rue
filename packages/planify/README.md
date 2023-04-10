@@ -482,7 +482,7 @@ The functions provided by [Pêcherie](https://github.com/ruby-cube/rue/tree/main
 <br/>
 
 ### `$listen(handler, options, config)`
-Sets up a listener. Depending on options and config, this could beahave as a one-time listener or a sustained listener.
+Sets up a listener. Depending on options and config, this could behave as a one-time listener or a sustained listener.
 
 #### Syntax
 ```tsx
