@@ -36,7 +36,7 @@ The core dependency for the other tools in this category. Designed to make async
 <br/>
 Creates targeted and untargeted process hooks for your application/modules.
 
-[**🏹 Archer**](https://www.notion.so/Archer-42264c94379042f88e88d29d85db236b)
+[**🏹 Archer**](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src)
 <br/>
 Sends and receives targeted messages/commands.
 
