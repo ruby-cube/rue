@@ -13,6 +13,13 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 
 <br/>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## Table of Contents
 
 - Thread API

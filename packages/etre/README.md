@@ -12,6 +12,13 @@ Composition over inheritance, they say. How about both? Être is an exploration 
 
 </br>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## Table of Contents
 
 - Concepts

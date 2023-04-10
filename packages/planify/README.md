@@ -21,6 +21,13 @@ Since Planify represents the overarching event system, this README presents more
 
 <br/>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## Table of Contents
 
 - [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)

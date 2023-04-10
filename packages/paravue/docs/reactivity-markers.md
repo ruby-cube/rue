@@ -14,6 +14,13 @@ This library eliminates the need for writing `.value` while providing visual mar
 
 <br/>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## The API
 
 `r$(ref)`

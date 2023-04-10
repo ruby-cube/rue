@@ -15,6 +15,13 @@ Pêcherie is based on the Planify event system. See Planify for an overview of f
 
 <br/>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## Table of Contents
 
 - Pêcherie API

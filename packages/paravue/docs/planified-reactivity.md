@@ -12,6 +12,13 @@ For rare use cases, where maybe you want to pass `watch` as a cleanup scheduler 
 
 <br/>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## The API
 
 `onChange(accessor, handler, options)`

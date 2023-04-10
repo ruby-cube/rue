@@ -12,6 +12,13 @@ Paravue is a collection of tools built on top of Vue and Vue’s reactivity syst
 
 <br/>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+</br>
+
 ## The Tools
 
 [Reactivity Markers](https://www.notion.so/Reactivity-Markers-17fb2c4de8f845c48946be4221d3b1cc)
