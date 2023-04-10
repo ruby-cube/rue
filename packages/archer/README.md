@@ -15,8 +15,8 @@ Archer is a system for sending and receiving targeted messages/commands across s
 
 ## Installation
 
-```console
-*(coming soon)*
+```bash
+(coming soon ...)
 ```
 
 </br>
