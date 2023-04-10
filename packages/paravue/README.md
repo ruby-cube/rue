@@ -23,17 +23,17 @@ Paravue is a collection of tools built on top of Vue and Vue’s reactivity syst
 
 ## The Tools
 
-[Reactivity Markers](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md#goto-src)
+[**Reactivity Markers**](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md#goto-src)
 <br/>
 Make reactivity explicit for both refs and reactives.  Eliminates `.value` for refs.
 
-[Planified Reactivity](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/planified-reactivity.md#goto-src)
+[**Planified Reactivity**](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/planified-reactivity.md#goto-src)
 <br/>
 Planified versions of Vue’s `watch` and `computed`
 
-Component Utils
+**Component Utils**
 <br/>
-Planified version of Vue's `onUnmounted` and a simple `isSettingUpComponent` function for checking whether a function is invoked during component setup.
+Planified version of Vue's `onUnmounted` and a simple `isSettingUpComponent` function for checking whether a function was invoked during component setup.
 
 <br/>
 <br/>
