@@ -44,7 +44,7 @@ Since Planify represents the overarching event system, this README presents more
         - [Stop/Cancel](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
         - [Scene Auto-cleanup](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Memory Leak Warnings](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-- [Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+- [Targeted Listeners](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners)
 - [The APIs]()
 - [Planify API](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
 - [Planned Features]()

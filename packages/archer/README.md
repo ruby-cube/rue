@@ -23,10 +23,10 @@ Archer is a system for sending and receiving targeted messages/commands across s
 
 ## Table of Contents
 
-- Archer API
-- Basic Usage
-- Use Case
-- Targeted Listening
+- [Archer API](https://github.com/ruby-cube/rue/tree/main/packages/archer#archer-api)
+- [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/archer#basic-usage)
+- [Use Case](https://github.com/ruby-cube/rue/tree/main/packages/archer#use-case)
+- [Targeted Listening](https://github.com/ruby-cube/rue/tree/main/packages/archer#targeted-listening)
 </br>
 
 ## Archer API
@@ -201,7 +201,7 @@ heed(HIDE_ITEM, item, (data) => {
 
 ## Targeted Listening
 
-Archer’s heed function is a targeted listener for performance reasons. See [Planify: Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496) for more information on targeted listeners and how to generate deterministic target ids.
+Archer’s heed function is a targeted listener for performance reasons. See [Planify: Targeted Listeners](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners) for more information on targeted listeners and how to generate deterministic target ids.
 
 <br/>
 <br/>

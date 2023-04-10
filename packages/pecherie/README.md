@@ -229,7 +229,7 @@ type Config = {
 
 ## Target IDs
 
-The targetID can be any type so long as the emitter module and listener module agree on what to use as an identifier. See [Planify: Targeted Listeners](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496) for more information on targeted listeners and how to generate deterministic target ids.
+The targetID can be any type so long as the emitter module and listener module agree on what to use as an identifier. See [Planify: Targeted Listeners](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners) for more information on targeted listeners and how to generate deterministic target ids.
 
 <br/>
 <br/>
