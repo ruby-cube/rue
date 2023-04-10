@@ -1,5 +1,5 @@
 #### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/paravue)
-[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [paravue](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; **planified reactivity**  &nbsp;&nbsp;|&nbsp; &nbsp; [reactivity markers](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md)
+[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [paravue](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; **planified reactivity**  &nbsp;&nbsp;|&nbsp; &nbsp; [reactivity markers](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md#goto-src)
 # Planified Reactivity
 
 <aside>
@@ -98,6 +98,6 @@ function initDrag(event){
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/planified-reactivity.md)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/planified-reactivity.md#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
