@@ -24,7 +24,7 @@ Since Planify represents the overarching event system, this README presents more
 ## Table of Contents
 
 - [Concepts](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
-    - [Event vs Hook vs Message]()
+    - [Event vs Hook vs Message vs Scheduling]()
     - [One-time Listener vs Sustained Listener](https://www.notion.so/Overkill-Check-Jan-8-99b852805af84c12aa64779bad3b0a40)
     - [Listener Morphing](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
     - [Schedulers](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
