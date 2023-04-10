@@ -23,14 +23,14 @@ Composition over inheritance, they say. How about both? Être is an exploration 
 
 ## Table of Contents
 
-- Concepts
-- Basic Usage
-- Non-redundant Inheritance
-- Auto-compose vs Manual Compose
-- Typescript hints and the `__dev__` parameter
-- Rekey-ing
-- Interfaces
-- Type-checking
+- [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/etre#concepts-abstract-roles--prereqs)
+- [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
+- [Non-redundant Inheritance](https://github.com/ruby-cube/rue/tree/main/packages/etre#non-redundant-inheritance)
+- [Auto-compose vs Manual Compose](https://github.com/ruby-cube/rue/tree/main/packages/etre#auto-compose-vs-manual-compose)
+- [Typescript hints and the `__dev__` parameter](https://github.com/ruby-cube/rue/tree/main/packages/etre#typescript-hints-and-the-__dev__-parameter)
+- [Rekey-ing](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
+- [Interfaces](https://github.com/ruby-cube/rue/tree/main/packages/etre#interfaces)
+- [Type-checking](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
 </br>
 
 ## Concepts: Abstract Roles & Prereqs
