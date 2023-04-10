@@ -203,6 +203,7 @@ Planify prevents memory leaks via three main approaches:
 ### Cleanup Strategies
 
 Planify provides four main cleanup strategies:
+<br/>
 
 #### Auto-cleanup
 
@@ -236,6 +237,8 @@ export default defineComponent({
 })
 ```
 Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See Planify API for how to planify existing hooks.
+
+<br/>
 
 #### The options argument
 
@@ -289,8 +292,9 @@ onPopulated(() => {
     // do work...
 }, { unlessCanceled: (cancel) => { return onDocClosed(cancel); } })
 ```
-    
-#### The stop/cancel method**
+<br/>
+
+#### The stop/cancel method
 
 Stop a listener by calling the stop method on an `ActiveListener`; cancel a pending op by calling the cancel method on a `PendingOp`.
     
@@ -306,7 +310,8 @@ onMouseUp(document, () => {
     mouseMoveListener.stop();
 })
 ```
-    
+<br/>
+
 #### Scene Auto-Cleanup
 
 Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
