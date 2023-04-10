@@ -44,17 +44,17 @@ const firstName = ref("Kermit");
 const lastName = ref("The Frog");
 
 
-// r$: reactive reads
+// reactive reads
 const fullName = computed(() => r$(firstName) + " " + r$(lastName));
 
 
-// nr: "non-reactive" reads
+// "non-reactive" reads
 if (nr(firstName).startsWith("K")) {
     // do this
 }
 
 
-// set$: reactive set
+// reactive set
 set$(firstName, "Sir Robin")
 
 
@@ -80,17 +80,17 @@ const item = reactive({
 })
 
 
-// v$: reactive reads
+// reactive reads
 const enthusedContent = computed(() => v$(item.content) + "!")
 
 
-// nv: "non-reactive" reads
+// "non-reactive" reads
 if (bullet === nv(item.bullet)) {
    // do that
 }
 
 
-// set$: reactive set
+// reactive set
 set$: item.bullet = "•"  // co-opting Javascript labels*
 
 
