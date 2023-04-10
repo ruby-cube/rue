@@ -98,6 +98,6 @@ function initDrag(event){
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/planified-reactivity.md)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

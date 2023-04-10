@@ -126,6 +126,6 @@ Aesthetics aside, the primary purpose of this library to make reactive tracking 
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/paravue/docs/reactivity-markers.md)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

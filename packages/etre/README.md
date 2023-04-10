@@ -336,6 +336,6 @@ const isFrog = enacts($Frog, character);
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/etre#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

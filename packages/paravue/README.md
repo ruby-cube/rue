@@ -34,6 +34,6 @@ Planified versions of Vue’s `watch` and `computed`
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
