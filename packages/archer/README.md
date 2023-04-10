@@ -66,7 +66,7 @@ type Config = {
 type MessageConfig = Config;
 ```
 
-See Hook Configuration for info on configuration values.
+See [Hook Configuration](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#hook-configuration) for info on configuration values.
 
 </br>
 
@@ -133,7 +133,7 @@ heed(HIDE_ITEM, item, () => {
 
 ## Use Case
 
-As with all of the emitters and listeners in this repo, message passing via an archer is unnecessary if the sender and receiver are declared in the same scope. Simple function declaration and invocation will suffice:
+Message passing via an archer is unnecessary if the sender and receiver are declared in the same scope. Simple function declaration and invocation will suffice:
 
 ```tsx
 // simple invocation
@@ -148,19 +148,7 @@ function reButtonClick() {
 }
 ```
 
-Message passing becomes useful when you are working across scopes. For example, let’s say you have a shared function that mutates the state of multiple components. Without message passing, you would allow the shared function to mutate the component’s local state by passing in a callback function like so:
-
-```tsx
-// a shared function
-
-function hideItems(items, hideItem){ // pass in the method
-    for (const item of items) {
-        hideItem(item);
-    }
-}
-```
-
-However, this can be complicated if the event handler that calls `hideItems` is registered in a component different from the component’s whose state needs to be mutated. This is where Archer comes in handy.
+However, message passing becomes useful when you are working across scopes. For example, let’s say you have a function, `hideItems` that mutates component state. This can be complicated if the event handler that calls `hideItems` is registered in a component that is not directly related to the component’s whose state is being mutated. This is where Archer comes in handy.
 
 ```tsx
 // shared dependency 
