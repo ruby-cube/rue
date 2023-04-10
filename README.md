@@ -96,7 +96,7 @@ Provides planified versions of Vue’s `watch` and `computed`, component utils, 
 
 ## Compatibility
 
-While most of the tools are theoretically framework-agnostic, they were built with Vue 3 in mind and have not been tested with other frameworks. Some of the tools leverage Vue 3’s (awesome!) reactivity system, but since Vue 3 reactivity is decoupled from the Vue component framework, these tools can be used apart from Vue components, with any other framework or vanilla javascript.
+While most of the tools are theoretically framework-agnostic, they were built with Vue 3 in mind and have not been tested with other frameworks. While some of the tools leverage Vue 3’s (awesome!) reactivity system, since Vue 3 reactivity is decoupled from the Vue component framework, these tools can be used apart from Vue components, with any other framework or vanilla javascript.
 
 Typescript is highly encouraged for less headaches when defining types.
 
