@@ -204,7 +204,9 @@ Planify prevents memory leaks via three main approaches:
 
 Planify provides four main cleanup strategies:
 
-- **Auto-cleanup:** One-time listeners enjoy automatic cleanup inherently. Sustained listeners can also enjoy automatic cleanup if initialized within a scope for which auto-cleanup has been defined. To enable auto-cleanup, define an auto-cleanup function before initializing an app:
+#### Auto-cleanup
+
+One-time listeners enjoy automatic cleanup inherently. Sustained listeners can also enjoy automatic cleanup if initialized within a scope for which auto-cleanup has been defined. To enable auto-cleanup, define an auto-cleanup function before initializing an app:
 
     ```tsx
     // main.ts
