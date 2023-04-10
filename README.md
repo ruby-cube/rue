@@ -32,7 +32,7 @@ The repo contains the following categories of tools: Event-driven programming, d
 <br/>
 The core dependency for the other tools in this category. Designed to make asynchronous, event-driven programming more readable and less prone to memory leaks.
 
-[**🐟 Pêcherie**](https://www.notion.so/P-cherie-acfd28a3d5e94c099603107bd32af191)
+[**🐟 Pêcherie**](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src)
 <br/>
 Creates targeted and untargeted process hooks for your application/modules.
 
