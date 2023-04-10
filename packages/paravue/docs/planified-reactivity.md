@@ -3,7 +3,7 @@
 # Planified Reactivity
 
 <aside>
-⚠️ <b>Experimental</b>: A work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
+⚠️ <b>Experimental:</b> A work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
 </aside>
 <br/>
 <br/>

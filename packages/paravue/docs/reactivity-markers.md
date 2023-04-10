@@ -3,7 +3,7 @@
 # Reactivity Markers
 
 <aside>
-⚠️ <b>Experimental</b>: Reactivity Markers is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
+⚠️ <b>Experimental:</b> Reactivity Markers is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
 </aside>
 <br/>
 <br/>
