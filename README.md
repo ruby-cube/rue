@@ -18,12 +18,6 @@ The repo contains the following categories of tools: Event-driven programming, d
 
 <br/>
 
-## Installation
-
-*(coming soon)*
-
-<br/>
-
 ## Demo
 
 *(coming eventually)*
