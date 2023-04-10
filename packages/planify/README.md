@@ -267,7 +267,7 @@ onPopulated(() => {
 }, { until: (stop) => doc.addEventListener("blur", stop, { once: true }) }) 
 ```
 
-**Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the Pêcherie API.
+**Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the [Pêcherie API](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#pecherie-api).
     
 **Important:** The cancellation scheduler (`onDocClosed` in the example below) must return a `PendingCancelOp` to ensure the cancel function is cleaned up once the handler is run. Typescript will safeguard against malformed cancellation schedulers by erroring:
     
