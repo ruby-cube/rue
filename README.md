@@ -149,7 +149,7 @@ const [castMounted, onMounted] = createHook({
 ## Contribution
 I'm currently not looking for code contributions. However, I'm completely new to open source and would appreciate guidance from experienced open sourcerors particularly with regards to publishing to NPM, semantic versioning, managing monorepos, configuring package.json, typescript, build tools, scripts, and other dev ops stuff.
 
-I'm also relatively new to software engineering itself (~2 years) and have been learning and building in isolation, so, to be quite honest, I don't know if what I've built and written is extremely naive. I'm not even clear on whether [Planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src) and [Être](https://github.com/ruby-cube/rue/tree/main/packages/etre#goto-src) are considered libraries or frameworks. Thoughts and gentle feedback from more experienced devs would be appreciated.
+I'm also relatively new to software engineering itself and have been learning and building in isolation, so, to be quite honest, I don't know if what I've built and written is extremely naive. I'm not even clear on whether [Planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src) and [Être](https://github.com/ruby-cube/rue/tree/main/packages/etre#goto-src) are considered libraries or frameworks. Thoughts and gentle feedback from more experienced devs would be appreciated.
 
 Send a note to ruby.yiong@gmail.com. I would especially love to connect with someone in the Seattle area, though help from anywhere in the world would be appreciated too.
 
