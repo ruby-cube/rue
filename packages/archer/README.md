@@ -18,7 +18,6 @@ Archer is a system for sending and receiving targeted messages/commands across s
 ```bash
 (coming soon ...)
 ```
-
 </br>
 
 ## Table of Contents
