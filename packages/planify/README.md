@@ -208,170 +208,174 @@ Planify provides four main cleanup strategies:
 
 One-time listeners enjoy automatic cleanup inherently. Sustained listeners can also enjoy automatic cleanup if initialized within a scope for which auto-cleanup has been defined. To enable auto-cleanup, define an auto-cleanup function before initializing an app:
 
-    ```tsx
-    // main.ts
-    
-    defineAutoCleanup((cleanup) => { // callback receives a cleanup function as the argument
-        if (isSettingUpComponent()) {
-            return onUnmounted(cleanup); // must return a PendingOp
-        }
-        if (isMakingModel()) {
-            return onDestroyed(cleanup); // must return a PendingOp
-        }
-    })
-    
-    const app = createApp(App);
-    app.mount('#app');
-    ```
+```tsx
+// main.ts
 
-    ```jsx
-    // App.vue
-    
-    export default defineComponent({
-        setup(){
-            onPopulated(() => {  // auto-cleanup when component unmounts
-                // do work
-            })
-        }
-    })
-    ```
-    Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See Planify API for how to planify existing hooks.
-
-- **The options argument:** Specify when to stop/cancel a listener with the `until` / `unlessCanceled` property of the options argument.
-    
-    ```jsx
-    onPopulated(() => {
-        // so much work...
-    }, { until: onDocClosed })    
-    ```
-    
-    ```jsx
-    // if the listener requires additional parameters beyond the handler:
-    
-    onPopulated(() => {
-        // so much work...
-    }, { unlessCanceled: (cancel) => onTimeout(5000, cancel) }) 
-    ```
-    
-    ```jsx
-    // NOT RECOMMENDED: using a non-planified listener 
-    // (requires verbosity and conscientious programming to prevent memory leaks)
-    
-    onPopulated(() => {
-        // so much work...
-    }, { until: (stop) => doc.addEventListener("blur", stop, { once: true }) }) 
-    ```
-    
-    **Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the Pêcherie API.
-    
-    **Important:** The cancellation scheduler (`onDocClosed` in the example below) must return a `PendingCancelOp` to ensure the cancel function is cleaned up once the handler is run. Typescript will safeguard against malformed cancellation schedulers by erroring:
-    
-    ```jsx
-    // GOOD:
-    onPopulated(() => {
-        // do work...
-    }, { unlessCanceled: onDocClosed })
-    
-    // GOOD, but unnecessarily verbose:
-    onPopulated(() => {
-        // do work...
-    }, { unlessCanceled: (cancel) => onDocClosed(cancel) })
-    
-    // BAD:
-    onPopulated(() => {
-        // do work...
-    }, { unlessCanceled: (cancel) => { onDocClosed(cancel) } }) // returns void, Typescript will throw error
-    
-    // GOOD, but unnecessarily verbose
-    onPopulated(() => {
-        // do work...
-    }, { unlessCanceled: (cancel) => { return onDocClosed(cancel); } })
-    ```
-    
-
-- **The stop/cancel method**:  Stop a listener by calling the stop method on an `ActiveListener`; cancel a pending op by calling the cancel method on a `PendingOp`.
-    
-    ```jsx
-    // stop an active listener
-    
-    const mouseMoveListener = 
-        onMouseMove(document, () => { 
-            // do work 
-        });
-    
-    onMouseUp(document, () => {
-        mouseMoveListener.stop();
-    })
-    ```
-    
-- **Scene Auto-Cleanup:** Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
-    
-    ```js
-    // SFC script
-    import { beginScene } from "@rue/planify"
-    
-    // create a 'dragging' scene
-    function initDrag(event){
-        const el = event.target;
-        
-        beginScene((dragging) => { // callback runs synchronously
-            
-            onMouseEnter(el, () => {
-                // do work
-            });
-     
-            onMouseLeave(el, () => {
-                // do work
-            });
-    
-            onMouseMove(document, () => {
-                // do work
-            });
-
-            onMouseUp(document, () => {
-                // do work
-                dragging.end();  // stops all listeners registered during scene
-            });
-        });
+defineAutoCleanup((cleanup) => { // callback receives a cleanup function as the argument
+    if (isSettingUpComponent()) {
+        return onUnmounted(cleanup); // must return a PendingOp
     }
-    ```
-    
-    ```html
-    <!-- SFC template -->
-    <div @mousedown="initDrag">item</div>
-    ```
-    
+    if (isMakingModel()) {
+        return onDestroyed(cleanup); // must return a PendingOp
+    }
+})
 
-    The `Scene` object can alternatively be accessed from outside the scene:
+const app = createApp(App);
+app.mount('#app');
+```
 
-    ```jsx
-    // This example doesn't represent a good use case; will replace with better example if I think of one...
+```jsx
+// App.vue
+
+export default defineComponent({
+    setup(){
+        onPopulated(() => {  // auto-cleanup when component unmounts
+            // do work
+        })
+    }
+})
+```
+Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See Planify API for how to planify existing hooks.
+
+#### The options argument
+
+Specify when to stop/cancel a listener with the `until` / `unlessCanceled` property of the options argument.
     
-    function initDrag(event){
-        const el = event.target;
+```jsx
+onPopulated(() => {
+    // so much work...
+}, { until: onDocClosed })    
+```
+
+```jsx
+// if the listener requires additional parameters beyond the handler:
+
+onPopulated(() => {
+    // so much work...
+}, { unlessCanceled: (cancel) => onTimeout(5000, cancel) }) 
+```
+
+```jsx
+// NOT RECOMMENDED: using a non-planified listener 
+// (requires verbosity and conscientious programming to prevent memory leaks)
+
+onPopulated(() => {
+    // so much work...
+}, { until: (stop) => doc.addEventListener("blur", stop, { once: true }) }) 
+```
+
+**Note:** `stop` and `cancel` functions will only run once (if ever) and will be auto-cleaned-up if passed into a planified listener. If passed into a non-planified listener, the developer will be responsible for cleaning up the cleanup, resulting in cleanup hell. To avoid this, you can planify existing listeners/schedulers using the Planify API or create new planified listeners using the Pêcherie API.
     
-        const dragging = 
-            beginScene(() => {
+**Important:** The cancellation scheduler (`onDocClosed` in the example below) must return a `PendingCancelOp` to ensure the cancel function is cleaned up once the handler is run. Typescript will safeguard against malformed cancellation schedulers by erroring:
     
-                onMouseEnter(el, () => {
-                    // do work
-                });
-     
-                onMouseLeave(el, () => {
-                    // do work
-                });
+```jsx
+// GOOD:
+onPopulated(() => {
+    // do work...
+}, { unlessCanceled: onDocClosed })
+
+// GOOD, but unnecessarily verbose:
+onPopulated(() => {
+    // do work...
+}, { unlessCanceled: (cancel) => onDocClosed(cancel) })
+
+// BAD:
+onPopulated(() => {
+    // do work...
+}, { unlessCanceled: (cancel) => { onDocClosed(cancel) } }) // returns void, Typescript will throw error
+
+// GOOD, but unnecessarily verbose
+onPopulated(() => {
+    // do work...
+}, { unlessCanceled: (cancel) => { return onDocClosed(cancel); } })
+```
     
-                onMouseMove(document, () => {
-                    // do work
-                });
-            });
+#### The stop/cancel method**
+
+Stop a listener by calling the stop method on an `ActiveListener`; cancel a pending op by calling the cancel method on a `PendingOp`.
     
+```jsx
+// stop an active listener
+
+const mouseMoveListener = 
+    onMouseMove(document, () => { 
+        // do work 
+    });
+
+onMouseUp(document, () => {
+    mouseMoveListener.stop();
+})
+```
+    
+#### Scene Auto-Cleanup
+
+Manage the lifetime of listeners by creating an impromptu listener scope, a “scene”, with  `beginScene`
+    
+```js
+// SFC script
+import { beginScene } from "@rue/planify"
+
+// create a 'dragging' scene
+function initDrag(event){
+    const el = event.target;
+    
+    beginScene((dragging) => { // callback runs synchronously
+        
+        onMouseEnter(el, () => {
+            // do work
+        });
+ 
+        onMouseLeave(el, () => {
+            // do work
+        });
+
+        onMouseMove(document, () => {
+            // do work
+        });
+
         onMouseUp(document, () => {
             // do work
             dragging.end();  // stops all listeners registered during scene
-        }, { once: true } );
-    }
-    ```
+        });
+    });
+}
+```
+
+```html
+<!-- SFC template -->
+<div @mousedown="initDrag">item</div>
+```
+    
+The `Scene` object can alternatively be accessed from outside the scene:
+
+```jsx
+// This example doesn't represent a good use case; will replace with better example if I think of one...
+
+function initDrag(event){
+    const el = event.target;
+
+    const dragging = 
+        beginScene(() => {
+
+            onMouseEnter(el, () => {
+                // do work
+            });
+ 
+            onMouseLeave(el, () => {
+                // do work
+            });
+
+            onMouseMove(document, () => {
+                // do work
+            });
+        });
+
+    onMouseUp(document, () => {
+        // do work
+        dragging.end();  // stops all listeners registered during scene
+    }, { once: true } );
+}
+```
 <br/>
 
 ### Memory Leak Warnings
