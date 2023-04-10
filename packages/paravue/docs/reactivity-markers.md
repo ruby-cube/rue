@@ -100,18 +100,13 @@ doSomething(item)
 
 Note that in the case of reactive objects, the reactive marker functions do absolutely nothing functionally and simply returns the input value. The sole purpose is to make reactivity explicit to the developer. While this may seem extraneous, it does keep the door open for potential build time transformations, such as transforming `nv(item.bullet)` to `toRaw(item).bullet`. Any extraneous calls can also be removed during build time.
 
-<aside>
 ⚠️ * co-opting Javascript’s features is controversial.. but it’s temptingly the most elegant and least error-prone solution as compared to alternatives:
        - passing in key and value, `set$(item, “bullet”, “•”)`
        - callback, `set$(() ⇒ item.bullet = “•”)` 
        - co-opting a function call, `set$(item.bullet = “•”)` (yes, this is valid javascript)
 
-</aside>
-
-<aside>
 ⚠️ **Warning**: There are no safeguards in place for appropriate usage of these functions. It’s purely up to the developer whether the function correctly marks reactivity or not. Since they are cosmetic in nature, their usage can become incongruous during future code edits in a similar way comments can become outdated.
 
-</aside>
 <br/>
 <br/> 
 
