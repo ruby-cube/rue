@@ -28,7 +28,7 @@ The repo contains the following categories of tools: Event-driven programming, d
 
 ***Event-driven Programming***
 
-[**🪶 Planify**](https://www.notion.so/Planify-8394600940b34c8ca76c4eca84eb5496)
+[**🪶 Planify**](https://github.com/ruby-cube/rue/tree/main/packages/planify)
 <br/>
 The core dependency for the other tools in this category. Designed to make asynchronous, event-driven programming more readable and less prone to memory leaks.
 
