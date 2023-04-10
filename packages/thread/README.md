@@ -145,6 +145,6 @@ Of course if a handler performs a specific action, it would make sense to simply
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-#planify-)
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
