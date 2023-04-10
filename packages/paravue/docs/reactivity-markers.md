@@ -126,4 +126,4 @@ Aesthetics aside, the primary purpose of this library to make reactive tracking 
 
 [[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
 
-© 2023-present Ruby Y Wang
+© 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

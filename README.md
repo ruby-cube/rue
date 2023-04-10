@@ -177,4 +177,4 @@ A complex codebase, with its myriad paths of connection, is perhaps like wanderi
 
 [[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
 
-© 2023-present Ruby Y Wang
+© 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

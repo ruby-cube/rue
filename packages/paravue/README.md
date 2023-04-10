@@ -28,3 +28,10 @@ Make reactivity explicit for both refs and reactives.  Eliminates `.value` for r
 [Planified Reactivity](https://www.notion.so/Planified-Reactivity-630e6b133191460b8c8c0f7ee2a69e22)
 <br/>
 Planified versions of Vue’s `watch` and `computed`
+
+<br/>
+<br/>
+
+[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-)
+
+© 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
