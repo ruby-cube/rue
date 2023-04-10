@@ -40,7 +40,7 @@ Creates targeted and untargeted process hooks for your application/modules.
 <br/>
 Sends and receives targeted messages/commands.
 
-[**⏳ Thread**](https://www.notion.so/Thread-3a8048a8637c4571a7a799dd915075d0)
+[**⏳ Thread**](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src)
 <br/>
 Provides planified versions of schedulers and event listeners from Web API.
 
