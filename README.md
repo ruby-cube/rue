@@ -110,7 +110,7 @@ Some conventions you may notice in the source code and the examples:
 - A dollar sign prefix `$` is used to indicate some sort of specialness. I use it in my codebases and examples to indicate the following:
     - a macro variable that will be (or potentially will be) eliminated or transformed at build time
     - a variable that serves as a stand-in until the actual value is available to plug in
-    - in the Être framework, an abstract role, which behaves distinctly from a class
+    - in the Être framework, a role object
 <br/>
 
 ## The `$type` variable
