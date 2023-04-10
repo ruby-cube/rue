@@ -32,13 +32,13 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 
 Planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
-`addPS(callback)` 
+[`addPS(callback)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#addpscallback) 
 
-`queueTask(callback, options?)`
+[`queueTask(callback, options?)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#queuetaskcallback-options)
 
-`beforeScreenPaint(callback, options?)`
+[`beforeScreenPaint(callback, options?)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#beforescreenpaintcallback-options)
 
-`onTimeout(delay, callback, options?)`
+[`onTimeout(delay, callback, options?)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#ontimeoutdelay-callback-options)
 
 <br/>
 
