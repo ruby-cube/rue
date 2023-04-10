@@ -44,7 +44,7 @@ Sends and receives targeted messages/commands.
 <br/>
 Provides planified versions of schedulers and event listeners from Web API.
 
-[**🌴 Paravue**](https://www.notion.so/Paravue-838d8b1e6cf84b6eb1a5bea6d361ca9f)
+[**🌴 Paravue**](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src)
 <br/>
 Provides planified versions of Vue’s watch and computed as well as reactivity markers.
 
@@ -83,7 +83,7 @@ Provides planified versions of Vue’s watch and computed as well as reactivity 
 
 ***Vue Reactivity***
 
-[**🌴 Paravue**](https://www.notion.so/Paravue-838d8b1e6cf84b6eb1a5bea6d361ca9f)
+[**🌴 Paravue**](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src)
 <br/>
 Provides planified versions of Vue’s watch and computed as well as reactivity markers.
 

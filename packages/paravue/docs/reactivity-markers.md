@@ -1,5 +1,5 @@
 #### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/planify)
-[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  paravue  &nbsp;&nbsp;|&nbsp; &nbsp; planified reactivity  &nbsp;&nbsp;|&nbsp; &nbsp; reactivity markers
+[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  [paravue](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; planified reactivity  &nbsp;&nbsp;|&nbsp; &nbsp; reactivity markers
 # Reactivity Markers
 
 <aside>

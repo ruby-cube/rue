@@ -18,7 +18,7 @@ Performance is another potential concern when it comes to event-driven architect
 
 This project is the result of an exploration into how an event system might include a developer-friendly cleanup interface for better memory leak prevention as well as a method of targeted listening for better performance. 
 
-Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), Pêcherie, and Archer. 
+Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), [Pêcherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src), and [Archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src). 
 
 <br/>
 
@@ -176,7 +176,7 @@ onPopulated(() => addPS(() => {
 }))
 ```
 
-Alternatively, when using Pêcherie hooks, omit the callback function and options parameter to queue a microtask after an event is emitted via a promise:
+Alternatively, when using [Pêcherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src) hooks, omit the callback function and options parameter to queue a microtask after an event is emitted via a promise:
 
 ```tsx
 onPopulated()
@@ -380,7 +380,7 @@ Unless the developer is impeccably conscientious about cleanup, memory leaks wil
 
 ## Targeted Listeners
 
-Sometimes it is better for performance to target a particular instance when communicating via emitters. For this reason, Pêcherie and Archer provide targeted listeners. Targeted listeners take in a targetID, which can be any type, so long as the emitter module and listener module agree on what to use as an identifier. 
+Sometimes it is better for performance to target a particular instance when communicating via emitters. For this reason, [Pêcherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src) and [Archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src) provide targeted listeners. Targeted listeners take in a targetID, which can be any type, so long as the emitter module and listener module agree on what to use as an identifier. 
 
 ```tsx
 // using an object as the targetID with Archer API
@@ -466,7 +466,7 @@ function workHard(item, index){
 
 ## Planify API
 
-The functions provided by Pêcherie, Archer, [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), and Paravue should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen` and `$schedule` functions to acheive this.
+The functions provided by [Pêcherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src), [Archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src), [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), and [Paravue](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src) should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen` and `$schedule` functions to acheive this.
 
 <br/>
 

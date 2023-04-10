@@ -1,5 +1,5 @@
-#### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/planify)
-[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  paravue  &nbsp;&nbsp;|&nbsp; &nbsp; actionry
+#### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/paravue)
+[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  **paravue**  &nbsp;&nbsp;|&nbsp; &nbsp; actionry
 # Paravue 🌴
 
 <aside>
