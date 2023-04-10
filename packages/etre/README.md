@@ -1,5 +1,5 @@
 #### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/etre)
-[@rue](https://github.com/ruby-cube/rue)  &nbsp;&nbsp;|&nbsp; &nbsp;  **etre**  &nbsp;&nbsp;|&nbsp; &nbsp; modos
+[@rue](https://github.com/ruby-cube/rue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp;  **etre**  &nbsp;&nbsp;|&nbsp; &nbsp; modos
 # Être 🪴
 
 <aside>
