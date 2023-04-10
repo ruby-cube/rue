@@ -236,7 +236,7 @@ export default defineComponent({
     }
 })
 ```
-Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See Planify API for how to planify existing hooks.
+Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See [Planify API](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-api) for how to planify existing hooks.
 
 <br/>
 
