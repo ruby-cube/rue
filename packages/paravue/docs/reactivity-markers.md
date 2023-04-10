@@ -26,21 +26,14 @@ This library eliminates the need for writing `.value` while providing visual mar
 ## The API
 
 **for refs:**
-
-`r$(ref)`
-
-`nr(ref)`
-
-`set$(ref, value)`
-<br/>
+- `r$(ref)`
+- `nr(ref)`
+- `set$(ref, value)`
 
 **for reactives:**
-
-`v$(reactive.prop)`
-
-`nv(reactive.prop)`
-
-`set$: reactive.prop = value`
+- `v$(reactive.prop)`
+- `nv(reactive.prop)`
+- `set$: reactive.prop = value`
 
 <br/>
 
