@@ -98,7 +98,7 @@ set$: item.bullet = "•"  // co-opting Javascript labels*
 doSomething(item)
 ```
 
-Note that in the case of reactive objects, the reactive marker functions do absolutely nothing functionally and simply returns the input value. The sole purpose is to make reactivity explicit to the developer. While this may seem extraneous, it does keep the door open for potential build time transformations, such as transforming `nv(item.bullet)` to `toRaw(item).bullet`. Any extraneous calls can also be removed during build time.
+Note that in the case of reactive objects, the reactive marker functions do absolutely nothing functionally and simply returns the input value. The sole purpose is to make reactivity explicit to the developer. While this may seem extraneous, it offers consistency between refs and reactives as well as keeps the door open for potential build time transformations, such as transforming `nv(item.bullet)` to `toRaw(item).bullet`. Any extraneous calls can also be removed during build time.
 
 ⚠️ * co-opting Javascript’s features is controversial.. but it’s temptingly the most elegant and least error-prone solution as compared to alternatives:
 - passing in key and value, `set$(item, “bullet”, “•”)`
