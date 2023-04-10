@@ -52,7 +52,7 @@ an alias for `queueMicrotask` from browser API. Here, microtasks are conceptuali
 addPS(() => {
     // code that will run after the original task/handlers 
     // and previously queued microtasks finish running
-    // and before the next event loop task
+    // but before the next event loop task
 });
 ```
 <br/>
