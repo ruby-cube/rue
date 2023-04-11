@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from "vitest";
-import { createHook } from "../pecherie/Hook";
+import { createHook } from "../Hook";
 import { $type } from "@rue/utils";
 
 //NOTE: Skipped during batch test runs
