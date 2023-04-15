@@ -179,7 +179,7 @@ const createFrogPrince = FrogPrince.reifier();
 
 const sirRobin = createFrogPrince(); // logs "setup" once
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Auto-compose vs Manual Compose
 
