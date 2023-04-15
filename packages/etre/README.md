@@ -1,5 +1,5 @@
-#### [goto: src](#)
-[@rue](https://github.com/ruby-cube/rue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp;  **etre**  &nbsp;&nbsp;|&nbsp; &nbsp; modos
+<a id="readme-top" href="#">goto: src</a>
+[@rue](https://github.com/ruby-cube/rue#readme-top)  &nbsp;&nbsp;|&nbsp; &nbsp;  **etre**  &nbsp;&nbsp;|&nbsp; &nbsp; modos
 # Être 🪴
 
 <aside>
@@ -32,7 +32,7 @@ Prefer composition over inheritance, they say. How about both? Être is an explo
 - [Rekey-ing](#rekey-ing)
 - [Interfaces](#interfaces)
 - [Type-checking](#type-checking)
-<p align="right"><a href="#goto-src">[top]</a></p>
+<p align="right"><a href="#readme-top">[top]</a></p>
 
 ## Concepts: Roles & Prereqs
 
@@ -354,6 +354,6 @@ Objects can be type-checked via the `enacts` function, which takes in a role as 
 const isFrog = enacts(Frog, character);
 ```
 
-<p align="right"><a href="#goto-src">[top]</a></p>
+<p align="right"><a href="#readme-top">[top]</a></p>
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
