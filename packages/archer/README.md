@@ -96,9 +96,9 @@ type Data = any;
 ### Syntax
 
 ```ts
-re(MESSAGE, targetID, handler)
-        |        |         |
-MessageConfig  TargetID  Handler
+const handler = re(MESSAGE, targetID, () => { /* ... */ })
+         |             |         |        |
+      Handler   MessageConfig  TargetID  Handler
 ```
 
 ### Type Definitions
