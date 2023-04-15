@@ -47,7 +47,7 @@ The system also allows for re-keying (in case of key collisions) and implementin
 </br>
 
 ## Être API
-[`defineRole(config)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
+[`role(config)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
 
 [`enacts(Role, object)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
 
@@ -59,11 +59,11 @@ The system also allows for re-keying (in case of key collisions) and implementin
 
 ## Basic Usage
 
-`defineRole` takes in a config object that resembles a class definition, with a `$construct` function and methods. (credit: Code examples make references to Jim Henson's *The Frog Prince* (1971))
+`role` takes in a config object that resembles a class definition, with a `$construct` function and methods. (credit: Code examples make references to Jim Henson's *The Frog Prince* (1971))
 
 ```js
 // role A
-export const Frog = defineRole({
+export const Frog = role({
     $construct(data) {
         return {
             location: data.location
@@ -75,7 +75,7 @@ export const Frog = defineRole({
 
 ```js
 // role B
-export const Prince = defineRole({
+export const Prince = role({
     $construct(data) {
         return {
             mountainOfTalent: data.mountainOfTalent
@@ -89,7 +89,7 @@ export const Prince = defineRole({
 
 ```js
 // role C (composed of role A and role B)
-export const FrogPrince = defineRole({
+export const FrogPrince = role({
     prereqs: {
         Frog,
         Prince
@@ -157,21 +157,21 @@ const sirRobin = new FrogPrince(new Frog(), new Prince()) // logs "setup" twice
 With role creation, `prereqs` are gathered into a set and each prereq is run once only.
 
 ```js
-const Character = defineRole({
+const Character = role({
     $construct(){
         console.log("setup")
     }
 })
 
-const Frog = defineRole({
+const Frog = role({
     prereqs: { Character },
 })
 
-const $Prince = defineRole({
+const Prince = role({
     prereqs: { Character },
 })
 
-const FrogPrince = defineRole({
+const FrogPrince = role({
     prereqs: { Frog, Prince },
 })
 
@@ -186,7 +186,7 @@ const sirRobin = createFrogPrince(); // logs "setup" once
 In the examples above, the `reifier` method generates a function that will auto-compose the different roles into one object. However, in cases where roles interact with each other during construction, you will need to pass a manual compose function into the `reifier`:
 
 ```js
-const Character = defineRole({
+const Character = role({
     $construct(data){
         return {
             name: format(data.name)
@@ -194,12 +194,12 @@ const Character = defineRole({
     }
 })
 
-const Frog = defineRole({
+const Frog = role({
     prereqs: { Character },
     croak() { }
 })
 
-const Prince = defineRole({
+const Prince = role({
     prereqs: { Character },
     $construct(data, formattedName) { // requires formatted name from $Character
         return {
@@ -209,7 +209,7 @@ const Prince = defineRole({
     fight() { }
 })
 
-const FrogPrince = defineRole({
+const FrogPrince = role({
     prereqs: { Frog, Prince },
     sing() { }
 })
@@ -326,7 +326,7 @@ type ICharacter = {
     talk: () => void
 }
 
-const Character = defineRole({
+const Character = role({
     interface: $type as ICharacter,
     $construct(){
         // character setup
@@ -334,7 +334,7 @@ const Character = defineRole({
     exist(){ /* ... */ }
 })
 
-const Frog = defineRole({
+const Frog = role({
     implements: $type as ICharacter,
     prereqs: {
         Character
