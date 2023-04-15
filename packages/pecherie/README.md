@@ -41,7 +41,6 @@ Pêcherie is based on the Planify event system. See [Planify](https://github.com
 ## `createHook(config)`
 
 Creates an un-targeted hook.
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### **Syntax**
 
@@ -118,7 +117,6 @@ type ScheduleStop = OneTimeListener | Scheduler | SustainedListener
 ## `createTargetedHook(config)`
 
 Creates a targeted hook. Emitters can target listeners using a target id.
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Syntax
 
