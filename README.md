@@ -90,7 +90,7 @@ Provides planified versions of schedulers and event listeners from Web API.
 <br/>
 *(coming soon-ish)* Define actions. Useful for batching reactive effects based on actions.
 
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Compatibility
 
@@ -98,7 +98,7 @@ While most of the tools are theoretically framework-agnostic, they were built wi
 
 Typescript is highly encouraged for less headaches when defining types.
 
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## The `$type` variable
 
@@ -131,7 +131,7 @@ const [castMounted, onMounted] = createHook({
     hook: "mounted",
 });
 ```
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Contribution
 I'm currently not looking for code contributions. However, I'm completely new to open source and would appreciate guidance from experienced open source maintainers.
@@ -140,7 +140,7 @@ I'm also relatively new to software engineering itself and have been learning an
 
 Send a note to my gmail: ruby (dot) yiong. I would especially love to connect with someone in the Seattle area, though help from anywhere in the world would be appreciated too.
 
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Inspiration
 
@@ -148,20 +148,18 @@ Send a note to my gmail: ruby (dot) yiong. I would especially love to connect wi
 
 I am heavily influenced and greatly inspired by Vue and its brilliant, elegant, and intuitive design, especially Vue 3’s Composition API. Vue is also how I was introduced to the concept of emitting events and lifecycle hooks. It was such a fascinating concept to me that I began exploring ways to emit my own hooks outside of the Vue framework, which led to the various event systems in this repo.
 
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 [**Quill**](https://quilljs.com/)
 
 The Quill docs and codebase opened my eyes to how beautiful and poetic an open source codebase can be without compromising the end product. I previously felt I had to suppressed the urge to write poetic code. Quill helped me realize that as long as it doesn’t impede clarity and I’m working on my own project… why not? :)
 
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Jiufen
 
 Perusing a complex codebase, with its myriad paths of connection, is perhaps like wandering the labyrinthine lantern-lined walkways and underground tunnels of [Jiufen](https://www.nationalgeographic.com/travel/article/exploring-the-magic-of-taiwans-spirited-away-city). What you find is confusing and chaotic, astonishing and magical, yet somehow built on logic.
 
-<br/>
-
-<p align="right">[<a href="#goto-src">top</a>]</p>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
