@@ -24,6 +24,7 @@ Prefer composition over inheritance, they say. How about both? Être is an explo
 ## Table of Contents
 
 - [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/etre#concepts-roles--prereqs)
+- [Être API]()
 - [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
 - [Non-redundant Inheritance](https://github.com/ruby-cube/rue/tree/main/packages/etre#non-redundant-inheritance)
 - [Auto-compose vs Manual Compose](https://github.com/ruby-cube/rue/tree/main/packages/etre#auto-compose-vs-manual-compose)
@@ -42,6 +43,17 @@ This differs from traditional inheritance in that a role can have many prereqs w
 The instantiator function is obtained by calling the `reifier` method of a role.
 
 The system also allows for re-keying (in case of key collisions) and implementing interfaces.
+
+</br>
+
+## Être API
+[`defineRole(config)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
+
+[`enacts(role, object)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
+
+[`keyCollisionCheck(role, true, RekeyMap)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
+
+[`roleCollisionCheck(role)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
 
 </br>
 
