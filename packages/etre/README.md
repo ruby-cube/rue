@@ -24,7 +24,7 @@ Prefer composition over inheritance, they say. How about both? Être is an explo
 ## Table of Contents
 
 - [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/etre#concepts-roles--prereqs)
-- [Être API]()
+- [Être API](https://github.com/ruby-cube/rue/tree/main/packages/etre#%C3%AAtre-api)
 - [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
 - [Non-redundant Inheritance](https://github.com/ruby-cube/rue/tree/main/packages/etre#non-redundant-inheritance)
 - [Auto-compose vs Manual Compose](https://github.com/ruby-cube/rue/tree/main/packages/etre#auto-compose-vs-manual-compose)
@@ -49,11 +49,11 @@ The system also allows for re-keying (in case of key collisions) and implementin
 ## Être API
 [`defineRole(config)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
 
-[`enacts(role, object)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
+[`enacts(Role, object)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
 
-[`keyCollisionCheck(role, true, RekeyMap)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
+[`keyCollisionCheck(Role, true, RekeyMap)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
 
-[`roleCollisionCheck(role)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
+[`roleCollisionCheck(Role)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
 
 </br>
 
