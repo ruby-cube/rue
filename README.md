@@ -11,7 +11,7 @@
 ⚠️ <b>Experimental:</b> The projects in this repo are works-in-progress, not well-tested, with volatile APIs. Look and play, but definitely don’t use…
 </aside>
 
-<p align="right">[<a href="#">src</a>]</p>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Overview
 
@@ -19,13 +19,13 @@ Rue.js is a collection of tools I created in the process of building a fairly co
 
 The repo contains the following categories: Event-driven/asynchronous programming, data management, control flow, and Vue reactivity.
 
-<p align="right">[<a href="#">src</a>]</p>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Demo
 
 *(coming eventually)*
 
-<p align="right">[<a href="#">src</a>]</p>
+<p align="right"><a href="#">[src]</a></p>
 
 ## The Tools
 
@@ -148,7 +148,7 @@ Send a note to my gmail: ruby (dot) yiong. I would especially love to connect wi
 
 I am heavily influenced and greatly inspired by Vue and its brilliant, elegant, and intuitive design, especially Vue 3’s Composition API. Vue is also how I was introduced to the concept of emitting events and lifecycle hooks. It was such a fascinating concept to me that I began exploring ways to emit my own hooks outside of the Vue framework, which led to the various event systems in this repo.
 
-<p align="right"><a href="#goto-src">[top]</a></p>
+<br/>
 
 [**Quill**](https://quilljs.com/)
 
