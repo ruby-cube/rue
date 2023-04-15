@@ -1,4 +1,4 @@
-#### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/archer)
+#### [goto: src](#)
 [@rue](https://github.com/ruby-cube/rue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; [thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; [pecherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; **archer**
 # Archer 🏹
 
@@ -23,19 +23,19 @@ Archer is a system for sending and receiving targeted messages/commands across s
 
 ## Table of Contents
 
-- [Archer API](https://github.com/ruby-cube/rue/tree/main/packages/archer#archer-api)
-- [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/archer#basic-usage)
-- [Use Case](https://github.com/ruby-cube/rue/tree/main/packages/archer#use-case)
-- [Targeted Listening](https://github.com/ruby-cube/rue/tree/main/packages/archer#targeted-listening)
+- [Archer API](#archer-api)
+- [Basic Usage](#basic-usage)
+- [Use Case](#use-case)
+- [Targeted Listening](#targeted-listening)
 </br>
 
 ## Archer API
 
-[`defineMessage(config)`](https://github.com/ruby-cube/rue/tree/main/packages/archer#definemessageconfig) 
+[`defineMessage(config)`](#definemessageconfig) 
 
-[`send(MESSAGE, {to: targetID }, data)`](https://github.com/ruby-cube/rue/tree/main/packages/archer#sendmessage-to-targetid--data)
+[`send(MESSAGE, {to: targetID }, data)`](#sendmessage-to-targetid--data)
 
-[`re(MESSAGE, targetID, callback)`](https://github.com/ruby-cube/rue/tree/main/packages/archer#remessage-targetid-handler)
+[`re(MESSAGE, targetID, callback)`](#remessage-targetid-handler)
 
 </br>
 
@@ -196,6 +196,6 @@ Archer’s `re` function is a targeted listener for performance reasons. See [Pl
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src)
+[[top]](#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

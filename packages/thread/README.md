@@ -1,4 +1,4 @@
-#### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/thread)
+#### [goto: src](#)
 [@rue](https://github.com/ruby-cube/rue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; **thread**  &nbsp;&nbsp;|&nbsp; &nbsp; [pecherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; [archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src)
 # Thread ⏳
 
@@ -23,22 +23,22 @@ Thread provides planified versions of schedulers and event listeners from Web AP
 
 ## Table of Contents
 
-- [Thread API](https://github.com/ruby-cube/rue/tree/main/packages/thread#thread-api)
-- [Event Listeners API](https://github.com/ruby-cube/rue/tree/main/packages/thread#event-listeners-api)
-- [Naming Conventions](https://github.com/ruby-cube/rue/tree/main/packages/thread#naming-conventions)
+- [Thread API](#thread-api)
+- [Event Listeners API](#event-listeners-api)
+- [Naming Conventions](#naming-conventions)
 <br/>
 
 ## Thread API
 
 Planified schedulers return a `ScheduledOp`, which is essentially a cancellable `Promise`. The only option they take is a `unlessCanceled` cancellation scheduler.
 
-[`addPS(callback)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#addpscallback) 
+[`addPS(callback)`](#addpscallback) 
 
-[`queueTask(callback, options?)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#queuetaskcallback-options)
+[`queueTask(callback, options?)`](#queuetaskcallback-options)
 
-[`beforeScreenPaint(callback, options?)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#beforescreenpaintcallback-options)
+[`beforeScreenPaint(callback, options?)`](#beforescreenpaintcallback-options)
 
-[`onTimeout(delay, callback, options?)`](https://github.com/ruby-cube/rue/tree/main/packages/thread#ontimeoutdelay-callback-options)
+[`onTimeout(delay, callback, options?)`](#ontimeoutdelay-callback-options)
 
 <br/>
 
@@ -146,6 +146,6 @@ Of course if a handler performs a specific action, it would make sense to simply
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src)
+[[top]](#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

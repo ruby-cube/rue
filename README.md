@@ -1,4 +1,4 @@
-#### [goto: src](https://github.com/ruby-cube/rue)
+#### [goto: src](#)
 <p align="center">
 <picture>
   <img width="240" src="https://github.com/ruby-cube/rue/blob/main/rue-logo%403x.png" alt="rue logo"/>
@@ -163,6 +163,6 @@ Perusing a complex codebase, with its myriad paths of connection, is perhaps lik
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue#goto-src)
+[[top]](#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

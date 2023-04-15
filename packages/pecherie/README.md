@@ -1,4 +1,4 @@
-#### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/pecherie)
+#### [goto: src](#)
 [@rue](https://github.com/ruby-cube/rue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp;  [planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; [thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp; **pecherie**  &nbsp;&nbsp;|&nbsp; &nbsp; [archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src)
 # Pêcherie 🐟
 
@@ -25,17 +25,17 @@ Pêcherie is based on the Planify event system. See [Planify](https://github.com
 
 ## Table of Contents
 
-- [Pêcherie API](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#pecherie-api)
-- [Hook Configuration](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#hook-configuration)
-- [Target IDs](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#target-ids)
+- [Pêcherie API](#pecherie-api)
+- [Hook Configuration](#hook-configuration)
+- [Target IDs](#target-ids)
 
 <br/>
 
 ## Pecherie API
 
-[`createHook(config)`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#createhookconfig)
+[`createHook(config)`](#createhookconfig)
 
-[`createTargetedHook(config)`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#createtargetedhookconfig)
+[`createTargetedHook(config)`](#createtargetedhookconfig)
 
 <br/>
 
@@ -232,6 +232,6 @@ The targetID can be any type so long as the emitter module and listener module a
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src)
+[[top]](#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
