@@ -188,7 +188,7 @@ re(HIDE_ITEM, item, (data) => {
 })
 
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Targeted Listening
 
