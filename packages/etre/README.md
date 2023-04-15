@@ -1,4 +1,4 @@
-#### [goto: src](https://github.com/ruby-cube/rue/tree/main/packages/etre)
+#### [goto: src](#)
 [@rue](https://github.com/ruby-cube/rue#goto-src)  &nbsp;&nbsp;|&nbsp; &nbsp;  **etre**  &nbsp;&nbsp;|&nbsp; &nbsp; modos
 # Être 🪴
 
@@ -23,15 +23,15 @@ Prefer composition over inheritance, they say. How about both? Être is an explo
 
 ## Table of Contents
 
-- [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/etre#concepts-roles--prereqs)
-- [Être API](https://github.com/ruby-cube/rue/tree/main/packages/etre#%C3%AAtre-api)
-- [Basic Usage](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
-- [Non-redundant Inheritance](https://github.com/ruby-cube/rue/tree/main/packages/etre#non-redundant-inheritance)
-- [Auto-compose vs Manual Compose](https://github.com/ruby-cube/rue/tree/main/packages/etre#auto-compose-vs-manual-compose)
-- [Typescript hints and the `__dev__` parameter](https://github.com/ruby-cube/rue/tree/main/packages/etre#typescript-hints-and-the-__dev__-parameter)
-- [Rekey-ing](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
-- [Interfaces](https://github.com/ruby-cube/rue/tree/main/packages/etre#interfaces)
-- [Type-checking](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
+- [Concepts](#concepts-roles--prereqs)
+- [Être API](#%C3%AAtre-api)
+- [Basic Usage](#basic-usage)
+- [Non-redundant Inheritance](#non-redundant-inheritance)
+- [Auto-compose vs Manual Compose](#auto-compose-vs-manual-compose)
+- [Typescript hints and the `__dev__` parameter](#typescript-hints-and-the-__dev__-parameter)
+- [Rekey-ing](#rekey-ing)
+- [Interfaces](#interfaces)
+- [Type-checking](#type-checking)
 </br>
 
 ## Concepts: Roles & Prereqs
@@ -47,13 +47,13 @@ The system also allows for re-keying (in case of key collisions) and implementin
 </br>
 
 ## Être API
-[`role(config)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#basic-usage)
+[`role(config)`](#basic-usage)
 
-[`enacts(Role, object)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#type-checking)
+[`enacts(Role, object)`](#type-checking)
 
-[`keyCollisionCheck(Role, true, RekeyMap)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
+[`keyCollisionCheck(Role, true, RekeyMap)`](#rekey-ing)
 
-[`roleCollisionCheck(Role)`](https://github.com/ruby-cube/rue/tree/main/packages/etre#rekey-ing)
+[`roleCollisionCheck(Role)`](#rekey-ing)
 
 </br>
 
@@ -357,6 +357,6 @@ const isFrog = enacts(Frog, character);
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/etre#goto-src)
+[[top]](#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
