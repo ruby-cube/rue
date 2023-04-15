@@ -354,8 +354,6 @@ Objects can be type-checked via the `enacts` function, which takes in a role as 
 const isFrog = enacts(Frog, character);
 ```
 
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
-
-[[top]](#goto-src)
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
