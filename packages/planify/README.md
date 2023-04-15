@@ -29,24 +29,24 @@ Since Planify represents the overarching event system, this README presents more
 
 ## Table of Contents
 
-- [Concepts](https://github.com/ruby-cube/rue/tree/main/packages/planify#concepts)
-    - [Event vs Hook vs Message vs Scheduling](https://github.com/ruby-cube/rue/tree/main/packages/planify#event-vs-hook-vs-message-vs-scheduling)
-    - [One-time Listener vs Sustained Listener](https://github.com/ruby-cube/rue/tree/main/packages/planify#one-time-listener-vs-sustained-listener)
-    - [Listener Morphing](https://github.com/ruby-cube/rue/tree/main/packages/planify#listener-morphing)
-    - [Schedulers](https://github.com/ruby-cube/rue/tree/main/packages/planify#schedulers)
-    - [Synchronous vs Asynchronous Handling](https://github.com/ruby-cube/rue/tree/main/packages/planify#synchronous-vs-asynchronous-handling)
-- [Memory Leak Prevention](https://github.com/ruby-cube/rue/tree/main/packages/planify#memory-leak-prevention)
-    - [Cleanup Strategies](https://github.com/ruby-cube/rue/tree/main/packages/planify#cleanup-strategies)
-        - [Auto-cleanup](https://github.com/ruby-cube/rue/tree/main/packages/planify#auto-cleanup)
-        - [Options argument](https://github.com/ruby-cube/rue/tree/main/packages/planify#the-options-argument)
-        - [Stop/Cancel](https://github.com/ruby-cube/rue/tree/main/packages/planify#the-stopcancel-method)
-        - [Scene Auto-cleanup](https://github.com/ruby-cube/rue/tree/main/packages/planify#scene-auto-cleanup)
-    - [Memory Leak Warnings](https://github.com/ruby-cube/rue/tree/main/packages/planify#memory-leak-warnings)
-- [Targeted Listeners](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners)
-- [The APIs](https://github.com/ruby-cube/rue/tree/main/packages/planify#the-apis)
-- [Planify API](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-api)
-- [Planned Features](https://github.com/ruby-cube/rue/tree/main/packages/planify#planned-features)
-- [Known Issues](https://github.com/ruby-cube/rue/tree/main/packages/planify#known-issues)
+- [Concepts](#concepts)
+    - [Event vs Hook vs Message vs Scheduling](#event-vs-hook-vs-message-vs-scheduling)
+    - [One-time Listener vs Sustained Listener](#one-time-listener-vs-sustained-listener)
+    - [Listener Morphing](#listener-morphing)
+    - [Schedulers](#schedulers)
+    - [Synchronous vs Asynchronous Handling](#synchronous-vs-asynchronous-handling)
+- [Memory Leak Prevention](#memory-leak-prevention)
+    - [Cleanup Strategies](#cleanup-strategies)
+        - [Auto-cleanup](#auto-cleanup)
+        - [Options argument](#the-options-argument)
+        - [Stop/Cancel](#the-stopcancel-method)
+        - [Scene Auto-cleanup](#scene-auto-cleanup)
+    - [Memory Leak Warnings](#memory-leak-warnings)
+- [Targeted Listeners](#targeted-listeners)
+- [The APIs](#the-apis)
+- [Planify API](#planify-api)
+- [Planned Features](#planned-features)
+- [Known Issues](#known-issues)
 <br/>
 
 ## Concepts
@@ -234,7 +234,7 @@ export default defineComponent({
     }
 })
 ```
-Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See [Planify API](https://github.com/ruby-cube/rue/tree/main/packages/planify#planify-api) for how to planify existing hooks.
+Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See [Planify API](#planify-api) for how to planify existing hooks.
 
 <br/>
 
@@ -458,17 +458,17 @@ function workHard(item, index){
 
 ## The APIs
 
-[`$listen(handler, options, config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#listenhandler-options-config)
+[`$listen(handler, options, config)`](#listenhandler-options-config)
 
-[`$schedule(handler, options, config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#schedulehandler-options-config)
+[`$schedule(handler, options, config)`](#schedulehandler-options-config)
 
-[`$subscribe(handler, options, config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#subscribehandler-options-config)
+[`$subscribe(handler, options, config)`](#subscribehandler-options-config)
 
-[`beginScene(sceneDef)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#scene-auto-cleanup) (Scene API)
+[`beginScene(sceneDef)`](#scene-auto-cleanup) (Scene API)
 
-[`defineAutoCleanup(cleanupFn)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#auto-cleanup) (Auto Cleanup API)
+[`defineAutoCleanup(cleanupFn)`](#auto-cleanup) (Auto Cleanup API)
 
-[`genTargetID(config)`](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners) (Target ID API)
+[`genTargetID(config)`](#targeted-listeners) (Target ID API)
 
 <br/>
 
@@ -648,6 +648,6 @@ Event-driven code is notoriously difficult to debug. Additional support for easi
 <br/>
 <br/>
 
-[[top]](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src)
+[[top]](#goto-src)
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
