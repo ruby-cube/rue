@@ -104,8 +104,6 @@ onTimeout(500, () => {
 
 The Event Listeners API provides planified browser event listeners with the `useEventListener` function. `useEventListener` returns the requested event listener if it already exists in the app, otherwise, it creates the listener and stores it for future access to avoid redundant instances.
 
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
-
 ### Usage
 
 ```js
