@@ -5,8 +5,8 @@
 <aside>
 ⚠️ <b>Experimental:</b> Planify is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
 </aside>
-<br/>
-<br/>
+
+<p align="right"><a href="#">[src]</a></p>
 
 ## Overview & Motivation
 
@@ -18,14 +18,14 @@ This project is the result of an exploration into how an event system might incl
 
 Since Planify represents the overarching event system, this README presents more of a discussion of foundational concepts within the system rather than practical API usage. Because Planify is primarily a supporting dependency for other libraries, many examples will reference the APIs of other Rue libraries such as [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), [Pêcherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src), and [Archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src). 
 
-<br/>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Installation
 
 ```bash
 (coming soon ...)
 ```
-</br>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Table of Contents
 
@@ -47,7 +47,7 @@ Since Planify represents the overarching event system, this README presents more
 - [Planify API](#planify-api)
 - [Planned Features](#planned-features)
 - [Known Issues](#known-issues)
-<br/>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Concepts
 
@@ -73,7 +73,7 @@ castTablePopulated({ dataset });
   |                 |
 emitter     context, data, or event object
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Event vs Hook vs Message vs Scheduling
 
@@ -91,7 +91,7 @@ These Rue libraries address the corresponding categories:
 
 The example listeners in this README (usually prefixed with "on" or "before") represent listeners created via one of the above libraries.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### One-time listener vs Sustained listener
 
@@ -127,7 +127,7 @@ const result = await pendingOp;
 
 Note: The `cancel` method will not survive a `.then` chain. This is by design. Since the return of a `.then` chain is too easily mistaken for the return of the first call rather than the last call of the chain, it is preferred to save the `PendingOp` to a variable before chaining or awaiting if you need to call the cancel method.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Listener Morphing
 
@@ -154,13 +154,13 @@ onTextInserted(() => {   // one-time listener
 
 Listeners can also morph from their default depending on the usage context. For example, if a listener is being passed into another listener as a cleanup scheduler as is the case with `onActionCanceled` above, it will behave as a one-time listener even if it is a `SustainedListener`.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Schedulers
 
 Schedulers are one-time listeners that cannot be converted into a sustained listeners. These are typically functions that queue a task to the main thread such as: `queueTask`, `beforeScreenPaint` (planified `requestAnimationFrame`), and `onTimeout` (planified `setTimeout`). See [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src) for more on existing schedulers.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Synchronous vs Asynchronous Handling
 
@@ -187,7 +187,7 @@ onPopulated()
 await onPopulated();
 // do something
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Memory Leak Prevention
 
@@ -196,12 +196,12 @@ Planify prevents memory leaks via three main approaches:
 - by making handler cleanup more developer-friendly
 - by logging warnings during development if a cleanup strategy is not in place
 - with Typescript errors during development
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Cleanup Strategies
 
 Planify provides four main cleanup strategies:
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 #### Auto-cleanup
 
@@ -236,7 +236,7 @@ export default defineComponent({
 ```
 Note: The `onUnmounted` lifecycle hook in the example above is not the original hook provided by Vue; it is a planified version provided by Paravue. The planified version must be used to ensure auto-cleanup of auto-cleanup by returning a `PendingOp`. See [Planify API](#planify-api) for how to planify existing hooks.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 #### The options argument
 
@@ -290,7 +290,7 @@ onPopulated(() => {
     // do work...
 }, { unlessCanceled: (cancel) => { return onDocClosed(cancel); } })
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 #### The stop/cancel method
 
@@ -308,7 +308,7 @@ onMouseUp(document, () => {
     mouseMoveListener.stop();
 })
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 #### Scene Auto-Cleanup
 
@@ -379,13 +379,13 @@ function initDrag(event){
     }, { once: true } );
 }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Memory Leak Warnings
 
 Unless the developer is impeccably conscientious about cleanup, memory leaks will inevitably creep into your system when using event listeners. As an additional guard against memory leaks, Planify will log a warning during development if it does not detect a cleanup strategy in place for a listener. 
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Targeted Listeners
 
@@ -454,7 +454,7 @@ function workHard(item, index){
     });
 }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## The APIs
 
@@ -470,13 +470,13 @@ function workHard(item, index){
 
 [`genTargetID(config)`](#targeted-listeners) (Target ID API)
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Planify API
 
 The functions provided by [Pêcherie](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#goto-src), [Archer](https://github.com/ruby-cube/rue/tree/main/packages/archer#goto-src), [Thread](https://github.com/ruby-cube/rue/tree/main/packages/thread#goto-src), and [Paravue](https://github.com/ruby-cube/rue/tree/main/packages/paravue#goto-src) should cover most use cases. However, if you would like to planify an existing listener or scheduler, Planify provides the `$listen`, `$schedule`, and `$subscribe` functions to acheive this.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### `$listen(handler, options, config)`
 Sets up a listener. Depending on options and config, this could behave as a one-time listener or a sustained listener.
@@ -497,7 +497,7 @@ type ListenerConfig = {
     onceAsDefault?: true | undefined
 }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### `$schedule(handler, options, config)`
 Sets up a one-time listener.
@@ -519,7 +519,7 @@ type SchedulerConfig = {
 
 type PendingOp = Promise<ReturnType<Handler>> & { cancel: () => void }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### `$subscribe(handler, options, config)`
 Sets up a sustained listener.
@@ -541,7 +541,7 @@ type SubscribeConfig = {
 
 type ActiveListener = { stop: () => void }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Basic Usage
 
@@ -573,7 +573,7 @@ export function onTimeout(delay, handler, options?) {
     });
 }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Advanced Usage
 
@@ -614,13 +614,13 @@ OPT extends ListenerOptions
     });
 }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Planned Features
 
 Event-driven code is notoriously difficult to debug. Additional support for easing the debugging experience is in the works.
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Known Issues
 
@@ -645,9 +645,6 @@ Event-driven code is notoriously difficult to debug. Additional support for easi
     });
     ```
 
-<br/>
-<br/>
-
-[[top]](#goto-src)
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)

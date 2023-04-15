@@ -5,21 +5,21 @@
 <aside>
 ⚠️ <b>Experimental:</b> Être is a work-in-progress, not well-tested, with a volatile API. Look and play, but definitely don’t use…
 </aside>
-</br>
-</br>
+
+<p align="right"><a href="#">[src]</a></p>
 
 ## Overview
 
 Prefer composition over inheritance, they say. How about both? Être is an exploration into creating a system of composition that retains elements of inheritance.
 
-</br>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Installation
 
 ```bash
 (coming soon ...)
 ```
-</br>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Table of Contents
 
@@ -32,7 +32,7 @@ Prefer composition over inheritance, they say. How about both? Être is an explo
 - [Rekey-ing](#rekey-ing)
 - [Interfaces](#interfaces)
 - [Type-checking](#type-checking)
-</br>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Concepts: Roles & Prereqs
 
@@ -44,7 +44,7 @@ The instantiator function is obtained by calling the `reifier` method of a role.
 
 The system also allows for re-keying (in case of key collisions) and implementing interfaces.
 
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Être API
 [`role(config)`](#basic-usage)
@@ -55,7 +55,7 @@ The system also allows for re-keying (in case of key collisions) and implementin
 
 [`roleCollisionCheck(Role)`](#rekey-ing)
 
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Basic Usage
 
@@ -120,7 +120,7 @@ frogPrince.isValiantAndDaring(); // true
 frogPrince.sing();
 frogPrince.name; // "Sir Robin the Brave"
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Non-redundant Inheritance
 
@@ -254,7 +254,7 @@ const createFrogPrince = FrogPrince.reifier((data) => {
 
 const sirRobin = createFrogPrince(data);
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Typescript hints and the `__dev__` parameter
 
@@ -277,7 +277,7 @@ const createFrogPrince = FrogPrince.reifier((data) => {
     }
 });
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Rekey-ing
 
@@ -315,7 +315,7 @@ if (__DEV__){
     roleCollisionCheck(FrogPrince);
 }
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Interfaces
 
@@ -344,7 +344,7 @@ const Frog = role({
     }
 })
 ```
-</br>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Type-checking
 
@@ -354,8 +354,7 @@ Objects can be type-checked via the `enacts` function, which takes in a role as 
 const isFrog = enacts(Frog, character);
 ```
 
-<br/>
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 [[top]](#goto-src)
 

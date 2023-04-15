@@ -5,8 +5,8 @@
 <aside>
 ⚠️ <b>Experimental:</b> Pêcherie is a work-in-progress, not well-tested nor optimized, with a volatile API. Look and play, but definitely don’t use…
 </aside>
-<br/>
-<br/>
+
+<p align="right"><a href="#">[src]</a></p>
 
 ## Overview
 
@@ -14,22 +14,21 @@ Pêcherie is an exploration into how to make asynchronous and event-driven progr
 
 Pêcherie is based on the Planify event system. See [Planify](https://github.com/ruby-cube/rue/tree/main/packages/planify#goto-src) for an overview of foundational concepts as well as examples and explanations of one-time listeners vs sustained listeners, preventing memory leaks, and targeted listeners.
 
-<br/>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Installation
 
 ```bash
 (coming soon ...)
 ```
-</br>
+<p align="right"><a href="#">[src]</a></p>
 
 ## Table of Contents
 
 - [Pêcherie API](#pecherie-api)
 - [Hook Configuration](#hook-configuration)
 - [Target IDs](#target-ids)
-
-<br/>
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 ## Pecherie API
 
@@ -37,12 +36,12 @@ Pêcherie is based on the Planify event system. See [Planify](https://github.com
 
 [`createTargetedHook(config)`](#createtargetedhookconfig)
 
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## `createHook(config)`
 
 Creates an un-targeted hook.
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### **Syntax**
 
@@ -114,12 +113,12 @@ type ListenerOptions = { once: true }
 type ScheduleCancel = OneTimeListener | Scheduler | SustainedListener
 type ScheduleStop = OneTimeListener | Scheduler | SustainedListener
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## `createTargetedHook(config)`
 
 Creates a targeted hook. Emitters can target listeners using a target id.
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ### Syntax
 
@@ -179,7 +178,7 @@ type Config = {
     };
 }
 ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Hook Configuration
 
@@ -223,15 +222,12 @@ type Config = {
         })
     }
     ```
-<br/>
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Target IDs
 
 The targetID can be any type so long as the emitter module and listener module agree on what to use as an identifier. See [Planify: Targeted Listeners](https://github.com/ruby-cube/rue/tree/main/packages/planify#targeted-listeners) for more information on targeted listeners and how to generate deterministic target ids.
 
-<br/>
-<br/>
-
-[[top]](#goto-src)
+<p align="right"><a href="#goto-src">[top]</a></p>
 
 © 2023 - present [Ruby Y Wang](https://github.com/ruby-cube)
