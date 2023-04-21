@@ -101,6 +101,7 @@ I have personally found it less confusing and faster to work in codebases that e
 - distinguish at a glance between reactive and non-reactive variables/properties
 - see at a glance where reactivity is happening
 - immediately know you’re working with a reactive reference without having to hover for a type definition from your IDE
+- reduce the likelihood a developer will forget to treat the reference as a signal
 - work cleanly with both a signal and its value within the same scope. For example:
     
     Code without reactive markers ends up being more verbose here:
@@ -421,19 +422,12 @@ const x$ = computed$(() => position$().x$().toString()) // reactive tracking of 
 $set(position$().x$, 1) // triggers reactive effects
 ```
 
-Note that setting the value of `position$` above requires signalizing the new object:
+As with a Vue ref, which will thoughtfully auto-wrap the object in a `reactive`, `$set` will auto-wrap the value in `signalize` (if not already) if the signal was initialized with `signalize$()`.
 
 ```tsx
-// preserves nested reactivity
-$set(position$, signalize({
-    x,
-    y
-}));
-
-// loses nested reactivity
 $set(position$, {
     x,
-    y
+    y,
 });
 ```
 
@@ -471,7 +465,7 @@ $set(position$().prevPosition$().x$, 1)
 
 ```
 
-As with a Vue ref, which will auto-wrap the object in a `reactive`, `$set` will auto-wrap an object in `signalize` or `deepSignalize` if needed, depending on whether the signal was initialized with `signalize$()` or `deepSignalize$()`.
+As with a Vue ref, which will thoughtfully auto-wrap the object in a `reactive`, `$set` will auto-wrap the value in `deepSignalize` (if not already) if the signal was initialized with `deepSignalize$()`.
 
 ```tsx
 $set(position$, {
@@ -526,6 +520,13 @@ const newValue = $set(signal, value);
          T         Signal<T>    T
 ```
 
+```tsx
+const newValue = $set(signal, manipulator);
+         |              |       |
+     Primitive          |  (value: Primitive) => Primitive
+                Signal<Primitive>
+```
+
 ### Usage
 
 ```tsx
@@ -551,6 +552,7 @@ if (count > 10) {
     // do something
 }
 ```
+Note that manipulators can only be used if the value is a primitive. Use `$mutate` for reference values such as objects, arrays, and maps.
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
