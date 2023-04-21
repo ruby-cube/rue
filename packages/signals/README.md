@@ -564,7 +564,7 @@ const position$ = deepSignalize$({
     x: 0,
     y: 0,
     prevPosition: {
-	      x: 0,
+        x: 0,
         y: 0,
     }
 });
