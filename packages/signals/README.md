@@ -139,7 +139,7 @@ I have personally found it less confusing and faster to work in codebases that e
 - distinguish between method calls and reactive property access in some rare cases. For example, is `range.end()` a method call that ends the range or is it accessing the end value of the range? Context would help of course, but it’s faster to see `range.end()` and `range.end$()` and know automatically what’s happening in each case.
 - keep the door open to potential compile-time performance optimizations (provided that the `$` suffix is reserved as a reactivity marker in the codebase)
 
-This is largely a matter of preference. The `$` suffix makes code less clean and maybe less readable, but for those like me, it makes code faster to work with and more immediately understandable despite the eyesore, which makes it a worthwhile tradeoff.
+This is largely a matter of preference. The `$` suffix makes code less clean and maybe less readable, but for those like me, it makes code faster to work with, less bug-prone, and more immediately understandable despite the eyesore, which makes it a worthwhile tradeoff.
 
 While this library does not (currently?) enforce this convention for the naming of reactive variables, the object-signalizer functions enforce reactivity markers on reactive properties by appending a `$` to the property key.
 
