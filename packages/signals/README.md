@@ -361,8 +361,8 @@ const newValue = $set(signal, value);
 
 ```tsx
 const newValue = $set(signal, manipulator);
-         |              |       |
-     Primitive          |  (value: Primitive) => Primitive
+         |              |           |
+     Primitive          |       (value: Primitive) => Primitive
                 Signal<Primitive>
 ```
 
