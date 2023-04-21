@@ -317,6 +317,118 @@ $set(position$, createPosition({
 }));
 ```
 
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
+
+## `computed$(computation)`
+
+Creates a read-only signal for a computed variable or property. Pronounced “computed signal”. A wrapper around Vue’s `computed()`.
+
+### Syntax
+
+```tsx
+const reactiveVariable$ = computed$(computation);
+              |                        |
+        ComputedSignal             () => any          
+```
+
+### Usage
+
+```tsx
+const count$ = $(1);
+
+const doubleCount$ = computed$(() => count$() * 2 ); // reactive tracking
+
+doubleCount$(); // 2
+
+$set(count$, 4);
+
+doubleCount$(); // 8
+```
+
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
+
+## `$set(signal, valueOrManipulator)`
+
+Sets the value of a reactive property or variable (represented by a signal) and signals to the reactivity system if a value change has occurred. Returns the new value for convenience. Pronounced “signaled set.”
+
+### Syntax
+
+```tsx
+const newValue = $set(signal, value);
+         |              |       |
+         T         Signal<T>    T
+```
+
+```tsx
+const newValue = $set(signal, manipulator);
+         |              |       |
+     Primitive          |  (value: Primitive) => Primitive
+                Signal<Primitive>
+```
+
+### Usage
+
+```tsx
+const count$ = $(1);
+
+const doubleCount$ = computed$(() => count$() * 2 );
+
+function demoStuff() {
+    doubleCount$(); // 2
+
+    $set(count$, 4); // triggers reactive effects
+
+    doubleCount$(); // 8
+}
+```
+
+Setting via a manipulator:
+
+```tsx
+const count = $set(count$, (count) => count + 1 );
+
+if (count > 10) {
+    // do something
+}
+```
+Note that manipulators can only be used if the value is a primitive. Use `$mutate` for reference values such as objects, arrays, and maps.
+
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
+
+## `$mutate(signal, mutator)`
+
+Mutates any mutable data structure stored in a reactive reference (represented by a signal) and signals to the reactivity system that change has occurred. It returns the value of the reactive reference for convenience. Pronounced “signaled mutate.”
+
+### Syntax
+
+```tsx
+const mutated = $mutate(signal, mutator);
+        |                  |       |
+     Mutable     Signal<Mutable>   |
+                                (value: Mutable) => void  
+```
+
+### Type Definitions
+
+```tsx
+type Mutable = Object | Array | Set | Map;
+```
+
+### Usage
+
+```tsx
+const items$ = $(["apple", "peaches", "pears"]);
+
+function doSomething() {
+    const items = $mutate(items$, (items) => { items.push("plums") });  // ["apple", "peaches", "pears", "plums"]
+
+    if (items.length > 10) {
+        // do something
+    }
+}
+```
+
+Note that the `$mutate` function passes the value of the reactive variable/property to the mutator, not the signal. Also note that `items` is not a modified clone. It is strictly equal to the original array passed into `$()`.
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
@@ -477,119 +589,6 @@ $set(position$, {
     }
 });
 ```
-
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
-
-## `computed$(computation)`
-
-Creates a read-only signal for a computed variable or property. Pronounced “computed signal”. A wrapper around Vue’s `computed()`.
-
-### Syntax
-
-```tsx
-const reactiveVariable$ = computed$(computation);
-              |                        |
-        ComputedSignal             () => any          
-```
-
-### Usage
-
-```tsx
-const count$ = $(1);
-
-const doubleCount$ = computed$(() => count$() * 2 ); // reactive tracking
-
-doubleCount$(); // 2
-
-$set(count$, 4);
-
-doubleCount$(); // 8
-```
-
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
-
-## `$set(signal, valueOrManipulator)`
-
-Sets the value of a reactive property or variable (represented by a signal) and signals to the reactivity system if a value change has occurred. Returns the new value for convenience. Pronounced “signaled set.”
-
-### Syntax
-
-```tsx
-const newValue = $set(signal, value);
-         |              |       |
-         T         Signal<T>    T
-```
-
-```tsx
-const newValue = $set(signal, manipulator);
-         |              |       |
-     Primitive          |  (value: Primitive) => Primitive
-                Signal<Primitive>
-```
-
-### Usage
-
-```tsx
-const count$ = $(1);
-
-const doubleCount$ = computed$(() => count$() * 2 );
-
-function demoStuff() {
-    doubleCount$(); // 2
-
-    $set(count$, 4); // triggers reactive effects
-
-    doubleCount$(); // 8
-}
-```
-
-Setting via a manipulator:
-
-```tsx
-const count = $set(count$, (count) => count + 1 );
-
-if (count > 10) {
-    // do something
-}
-```
-Note that manipulators can only be used if the value is a primitive. Use `$mutate` for reference values such as objects, arrays, and maps.
-
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
-
-## `$mutate(signal, mutator)`
-
-Mutates any mutable data structure stored in a reactive reference (represented by a signal) and signals to the reactivity system that change has occurred. It returns the value of the reactive reference for convenience. Pronounced “signaled mutate.”
-
-### Syntax
-
-```tsx
-const mutated = $mutate(signal, mutator);
-        |                  |       |
-     Mutable     Signal<Mutable>   |
-                                (value: Mutable) => void  
-```
-
-### Type Definitions
-
-```tsx
-type Mutable = Object | Array | Set | Map;
-```
-
-### Usage
-
-```tsx
-const items$ = $(["apple", "peaches", "pears"]);
-
-function doSomething() {
-    const items = $mutate(items$, (items) => { items.push("plums") });  // ["apple", "peaches", "pears", "plums"]
-
-    if (items.length > 10) {
-        // do something
-    }
-}
-```
-
-Note that the `$mutate` function passes the value of the reactive variable/property to the mutator, not the signal. Also note that `items` is not a modified clone. It is strictly equal to the original array passed into `$()`.
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
