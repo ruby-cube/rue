@@ -37,13 +37,13 @@ While these aren’t necessarily issues for the developer who’s versed in Vue�
 
 Rue Signals explores how exposing signals as an interface (rather than keeping them hidden) can alleviate these issues by offering a more consistent handling of reactive variables and properties, eliminating the need for conversions and mental switches, as well as by making reactivity more explicit and therefore less unexpected.
 
-There are, of course, tradeoffs with this approach: The concept of signals adds an additional layer of complexity over the concept of reactivity, and creating consistency across reactive variables and properties requires a sort of middle-ground level of verbosity. However, this middle-ground verbosity serves to add clarity and explicitness to the reactivity system, improving maintainability in the long run. Above all, a consistent and unified model for reactive references will hopefully create more ease in the developer experience.
+There are, of course, tradeoffs with this approach: The concept of signals adds an additional layer of complexity over the concept of reactivity, and creating consistency across reactive variables and properties requires a sort of middle-ground level of verbosity. However, both of these serve to add clarity and uniformity to the reactivity system, improving maintainability in the long run. Above all, a consistent and unified model for reactive references will hopefully create more ease in the developer experience.
 
 <p align="right"><a href="#readme-top">[top]</a></p>
 
 ## Inspiration
 
-This library stands on the shoulders of giants. It is a mere tweaking of existing APIs and concepts from Vue.js, Solid.js, Angular, and VueUse. Vue’s documentation already lays out how to create signals from Vue refs here.
+This library stands on the shoulders of giants. It is a mere tweaking of existing APIs and concepts from [Vue.js](https://vuejs.org/guide/extras/reactivity-in-depth.html), [Solid.js](https://www.solidjs.com/guides/reactivity), [Angular](https://angular.io/docs), and [VueUse](https://vueuse.org/core/templateRef/). Vue’s documentation already lays out how to create signals from Vue refs [here](https://vuejs.org/guide/extras/reactivity-in-depth.html#connection-to-signals).
 
 <p align="right"><a href="#readme-top">[top]</a></p>
 
@@ -56,15 +56,15 @@ This library stands on the shoulders of giants. It is a mere tweaking of existin
 </br>
 
 - Concepts
-    - Signals
-    - Reactive References
-    - Explicit Reactivity
-- Basic Examples
-- Signal API
-- Vue Counterparts
-- Reactivity in Iterables
-- Tips
-- Performance Optimization
+    - [Signals](#signals)
+    - [Reactive References](#reactive-references)
+    - [Explicit Reactivity](#explicit-reactivity)
+- [Basic Examples](#basic-examples)
+- [Signal API](#signal-api)
+- [Vue Counterparts](#vue-counterparts)
+- [Reactivity in Iterables](#reactivity-in-iterables)
+- [Tips](#tips)
+- [Performance Optimization](#performance-optimizations)
 
 <p align="right"><a href="#readme-top">[top]</a></p>
 
