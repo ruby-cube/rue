@@ -81,12 +81,21 @@ const user = deepSignalize({  // reactive
     }
 })
 
+user.blog$()
+
 $set(user.blog$, deepSignalize({
     rhogj: 0,
     blue: {
         horse: "ocot"
     }
 }))
+
+$set(user.blog$, {
+    rhogj: 0,
+    blue: {
+        horse: "ocodt"
+    }
+})
 
 item.dog$().bellow
 
@@ -102,7 +111,7 @@ const user$ = deepSignalize$({     // ref
     }
 })
 
-user$().name$
+user$().blog$()
 
 const { blue$, rhogj$ } = user$().blog$()
 
@@ -130,12 +139,4 @@ listItems$()[1];
 
 $mutate(listItems$, (items) => items.push(1))
 
-$set(user$, {
-    name$: $(""),
-    blog$: $({
-        blue$: $({
-            horse$: $("")
-        }),
-        rhogj$: $(0)
-    })
-})
+

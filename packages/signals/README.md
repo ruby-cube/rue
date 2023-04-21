@@ -50,7 +50,7 @@ This library stands on the shoulders of giants. It is a mere tweaking of existin
 ## Table of Contents
 
 <aside>
-⚠️ <b>Note:</b> These docs use faux Typescript type definitions that aren’t actual usable TS types. They are simplified types for the purpose of clarity.
+⚠️ <b>Note:</b> These docs use faux TS type definitions that aren’t actual usable TS types. They are simplified types for the purpose of clarity.
 </aside>
 </br>
 </br>
@@ -96,9 +96,7 @@ Signals as functions are inherently explicit about reactivity. However, this lib
 
 While variable names should generally focus on the problem domain and avoid including implementation details such as types, there is a case to be made that making reactivity explicit in variable names can aid in making code easier to understand and maintain, particularly since reactivity is not the native, expected behavior of JavaScript.
 
-I have personally found it less confusing and faster to work in codebases that employ some form of Hungarian notation to indicate reactivity. Before you balk and walk away, let me defend myself.
-
-A reactivity marker makes it easier to:
+I have personally found it less confusing and faster to work in codebases that employ some form of Hungarian notation to indicate reactivity. Before you balk and walk away, consider that a reactivity marker makes it easier to:
 
 - distinguish at a glance between reactive and non-reactive variables/properties
 - see at a glance where reactivity is happening
@@ -140,7 +138,7 @@ A reactivity marker makes it easier to:
 - distinguish between method calls and reactive property access in some rare cases. For example, is `range.end()` a method call that ends the range or is it accessing the end value of the range? Context would help of course, but it’s faster to see `range.end()` and `range.end$()` and know automatically what’s happening in each case.
 - keep the door open to potential compile-time performance optimizations (provided that the `$` suffix is reserved as a reactivity marker in the codebase)
 
-This is a matter of preference. The `$` suffix makes code less clean and maybe less readable, but for those like me, it makes code faster to work with and more immediately understandable despite the eyesore, which makes it a worthwhile tradeoff.
+This is largely a matter of preference. The `$` suffix makes code less clean and maybe less readable, but for those like me, it makes code faster to work with and more immediately understandable despite the eyesore, which makes it a worthwhile tradeoff.
 
 While this library does not (currently?) enforce this convention for the naming of reactive variables, the object-signalizer functions enforce reactivity markers on reactive properties by appending a `$` to the property key.
 
@@ -198,27 +196,27 @@ const coordinates$ = computed$(() => position.x$() + ", " + position.y$());
 
 **Core signal creators and setters**
 
-`$(initialValue)`
+[`$(initialValue)`](#initialvalue)
 
-`computed$(computation)`
+[`computed$(computation)`](#computedcomputation)
 
-`$set(signal, valueOrManipulator)`
+[`$set(signal, valueOrManipulator)`](#setsignal-valueormanipulator)
 
-`$mutate(signal, mutator)`
+[`$mutate(signal, mutator)`](#mutatesignal-mutator)
 
 **Convenience signal creators**
 
-`signalize(object)`
+[`signalize(object)`](#signalizeobject)
 
-`deepSignalize(object)`
+[`deepSignalize(object)`](#deepsignalizeobject)
 
-`signalize$(object)`
+[`signalize$(object)`](#signalizeobject-1)
 
-`deepSignalize$(object)`
+[`deepSignalize$(object)`](#deepsignalizeobject-1)
 
 **Template Ref**
 
-`nodeRef()`
+[`nodeRef(key)`](#noderefkey)
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
@@ -230,8 +228,8 @@ Creates a signal. `$` can be pronounced “signal for”. Analogous to Vue’s `
 
 ```tsx
 const reactiveReference$ = $(initialValue);
-              |                  
-            Signal                
+              |                   |   
+            Signal               any        
 ```
 
 ### Usage
@@ -260,6 +258,7 @@ const x$ = computed$(() => position$().x.toString()) // no reactive tracking of 
 
 position$().x = 1 // no reactive effects
 ```
+To make all direct properties reactive, use [`signalize$()`](#signalizeobject-1). If you don’t need a reactive reference to the object itself, use [`signalize()`](#signalizeobject).
 
 ### Selective Nested Reactivity
 
@@ -317,7 +316,6 @@ $set(position$, createPosition({
 }));
 ```
 
-To make all direct properties reactive, use `signalize$()`. If you don’t need a reactive reference to the object itself, use `signalize()`.
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
@@ -347,11 +345,11 @@ $set(position.x$, 1) // triggers reactive effects
 
 ```
 
-Note that only a non-iterable object can be passed into signalize. Passing in an array, set, map, or primitive, will throw an error. (see Reactivity in Iterables for why the entries of iterables are not made into signals).
+Note that only a non-iterable object can be passed into signalize. Passing in an array, set, map, or primitive, will throw an error. (see [Reactivity in Iterables](#reactivity-in-iterables) for why the entries of iterables are not made into signals).
 
-Note also that the position object itself does not have a reactive reference, only its properties. For a reactive reference to the object itself, use `signalize$()`.
+Note also that the position object itself does not have a reactive reference, only its properties. For a reactive reference to the object itself, use [`signalize$()`](#signalizeobject-1).
 
-For a deeply reactive object where all properties of nested objects are made reactive, use `deepSignalize()`.
+For a deeply reactive object where all properties of nested objects are made reactive, use [`deepSignalize()`](#deepsignalizeobject).
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
@@ -392,9 +390,9 @@ $set(position.prevPosition$, { x: 1, y: 9 })
 
 ```
 
-Note that while properties of nested objects will be made reactive, entries of iterables like arrays, sets, and maps will not be “signalized”. See Reactivity of Iterables for why entries of iterables are not made into signals.
+Note that while properties of nested objects will be made reactive, entries of iterables like arrays, sets, and maps will not be “signalized”. See [Reactivity of Iterables](#reactivity-in-iterables) for why entries of iterables are not made into signals.
 
-Note also that the object reference (`position` in the above example) is not a reactive. To make the object variable reactive along with all its properties and nested properties, use `deepSignalize$()`.
+Note also that the object reference (`position` in the above example) is not a reactive. To make the object variable reactive along with all its properties and nested properties, use [`deepSignalize$()`](#deepsignalizeobject-1).
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
@@ -473,20 +471,9 @@ $set(position$().prevPosition$().x$, 1)
 
 ```
 
-Note that unlike setting a Vue ref, which will auto-wrap the object in a `reactive` , setting the value of `position$` above requires deepSignalizing the new object:
+As with a Vue ref, which will auto-wrap the object in a `reactive`, `$set` will auto-wrap an object in `signalize` or `deepSignalize` if needed, depending on whether the signal was initialized with `signalize$()` or `deepSignalize$()`.
 
 ```tsx
-// preserves nested reactivity
-$set(position$, deepSignalize({
-    x,
-    y,
-    prevPosition: {
-        x: 0,
-        y: 0,
-    }
-}));
-
-// loses nested reactivity
 $set(position$, {
     x,
     y,
