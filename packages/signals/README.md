@@ -143,7 +143,7 @@ This is largely a matter of preference. The `$` suffix makes code less clean and
 
 While this library does not (currently?) enforce this convention for the naming of reactive variables, the object-signalizer functions enforce reactivity markers on reactive properties by appending a `$` to the property key.
 
-That said, if you need to expose properties to an external consumer that does not need to know about its reactive implementation, you should expose an object containing getters and setters rather than expose an object containing signals and reactivity markers.
+That said, if you need to expose properties to an external consumer that does not need to know about its reactive implementation, you should expose an object containing getters and setters rather than the object containing signals and reactivity markers.
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
