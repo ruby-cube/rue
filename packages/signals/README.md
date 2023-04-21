@@ -594,7 +594,7 @@ $set(position$, {
 
 ## `nodeRef(key)`
 
-Rue Signals does not seek to replace Vue’s template refs with signals. In fact, it’s helpful to have a distinction between reactive state and a reactive container for DOM and component nodes. For convenience and reduced verbosity, this library exports the function `nodeRef`, an alias for VueUse’s awesome `templateRef`.
+Rue Signals does not seek to replace Vue’s template refs with signals. In fact, it’s helpful to have a distinction between reactive state and a reactive container for DOM and component nodes. For convenience and reduced verbosity, this library exports the function `nodeRef`, an alias for VueUse’s awesome [`templateRef`](https://vueuse.org/core/templateRef/#templateref).
 
 ### Usage
 
