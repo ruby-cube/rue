@@ -277,7 +277,7 @@ const coordinates$ = computed$(() => position$().x$() + ", " + position$().y$())
 $set(position$().x$, 1);
 ```
 
-Note that setting the value of `position$` above requires again manually indicating nested reactive properties. This differs from Vue’s approach, which thoughtfully auto-applies nested reactivity when setting a reactive reference’s value (based on whether it was initiated with deep or shallow reactivity). While it’s theoretically possible to implement something similar for selective nested reactivity, the performance cost is currently suspected to be not worth it.
+Note that when working with selective nested reactivity, setting the value of `position$` above requires manually indicating nested reactive properties. This differs from the auto-nested-reactivity that happens when setting a the value of a Vue ref or a [signalized signal](#signalizeobject-1) in this library.
 
 ```tsx
 // preserves nested reactivity
