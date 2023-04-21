@@ -277,7 +277,7 @@ const coordinates$ = computed$(() => position$().x$() + ", " + position$().y$())
 $set(position$().x$, 1);
 ```
 
-Note that when working with selective nested reactivity, setting the value of `position$` above requires manually indicating nested reactive properties. This differs from the auto-nested-reactivity that happens when setting a the value of a Vue ref or a [signalized signal](#signalizeobject-1) in this library.
+Note that when working with selective nested reactivity, setting the value of `position$` above requires manually indicating nested reactive properties. This differs from the auto-nested-reactivity that happens when setting the value of a Vue ref or a [signalized signal](#signalizeobject-1).
 
 ```tsx
 // preserves nested reactivity
