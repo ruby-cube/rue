@@ -616,9 +616,9 @@ onMounted(() => {
 
 ## Vue Counterparts
 
-Here is a quick chart of how Rue Signals API corresponds to Vue’s API:
+Here is a quick chart of how the Signal API corresponds to Vue’s API:
 
-| Rue Signals | Vue API |
+| Signal API | Vue API |
 | --- | --- |
 | `$(initialValue)` | `shallowRef(initialValue)` |
 | `signalize(object)` | `shallowReactive(object)` |
