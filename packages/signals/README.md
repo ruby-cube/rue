@@ -330,7 +330,7 @@ Creates an object whose direct properties are reactive via signals. Appends the 
 ```tsx
 const objectOfSignals = signalize(object);
             |                        |
-  { [key: string]: Signal }        Object
+  { [key: string]: Signal }   NonIterableObject
 ```
 
 ### Usage
@@ -363,8 +363,8 @@ Creates an object whose properties (including nested properties) are reactive vi
 
 ```tsx
 const deepObjectOfSignals = deepSignalize(object);
-              |   
-  { [key: string]: Signal }
+              |                              |
+  { [key: string]: Signal }           NonIterableObject
 ```
 
 ### Usage
@@ -407,7 +407,7 @@ Creates a signal for a shallowly reactive object.  Appends the -`$` suffix to re
 ```tsx
 const reactiveVariable$ = signalize$(object);
               |                        | 
-           Signal                    Object
+           Signal               NonIterableObject
 ```
 
 ### Usage
@@ -449,8 +449,8 @@ Creates a signal for a deeply reactive object.  Appends the -`$` suffix to react
 
 ```tsx
 const reactiveVariable$ = deepSignalize$(object);
-              |                  
-            Signal                     
+              |                             |
+            Signal                   NonIterableObject
 ```
 
 ### Usage

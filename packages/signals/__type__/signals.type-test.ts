@@ -21,6 +21,46 @@ const item = signalize({   // shallowReactive
 })
 
 
+{
+    //@ts-expect-error
+    const myMap = signalize(new Map())
+}
+
+{
+    //@ts-expect-error
+    const myMap = deepSignalize(new Map())
+}
+
+{
+    //@ts-expect-error
+    const myMap = signalize$(new Map())
+}
+
+{
+    //@ts-expect-error
+    const myMap = deepSignalize$(new Map())
+}
+
+{
+    //@ts-expect-error
+    const array = signalize([])
+}
+
+{
+    //@ts-expect-error
+    const array = deepSignalize([])
+}
+
+{
+    //@ts-expect-error
+    const array = signalize$([])
+}
+
+{
+    //@ts-expect-error
+    const array = deepSignalize$([])
+}
+
 
 const item$ = signalize$({   // shallowRef(shallowReactive())
     bullet: "•",
