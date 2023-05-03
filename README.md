@@ -48,9 +48,6 @@ Sends and receives targeted messages/commands.
 <br/>
 Provides flasked versions of schedulers and event listeners from Web API.
 
-**🥀 Ephemr**
-<br/>
-*(coming soon-ish)* Creates state machines using flasked events and hooks
 
 <br/>
 
@@ -58,14 +55,6 @@ Provides flasked versions of schedulers and event listeners from Web API.
 
 [**🪴 Être**](https://github.com/ruby-cube/rue/tree/main/packages/etre#readme-top)
 <br/>A system of composition for rich domain models
-
-**🔔 Modos**
-<br/>
-*(coming soon-ish)* An in-memory data model store that leverages Vue’s reactivity system. Particularly useful for tree structures. Includes several optional modules:
-- **Revive**: normalize and denormalize data
-- **Vine**: two-way tree structure
-- **Persistence**: batches changes for calls to the database
-- **History**: batches changes for undo/redo
 
 <br/>
 
@@ -83,13 +72,33 @@ Provides flasked versions of schedulers and event listeners from Web API.
 
 ***Vue Ecosystem***
 
+**🕊️ Signals**
+<br/>
+Alternative to ref and reactive. Aims to bring more consistency, clarity, and selectivity to reactivity in Vue apps by exposing a signal-based API.
+
 **🌴 Paravue**
 <br/>
-*(coming soon)* Provides flasked versions of Vue’s `watch` and `computed` and component utils.
+Provides Vue component utils, including a flasked version of Vue’s `onUnmounted`.
+
+**🦇 Watch**
+<br/>
+Provides flasked versions of Vue’s `watch`, `watchEffect` and `computed`.
 
 **🎬 Actionry**
 <br/>
 *(coming soon-ish)* Define actions. Useful for batching reactive effects based on actions.
+
+**🔔 Modos**
+<br/>
+*(coming soon-ish)* An in-memory data model store that leverages Vue’s reactivity system. Particularly useful for tree structures. Includes several optional modules:
+- **Revive**: normalize and denormalize data
+- **Vine**: two-way tree structure
+- **Persistence**: batches changes for calls to the database
+- **History**: batches changes for undo/redo
+
+**🥀 Ephemr**
+<br/>
+*(coming soon-ish)* Creates state machines using flasked events and hooks
 
 <p align="right"><a href="#readme-top">[top]</a></p>
 
