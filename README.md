@@ -62,7 +62,7 @@ Provides flasked versions of schedulers and event listeners from Web API.
 
 [**🕊️ Signals**](https://github.com/ruby-cube/rue/tree/main/packages/signals#readme-top)
 <br/>
-Alternative to ref and reactive. Aims to bring more consistency, clarity, and selectivity to reactivity in Vue apps by exposing a signal-based API.
+Alternative to Vue's `ref` and `reactive`. Aims to bring more consistency, clarity, and selectivity to reactivity in Vue apps by exposing a signal-based API.
 
 [**🌴 Paravue**](https://github.com/ruby-cube/rue/tree/main/packages/paravue#readme-top)
 <br/>
