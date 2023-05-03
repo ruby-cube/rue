@@ -51,7 +51,7 @@ Provides flasked versions of schedulers and event listeners from Web API.
 
 <br/>
 
-***Data Management***
+***Object-Oriented Programming***
 
 [**🪴 Être**](https://github.com/ruby-cube/rue/tree/main/packages/etre#readme-top)
 <br/>A system of composition for rich domain models
