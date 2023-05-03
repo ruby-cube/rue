@@ -58,29 +58,17 @@ Provides flasked versions of schedulers and event listeners from Web API.
 
 <br/>
 
-***Control Flow***
-
-**🔱 Nautic**
-<br/>
-*(coming soon-ish)* Compile control flow maps for complex control flows.
-
-**⛵ Voile**
-<br/>
-*(coming soon-ish)* Compositional control flow for making complex control flows more efficient.
-
-<br/>
-
 ***Vue Ecosystem***
 
-**🕊️ Signals**
+[**🕊️ Signals**](https://github.com/ruby-cube/rue/tree/main/packages/signals#readme-top)
 <br/>
 Alternative to ref and reactive. Aims to bring more consistency, clarity, and selectivity to reactivity in Vue apps by exposing a signal-based API.
 
-**🌴 Paravue**
+[**🌴 Paravue**](https://github.com/ruby-cube/rue/tree/main/packages/paravue#readme-top)
 <br/>
 Provides Vue component utils, including a flasked version of Vue’s `onUnmounted`.
 
-**🦇 Watch**
+[**🦇 Watch**](https://github.com/ruby-cube/rue/tree/main/packages/watch#readme-top)
 <br/>
 Provides flasked versions of Vue’s `watch`, `watchEffect` and `computed`.
 
@@ -99,6 +87,18 @@ Provides flasked versions of Vue’s `watch`, `watchEffect` and `computed`.
 **🥀 Ephemr**
 <br/>
 *(coming soon-ish)* Creates state machines using flasked events and hooks
+
+<br/>
+
+***Control Flow***
+
+**🔱 Nautic**
+<br/>
+*(coming soon-ish)* Compile control flow maps for complex control flows.
+
+**⛵ Voile**
+<br/>
+*(coming soon-ish)* Compositional control flow for making complex control flows more efficient.
 
 <p align="right"><a href="#readme-top">[top]</a></p>
 
