@@ -165,7 +165,7 @@ Schedulers are one-time listeners that cannot be converted into a sustained list
 
 ### Synchronous vs Asynchronous Handling
 
-Handlers are called synchronously at the time of event emission. This allows for “before event” hooks as well as the possibility of handlers communicating back to the source of the event (see [`reply`](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#hook-configuration)). 
+Handlers are called synchronously at the time of event emission. This allows for “before event” hooks as well as the possibility of handlers communicating back to the source of the event (see [reply](https://github.com/ruby-cube/rue/tree/main/packages/pecherie#hook-configuration)). 
 
 If asynchronous handling is needed, the developer can call an async scheduler or one-time listener from within the handler. In the example below, the synchonous handler calls the `addPS` scheduler (an alias for `queueMicrotask`) for asynchronous handling.
 
@@ -459,17 +459,17 @@ function workHard(item, index){
 
 ## The APIs
 
-[`$listen(handler, options, config)`](#listenhandler-options-config)
+[$listen(handler, options, config)](#listenhandler-options-config)
 
-[`$schedule(handler, options, config)`](#schedulehandler-options-config)
+[$schedule(handler, options, config)](#schedulehandler-options-config)
 
-[`$subscribe(handler, options, config)`](#subscribehandler-options-config)
+[$subscribe(handler, options, config)](#subscribehandler-options-config)
 
-[`beginScene(sceneDef)`](#scene-auto-cleanup) (Scene API)
+[beginScene(sceneDef)](#scene-auto-cleanup) (Scene API)
 
-[`defineAutoCleanup(cleanupFn)`](#auto-cleanup) (Auto Cleanup API)
+[defineAutoCleanup(cleanupFn)](#auto-cleanup) (Auto Cleanup API)
 
-[`genTargetID(config)`](#targeted-listeners) (Target ID API)
+[genTargetID(config)](#targeted-listeners) (Target ID API)
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
