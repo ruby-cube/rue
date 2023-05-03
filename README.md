@@ -102,14 +102,6 @@ Provides flasked versions of Vue’s `watch`, `watchEffect` and `computed`.
 
 <p align="right"><a href="#readme-top">[top]</a></p>
 
-## Compatibility
-
-While most of the tools are theoretically framework-agnostic, they were built with Vue 3 in mind and have not been tested with other frameworks. Note that since Vue 3 reactivity is decoupled from the Vue component framework, tools that leverage Vue 3's reactivity system can be use outside of Vue apps. That said, I highly recommend the Vue component framework for its clarity of concepts and thoughtful design.
-
-Typescript is highly encouraged for less headaches when defining types.
-
-<p align="right"><a href="#readme-top">[top]</a></p>
-
 ## The `$type` variable
 
 Many of the functions in this repo take in configurations that are purely for typing purposes. If using pure Javascript, you can pass in an object or primitive that satisfies the type definition, for example: 
