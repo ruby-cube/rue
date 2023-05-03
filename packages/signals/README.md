@@ -19,6 +19,7 @@ Rue Signals aims to bring more consistency, clarity, and selectivity to reactivi
 ```bash
 (coming soon ...)
 ```
+
 <p align="right"><a href="#">[src]</a></p>
 
 ## Motivation
@@ -60,7 +61,7 @@ This library stands on the shoulders of giants. It is a mere tweaking of existin
     - [Reactive References](#reactive-references)
     - [Explicit Reactivity](#explicit-reactivity)
 - [Basic Examples](#basic-examples)
-- [Signal API](#signal-api)
+- [Signals API](#signals-api)
 - [Vue Counterparts](#vue-counterparts)
 - [Reactivity in Iterables](#reactivity-in-iterables)
 - [Tips](#tips)
@@ -193,7 +194,7 @@ const coordinates$ = computed$(() => position.x$() + ", " + position.y$());
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
-## Signal API
+## Signals API
 
 **Core signal creators and setters**
 
