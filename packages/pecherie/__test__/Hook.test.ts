@@ -1,7 +1,7 @@
 import { describe, test, expect, vi } from "vitest";
 import { createHook } from "../Hook";
-import { defineAutoCleanup } from "../../planify/scheduleAutoCleanup";
-import { $lifetime, $tilStop, Callback } from "../../planify/planify";
+import { defineAutoCleanup } from "../../flask/scheduleAutoCleanup";
+import { $lifetime, $tilStop, Callback } from "../../flask/flask";
 import { $type } from "@rue/utils";
 
 

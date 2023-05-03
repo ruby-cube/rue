@@ -1,7 +1,7 @@
 //-@ts-nocheck
 import { vi, expect, describe, test, beforeEach } from "vitest";
-import { beginScene, Scene } from "../../planify/Scene";
-import { defineAutoCleanup } from "../../planify/scheduleAutoCleanup";
+import { beginScene, Scene } from "../../flask/Scene";
+import { defineAutoCleanup } from "../../flask/scheduleAutoCleanup";
 import { createHook, DevListener } from "../Hook";
 import { $type } from "@rue/utils";
 

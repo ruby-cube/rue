@@ -39,14 +39,14 @@ importers:
     specifiers:
       '@rue/dev': workspace:*
       '@rue/pecherie': workspace:*
-      '@rue/planify': workspace:*
+      '@rue/flask': workspace:*
       '@rue/types': workspace:*
       '@types/node': ^18.15.11
       typescript: ^4.9.3
       vite: ^4.2.0
       vue: ^3.2.47
     dependencies:
-      '@rue/planify': link:../planify
+      '@rue/flask': link:../flask
     devDependencies:
       '@rue/dev': link:../dev
       '@rue/pecherie': link:../pecherie
@@ -89,7 +89,7 @@ importers:
     specifiers:
       '@rue/paravue': workspace:*
       '@rue/pecherie': workspace:*
-      '@rue/planify': workspace:*
+      '@rue/flask': workspace:*
       '@rue/thread': workspace:*
       '@rue/types': workspace:*
       '@rue/utils': workspace:*
@@ -100,7 +100,7 @@ importers:
     dependencies:
       '@rue/paravue': link:../paravue
       '@rue/pecherie': link:../pecherie
-      '@rue/planify': link:../planify
+      '@rue/flask': link:../flask
       '@rue/thread': link:../thread
     devDependencies:
       '@rue/types': link:../types
@@ -136,7 +136,7 @@ importers:
       '@rue/etre': workspace:*
       '@rue/paravue': workspace:*
       '@rue/pecherie': workspace:*
-      '@rue/planify': workspace:*
+      '@rue/flask': workspace:*
       '@rue/types': workspace:*
       '@rue/utils': workspace:*
       '@types/node': ^18.15.11
@@ -149,7 +149,7 @@ importers:
       '@rue/etre': link:../etre
       '@rue/paravue': link:../paravue
       '@rue/pecherie': link:../pecherie
-      '@rue/planify': link:../planify
+      '@rue/flask': link:../flask
       '@rue/utils': link:../utils
     devDependencies:
       '@rue/types': link:../types
@@ -172,11 +172,11 @@ importers:
 
   packages/paravue:
     specifiers:
-      '@rue/planify': workspace:*
+      '@rue/flask': workspace:*
       '@rue/types': workspace:*
       vue: ^3.2.47
     dependencies:
-      '@rue/planify': link:../planify
+      '@rue/flask': link:../flask
       vue: 3.2.47
     devDependencies:
       '@rue/types': link:../types
@@ -184,7 +184,7 @@ importers:
   packages/pecherie:
     specifiers:
       '@rue/dev': workspace:*
-      '@rue/planify': workspace:*
+      '@rue/flask': workspace:*
       '@rue/types': workspace:*
       '@rue/utils': workspace:*
       '@types/node': ^18.15.11
@@ -192,7 +192,7 @@ importers:
       vite: ^4.2.0
       vue: ^3.2.47
     dependencies:
-      '@rue/planify': link:../planify
+      '@rue/flask': link:../flask
       '@rue/utils': link:../utils
     devDependencies:
       '@rue/dev': link:../dev
@@ -202,7 +202,7 @@ importers:
       vite: 4.2.1_@types+node@18.15.11
       vue: 3.2.47
 
-  packages/planify:
+  packages/flask:
     specifiers:
       '@rue/dev': workspace:*
       '@rue/pecherie': workspace:*
@@ -248,7 +248,7 @@ importers:
 
   packages/thread:
     specifiers:
-      '@rue/planify': workspace:*
+      '@rue/flask': workspace:*
       '@rue/utils': workspace:*
       '@types/node': ^18.15.11
       setimmediate: ^1.0.5
@@ -256,7 +256,7 @@ importers:
       vite: ^4.2.0
       vue: ^3.2.47
     dependencies:
-      '@rue/planify': link:../planify
+      '@rue/flask': link:../flask
       '@rue/utils': link:../utils
       setimmediate: 1.0.5
     devDependencies:
