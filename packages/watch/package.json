@@ -1,0 +1,15 @@
+{
+    "name": "@rue/watch",
+    "private": true,
+    "description": "",
+    "dependencies": {
+        "vue": "^3.2.47",
+        "@rue/flask": "workspace:*",
+        "@rue/paravue": "workspace:*"
+    },
+    "devDependencies": {
+        "@rue/types": "workspace:*"
+    },
+    "author": "Ruby Yi Wang",
+    "license": "MIT"
+}
