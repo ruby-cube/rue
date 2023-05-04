@@ -48,6 +48,10 @@ Sends and receives targeted messages/commands.
 <br/>
 Provides flasked versions of schedulers and event listeners from Web API.
 
+[**🎐 Scene**](https://github.com/ruby-cube/rue/tree/main/packages/flask#scenes)
+<br/>
+Batches cleanup of subscriptions/event listeners registered within an event handler, usually the first handler of an event flow such as mouse down > mouse move > mouse up. Part of the Flask event system.
+
 
 <br/>
 
