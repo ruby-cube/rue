@@ -2,9 +2,6 @@
     "name": "@rue/signals",
     "private": true,
     "description": "",
-    "dependencies": {
-        "@vueuse/core": "^10.0.2"
-    },
     "peerDependencies": {
         "vue": "^3.2.47"
     },
