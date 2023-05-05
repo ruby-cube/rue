@@ -95,7 +95,7 @@ Flasked version of Vue's `onUnmounted`.
 const pendingOp = onUnmounted(handler, options)
           |                     |         |
      PendingOp                  |    HookOptions?
-                                 () => void
+                            () => void
 ```
 
 ### Type Definitions
