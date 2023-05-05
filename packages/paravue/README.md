@@ -12,7 +12,7 @@
 
 ## Overview
 
-Paravue provides a handful of component utils, including a [flasked](https://github.com/ruby-cube/rue/tree/main/packages/flask#flaskedlisteners) version of Vue's `onUnmounted` lifecycle hook, useful for registering Vue components as a [covert flask](https://github.com/ruby-cube/rue/tree/main/packages/flask#covertflasks) in a [Flask event system](https://github.com/ruby-cube/rue/tree/main/packages/flask).
+Paravue provides a handful of Vue component utils, including a [flasked](https://github.com/ruby-cube/rue/tree/main/packages/flask#flaskedlisteners) version of Vue's `onUnmounted` lifecycle hook, useful for registering Vue components as a [covert flask](https://github.com/ruby-cube/rue/tree/main/packages/flask#covertflasks) in a [Flask event system](https://github.com/ruby-cube/rue/tree/main/packages/flask).
 
 <p align="right"><a href="#">[src]</a></p>
 
