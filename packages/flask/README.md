@@ -23,6 +23,13 @@ This library is very much inspired by my experiences with [Vue.js](https://vuejs
 
 <p align="right"><a href="#">[src]</a></p>
 
+## Installation
+
+```bash
+(coming soon ...)
+```
+<p align="right"><a href="#">[src]</a></p>
+
 ## Table of Contents
 
 <aside>
