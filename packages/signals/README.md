@@ -639,11 +639,11 @@ $mutate(items$, (items) => items[2] = "d");  // simple assignment
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
 ## Reactive Props and Template Refs
-Replacing reactive component props and template refs with signals is not recommended. In fact, it may be helpful to have distinct conventions for handling reactive state vs props and templates refs, since props and template refs should be not be mutated.
+Replacing reactive component props and template refs with signals is not recommended. In fact, it may be helpful to have distinct conventions for handling reactive state vs props and template refs since props and template refs should be not be mutated.
 
-Note that Vue 3.3 eliminates the need to translate destructured reactive props into refs with a [compile-time transform](https://vuejs.org/guide/extras/reactivity-transform.html#reactive-props-destructure) in <script setup>. 
+Note that Vue 3.3 eliminates the need to translate destructured reactive props into refs with a [compile-time transform](https://vuejs.org/guide/extras/reactivity-transform.html#reactive-props-destructure) in `<script setup>`. 
 
-An alternative to destructuring reactive props for reducing the verbosity of prop access (e.g. `props.foo`), is to name the props parameter with a shorter convention such as `v`.
+An alternative to destructuring reactive props to reduce the verbosity of prop access (e.g. `props.foo`) is to name the props parameter with a shorter convention such as `v`.
 
 ```tsx
 export default defineComponent({
