@@ -65,6 +65,7 @@ This library stands on the shoulders of giants. It is a mere tweaking of existin
 - [Signals API](#signals-api)
 - [Vue Counterparts](#vue-counterparts)
 - [Reactivity in Iterables](#reactivity-in-iterables)
+- [Reactive Props and Template Refs](#reactive-props-and-template-refs)
 - [Tips](#tips)
 - [Performance Optimization](#performance-optimizations)
 
@@ -605,13 +606,7 @@ Here is a quick chart of how the Signal API corresponds to Vue’s API:
 | `$set(signal, value)` | e.g. `myRef.value = value` |
 | `$mutate(signal, mutator)` | e.g. `myRef.value.push(item); triggerRef(myRef);` |
 
-Note: Rue Signals does not recommend replacing Vue’s template refs with signals. In fact, it’s helpful to have a distinction between reactive state and a reactive container for DOM and component nodes.
-
-<p align="right"><a href="#table-of-contents">[toc]</a></p>
-
-## Tips
-
-This library makes heavy use of the dollar sign in variable names. You may want to configure your IDE to include the dollar sign in word selections. How to in VSCode.
+Note: Rue Signals does not recommend replacing Vue’s template refs with signals. In fact, it’s helpful to have a distinction between reactive state and a reactive container for DOM and component nodes. See [Reactive Props and Template Refs](#reactive-props-and-template-refs).
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
@@ -626,7 +621,7 @@ const items = signalize(["a", "b", "c"]);
 
 items["0$"]() // oh god 🤢
 
-const myMap = signalize(new Map([["dog", 🐶]]
+const myMap = signalize(new Map([["dog", 🐶]]);
 
 myMap.get("dog$")() // ohh god why 🤮
 ```
@@ -640,6 +635,35 @@ const excitedFirstItem$ = computed$(() => items$()[0] + "!"); // simple access
 
 $mutate(items$, (items) => items[2] = "d");  // simple assignment
 ```
+
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
+
+## Reactive Props and Template Refs
+Replacing reactive component props and template refs with signals is not recommended. In fact, it may be helpful to have distinct conventions for handling reactive state vs props and templates refs, since props and template refs should be not be mutated.
+
+Note that Vue 3.3 eliminates the need to translate destructured reactive props into refs with a [compile-time transform](https://vuejs.org/guide/extras/reactivity-transform.html#reactive-props-destructure) in <script setup>. 
+
+An alternative to destructuring reactive props for reducing the verbosity of prop access (e.g. `props.foo`), is to name the props parameter with a shorter convention such as `v`.
+
+```tsx
+export default defineComponent({
+    props: ['foo'],
+    setup(v) {
+        const bar = computed(() => v.foo + '!');
+
+        return /* ... */;
+    }
+})
+```
+
+See [nodeRef](https://github.com/ruby-cube/rue/tree/main/packages/paravue#nodeRef) for the recommended API for template refs.
+
+<p align="right"><a href="#table-of-contents">[toc]</a></p>
+
+## Tips
+
+This library makes heavy use of the dollar sign in variable names. You may want to configure your IDE to include the dollar sign in word selections. How to in VSCode.
+
 
 <p align="right"><a href="#table-of-contents">[toc]</a></p>
 
